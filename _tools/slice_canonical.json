@@ -1,0 +1,454 @@
+{
+ "slice_rule": "sheet 'Year 2010-2011', InvoiceDate in [2010-12-01, 2011-03-01)",
+ "steps": {
+  "raw": 105335,
+  "drop_duplicates": 104360,
+  "drop_cancellations": 102471,
+  "quantity_positive": 102257,
+  "price_positive": 101933,
+  "drop_non_products": 101478,
+  "drop_cancelled_giant": 101477,
+  "clean": 101477
+ },
+ "raw_rows": 105335,
+ "raw_cols": 8,
+ "shape": [
+  105335,
+  8
+ ],
+ "clean_rows": 101477,
+ "clean_invoices": 3723,
+ "clean_products": 3077,
+ "clean_customers": 1679,
+ "missing_customer_rows_raw": 36210,
+ "missing_customer_rows_clean": 35383,
+ "missing_description_rows_raw": 304,
+ "description_rows_with_trailing_space_raw": 20063,
+ "cancellation_rows_raw": 1904,
+ "unique_cancellation_invoices_raw": 805,
+ "duplicate_rows_raw": 975,
+ "negative_qty_rows_raw": 2118,
+ "negative_price_rows_raw": 0,
+ "zero_price_rows_raw": 540,
+ "zero_price_rows_after_qty_filter": 324,
+ "non_product_rows_raw": 565,
+ "non_product_breakdown_raw": {
+  "POST": 217,
+  "DOT": 175,
+  "M": 90,
+  "S": 30,
+  "C2": 20,
+  "D": 13,
+  "AMAZONFEE": 11,
+  "BANK CHARGES": 9
+ },
+ "germany_rows_raw": 1741,
+ "germany_rows_clean": 1514,
+ "countries_raw": 31,
+ "date_first": "2010-12-01 08:26:00",
+ "date_last": "2011-02-28 17:04:00",
+ "revenue": 1876839.9,
+ "revenue_with_giant": 1954023.5,
+ "giant_invoice_detail": [
+  {
+   "Invoice": "541431",
+   "StockCode": "23166",
+   "Description": "MEDIUM CERAMIC TOP STORAGE JAR",
+   "Quantity": "74215",
+   "Price": "1.04",
+   "InvoiceDate": "2011-01-18 10:01:00",
+   "Customer ID": "12346.0",
+   "revenue": "77183.6"
+  }
+ ],
+ "first_12_rows": [
+  {
+   "invoice": "536365",
+   "stock_code": "85123A",
+   "description": "WHITE HANGING HEART T-LIGHT HOLDER",
+   "quantity": 6,
+   "price": 2.55,
+   "invoice_date": "2010-12-01 08:26:00",
+   "customer_id": 17850,
+   "country": "United Kingdom"
+  },
+  {
+   "invoice": "536365",
+   "stock_code": "71053",
+   "description": "WHITE METAL LANTERN",
+   "quantity": 6,
+   "price": 3.39,
+   "invoice_date": "2010-12-01 08:26:00",
+   "customer_id": 17850,
+   "country": "United Kingdom"
+  },
+  {
+   "invoice": "536365",
+   "stock_code": "84406B",
+   "description": "CREAM CUPID HEARTS COAT HANGER",
+   "quantity": 8,
+   "price": 2.75,
+   "invoice_date": "2010-12-01 08:26:00",
+   "customer_id": 17850,
+   "country": "United Kingdom"
+  },
+  {
+   "invoice": "536365",
+   "stock_code": "84029G",
+   "description": "KNITTED UNION FLAG HOT WATER BOTTLE",
+   "quantity": 6,
+   "price": 3.39,
+   "invoice_date": "2010-12-01 08:26:00",
+   "customer_id": 17850,
+   "country": "United Kingdom"
+  },
+  {
+   "invoice": "536365",
+   "stock_code": "84029E",
+   "description": "RED WOOLLY HOTTIE WHITE HEART.",
+   "quantity": 6,
+   "price": 3.39,
+   "invoice_date": "2010-12-01 08:26:00",
+   "customer_id": 17850,
+   "country": "United Kingdom"
+  },
+  {
+   "invoice": "536365",
+   "stock_code": "22752",
+   "description": "SET 7 BABUSHKA NESTING BOXES",
+   "quantity": 2,
+   "price": 7.65,
+   "invoice_date": "2010-12-01 08:26:00",
+   "customer_id": 17850,
+   "country": "United Kingdom"
+  },
+  {
+   "invoice": "536365",
+   "stock_code": "21730",
+   "description": "GLASS STAR FROSTED T-LIGHT HOLDER",
+   "quantity": 6,
+   "price": 4.25,
+   "invoice_date": "2010-12-01 08:26:00",
+   "customer_id": 17850,
+   "country": "United Kingdom"
+  },
+  {
+   "invoice": "536366",
+   "stock_code": "22633",
+   "description": "HAND WARMER UNION JACK",
+   "quantity": 6,
+   "price": 1.85,
+   "invoice_date": "2010-12-01 08:28:00",
+   "customer_id": 17850,
+   "country": "United Kingdom"
+  },
+  {
+   "invoice": "536366",
+   "stock_code": "22632",
+   "description": "HAND WARMER RED POLKA DOT",
+   "quantity": 6,
+   "price": 1.85,
+   "invoice_date": "2010-12-01 08:28:00",
+   "customer_id": 17850,
+   "country": "United Kingdom"
+  },
+  {
+   "invoice": "536368",
+   "stock_code": "22960",
+   "description": "JAM MAKING SET WITH JARS",
+   "quantity": 6,
+   "price": 4.25,
+   "invoice_date": "2010-12-01 08:34:00",
+   "customer_id": 13047,
+   "country": "United Kingdom"
+  },
+  {
+   "invoice": "536368",
+   "stock_code": "22913",
+   "description": "RED COAT RACK PARIS FASHION",
+   "quantity": 3,
+   "price": 4.95,
+   "invoice_date": "2010-12-01 08:34:00",
+   "customer_id": 13047,
+   "country": "United Kingdom"
+  },
+  {
+   "invoice": "536368",
+   "stock_code": "22912",
+   "description": "YELLOW COAT RACK PARIS FASHION",
+   "quantity": 3,
+   "price": 4.95,
+   "invoice_date": "2010-12-01 08:34:00",
+   "customer_id": 13047,
+   "country": "United Kingdom"
+  }
+ ],
+ "first_7_quantities": [
+  6,
+  6,
+  8,
+  6,
+  6,
+  2,
+  6
+ ],
+ "first_7_prices": [
+  2.55,
+  3.39,
+  2.75,
+  3.39,
+  3.39,
+  7.65,
+  4.25
+ ],
+ "first_7_descriptions": [
+  "WHITE HANGING HEART T-LIGHT HOLDER",
+  "WHITE METAL LANTERN",
+  "CREAM CUPID HEARTS COAT HANGER",
+  "KNITTED UNION FLAG HOT WATER BOTTLE",
+  "RED WOOLLY HOTTIE WHITE HEART.",
+  "SET 7 BABUSHKA NESTING BOXES",
+  "GLASS STAR FROSTED T-LIGHT HOLDER"
+ ],
+ "first_7_sum": 40,
+ "first_7_len": 7,
+ "first_7_min": 2,
+ "first_7_max": 8,
+ "abc": {
+  "A": {
+   "products": 671,
+   "pct_products": 21.8,
+   "revenue": 1500839.03,
+   "pct_revenue": 79.97
+  },
+  "B": {
+   "products": 796,
+   "pct_products": 25.9,
+   "revenue": 282144.5,
+   "pct_revenue": 15.03
+  },
+  "C": {
+   "products": 1610,
+   "pct_products": 52.3,
+   "revenue": 93856.37,
+   "pct_revenue": 5.0
+  }
+ },
+ "product_count": 3077,
+ "top15_products": [
+  {
+   "rank": 1,
+   "stock_code": "22423",
+   "description": "REGENCY CAKESTAND 3 TIER",
+   "revenue": 51504.85,
+   "pct_revenue": 2.74,
+   "cumulative_share": 0.0274,
+   "abc": "A"
+  },
+  {
+   "rank": 2,
+   "stock_code": "85123A",
+   "description": "WHITE HANGING HEART T-LIGHT HOLDER",
+   "revenue": 30780.98,
+   "pct_revenue": 1.64,
+   "cumulative_share": 0.0438,
+   "abc": "A"
+  },
+  {
+   "rank": 3,
+   "stock_code": "79321",
+   "description": "CHILLI LIGHTS",
+   "revenue": 17013.92,
+   "pct_revenue": 0.91,
+   "cumulative_share": 0.0529,
+   "abc": "A"
+  },
+  {
+   "rank": 4,
+   "stock_code": "85099B",
+   "description": "JUMBO BAG RED RETROSPOT",
+   "revenue": 14684.04,
+   "pct_revenue": 0.78,
+   "cumulative_share": 0.0607,
+   "abc": "A"
+  },
+  {
+   "rank": 5,
+   "stock_code": "21623",
+   "description": "VINTAGE UNION JACK MEMOBOARD",
+   "revenue": 14050.55,
+   "pct_revenue": 0.75,
+   "cumulative_share": 0.0682,
+   "abc": "A"
+  },
+  {
+   "rank": 6,
+   "stock_code": "82484",
+   "description": "WOOD BLACK BOARD ANT WHITE FINISH",
+   "revenue": 11013.87,
+   "pct_revenue": 0.59,
+   "cumulative_share": 0.0741,
+   "abc": "A"
+  },
+  {
+   "rank": 7,
+   "stock_code": "22470",
+   "description": "HEART OF WICKER LARGE",
+   "revenue": 10999.97,
+   "pct_revenue": 0.59,
+   "cumulative_share": 0.0799,
+   "abc": "A"
+  },
+  {
+   "rank": 8,
+   "stock_code": "22469",
+   "description": "HEART OF WICKER SMALL",
+   "revenue": 10815.52,
+   "pct_revenue": 0.58,
+   "cumulative_share": 0.0857,
+   "abc": "A"
+  },
+  {
+   "rank": 9,
+   "stock_code": "22720",
+   "description": "SET OF 3 CAKE TINS PANTRY DESIGN ",
+   "revenue": 10050.01,
+   "pct_revenue": 0.54,
+   "cumulative_share": 0.0911,
+   "abc": "A"
+  },
+  {
+   "rank": 10,
+   "stock_code": "84029E",
+   "description": "RED WOOLLY HOTTIE WHITE HEART.",
+   "revenue": 9652.62,
+   "pct_revenue": 0.51,
+   "cumulative_share": 0.0962,
+   "abc": "A"
+  },
+  {
+   "rank": 11,
+   "stock_code": "84879",
+   "description": "ASSORTED COLOUR BIRD ORNAMENT",
+   "revenue": 9588.73,
+   "pct_revenue": 0.51,
+   "cumulative_share": 0.1013,
+   "abc": "A"
+  },
+  {
+   "rank": 12,
+   "stock_code": "21137",
+   "description": "BLACK RECORD COVER FRAME",
+   "revenue": 9488.08,
+   "pct_revenue": 0.51,
+   "cumulative_share": 0.1064,
+   "abc": "A"
+  },
+  {
+   "rank": 13,
+   "stock_code": "22189",
+   "description": "CREAM HEART CARD HOLDER",
+   "revenue": 9446.13,
+   "pct_revenue": 0.5,
+   "cumulative_share": 0.1114,
+   "abc": "A"
+  },
+  {
+   "rank": 14,
+   "stock_code": "22086",
+   "description": "PAPER CHAIN KIT 50'S CHRISTMAS ",
+   "revenue": 9376.37,
+   "pct_revenue": 0.5,
+   "cumulative_share": 0.1164,
+   "abc": "A"
+  },
+  {
+   "rank": 15,
+   "stock_code": "21479",
+   "description": "WHITE SKULL HOT WATER BOTTLE ",
+   "revenue": 9114.69,
+   "pct_revenue": 0.49,
+   "cumulative_share": 0.1213,
+   "abc": "A"
+  }
+ ],
+ "cumulative_share_first_10": [
+  0.0274,
+  0.0438,
+  0.0529,
+  0.0607,
+  0.0682,
+  0.0741,
+  0.0799,
+  0.0857,
+  0.0911,
+  0.0962
+ ],
+ "codes_with_multiple_names": 40,
+ "lowercase_code_rows": 541,
+ "duplicate_invoice_stockcode_rows": 932,
+ "top5_countries": {
+  "United Kingdom": 1592000.36,
+  "Netherlands": 58182.55,
+  "EIRE": 43426.19,
+  "Germany": 37365.63,
+  "France": 32392.39
+ },
+ "uk_share_pct": 84.82,
+ "monthly_revenue": {
+  "2010-12": 775717.5,
+  "2011-01": 593255.86,
+  "2011-02": 507866.54
+ },
+ "daily_days": 68,
+ "daily_min": 3439.67,
+ "daily_max": 81454.99,
+ "daily_max_day": "2010-12-07",
+ "daily_top5": {
+  "2010-12-07": 81454.99,
+  "2011-01-11": 67856.96,
+  "2010-12-01": 57442.33,
+  "2010-12-10": 56688.13,
+  "2010-12-06": 51667.12
+ },
+ "daily_first_10": {
+  "2010-12-01": 57442.33,
+  "2010-12-02": 47596.42,
+  "2010-12-03": 44788.9,
+  "2010-12-05": 30908.67,
+  "2010-12-06": 51667.12,
+  "2010-12-07": 81454.99,
+  "2010-12-08": 44153.98,
+  "2010-12-09": 49992.52,
+  "2010-12-10": 56688.13,
+  "2010-12-12": 17125.65
+ },
+ "revenue_if_giant_kept": 1954023.5,
+ "top5_products_if_giant_kept": [
+  {
+   "stock_code": "23166",
+   "revenue": 77183.6,
+   "pct": 3.95
+  },
+  {
+   "stock_code": "22423",
+   "revenue": 51504.85,
+   "pct": 2.64
+  },
+  {
+   "stock_code": "85123A",
+   "revenue": 30780.98,
+   "pct": 1.58
+  },
+  {
+   "stock_code": "79321",
+   "revenue": 17013.92,
+   "pct": 0.87
+  },
+  {
+   "stock_code": "85099B",
+   "revenue": 14684.04,
+   "pct": 0.75
+  }
+ ]
+}

@@ -1,0 +1,45 @@
+# macOS
+.DS_Store
+
+# Python
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+venv/
+.venv/
+
+# Local Python environment and package caches (rebuild with uv, see PLAN.md)
+_tools/venv/
+_tools/uv-cache/
+_tools/pythons/
+_tools/mplconfig/
+_tools/cache/
+
+# Full CSV conversions and the slice working copy (raw data stays local)
+data/work/
+
+# Raw dataset: 43.5 MiB, does not change, restore with data/raw/README.md
+data/raw/*
+!data/raw/README.md
+
+# Deck toolchain test output (keep only the runbook)
+_tools/deck_check/*
+!_tools/deck_check/RUNBOOK.txt
+**/lo_profile/
+
+# Third-party skill assets for NUS decks, not used by this course (private course, no NUS branding)
+_tools/ppt_maker/ppt-maker/assets/logos/
+_tools/ppt_maker/ppt-maker/assets/images/
+
+# Verification scratch: keep the report, the tables and the scripts
+_verify/raw_sheets.pkl
+_verify/results.txt
+_verify/run.log
+_verify/verify2.log
+_verify/message.txt
+
+# Generated deck renders (the PDF and PPTX are the deliverables)
+sessions/**/*_render/
+sessions/**/page-*.png
+sessions/**/sheet_*.png
+data/**/*_render/

@@ -1,0 +1,753 @@
+{
+  "sheet1_rows": 525461,
+  "sheet2_rows": 541910,
+  "total_rows": 1067371,
+  "Year 2009-2010 min_date": "2009-12-01T07:45:00",
+  "Year 2009-2010 max_date": "2010-12-09T20:01:00",
+  "Year 2009-2010 n_null_invoicedate": 0,
+  "Year 2010-2011 min_date": "2010-12-01T08:26:00",
+  "Year 2010-2011 max_date": "2011-12-09T12:50:00",
+  "Year 2010-2011 n_null_invoicedate": 0,
+  "combined_min_date": "2009-12-01T07:45:00",
+  "combined_max_date": "2011-12-09T12:50:00",
+  "openpyxl_max_row_by_sheet": {
+    "Year 2009-2010": 525462,
+    "Year 2010-2011": 541911
+  },
+  "openpyxl_sheetnames": [
+    "Year 2009-2010",
+    "Year 2010-2011"
+  ],
+  "missing_counts": {
+    "Invoice": 0,
+    "StockCode": 0,
+    "Description": 4382,
+    "Quantity": 0,
+    "InvoiceDate": 0,
+    "Price": 0,
+    "Customer ID": 243007,
+    "Country": 0
+  },
+  "missing_pct": {
+    "Invoice": 0.0,
+    "StockCode": 0.0,
+    "Description": 0.4105,
+    "Quantity": 0.0,
+    "InvoiceDate": 0.0,
+    "Price": 0.0,
+    "Customer ID": 22.7669,
+    "Country": 0.0
+  },
+  "dtypes": {
+    "Invoice": "object",
+    "StockCode": "object",
+    "Description": "object",
+    "Quantity": "int64",
+    "InvoiceDate": "datetime64[ns]",
+    "Price": "float64",
+    "Customer ID": "object",
+    "Country": "object"
+  },
+  "dtypes_sheet1": {
+    "Invoice": "object",
+    "StockCode": "object",
+    "Description": "object",
+    "Quantity": "int64",
+    "InvoiceDate": "datetime64[ns]",
+    "Price": "float64",
+    "Customer ID": "object",
+    "Country": "object"
+  },
+  "dtypes_sheet2": {
+    "Invoice": "object",
+    "StockCode": "object",
+    "Description": "object",
+    "Quantity": "int64",
+    "InvoiceDate": "datetime64[ns]",
+    "Price": "float64",
+    "Customer ID": "object",
+    "Country": "object"
+  },
+  "invoice_dtype": {
+    "sheet1": "object",
+    "sheet2": "object"
+  },
+  "stockcode_dtype": {
+    "sheet1": "object",
+    "sheet2": "object"
+  },
+  "c_rows": 19494,
+  "c_unique_invoices": 8292,
+  "c_rows_qty_ge_0": 1,
+  "nonc_rows_qty_lt_0": 3457,
+  "Year 2009-2010: c_rows": 10206,
+  "Year 2009-2010: c_unique_invoices": 4592,
+  "Year 2010-2011: c_rows": 9288,
+  "Year 2010-2011: c_unique_invoices": 3836,
+  "nonc_neg_qty_rows": 3457,
+  "negative_price_rows": 5,
+  "negative_price_detail": [
+    {
+      "Invoice": "A506401",
+      "StockCode": "B",
+      "Description": "Adjust bad debt",
+      "Quantity": 1,
+      "InvoiceDate": "2010-04-29T13:36:00",
+      "Price": -53594.36,
+      "Customer ID": NaN,
+      "Country": "United Kingdom"
+    },
+    {
+      "Invoice": "A516228",
+      "StockCode": "B",
+      "Description": "Adjust bad debt",
+      "Quantity": 1,
+      "InvoiceDate": "2010-07-19T11:24:00",
+      "Price": -44031.79,
+      "Customer ID": NaN,
+      "Country": "United Kingdom"
+    },
+    {
+      "Invoice": "A528059",
+      "StockCode": "B",
+      "Description": "Adjust bad debt",
+      "Quantity": 1,
+      "InvoiceDate": "2010-10-20T12:04:00",
+      "Price": -38925.87,
+      "Customer ID": NaN,
+      "Country": "United Kingdom"
+    },
+    {
+      "Invoice": "A563186",
+      "StockCode": "B",
+      "Description": "Adjust bad debt",
+      "Quantity": 1,
+      "InvoiceDate": "2011-08-12T14:51:00",
+      "Price": -11062.06,
+      "Customer ID": NaN,
+      "Country": "United Kingdom"
+    },
+    {
+      "Invoice": "A563187",
+      "StockCode": "B",
+      "Description": "Adjust bad debt",
+      "Quantity": 1,
+      "InvoiceDate": "2011-08-12T14:52:00",
+      "Price": -11062.06,
+      "Customer ID": NaN,
+      "Country": "United Kingdom"
+    }
+  ],
+  "zero_price_rows": 6202,
+  "price_gt_1000_rows": 245,
+  "abs_qty_gt_10000_rows": 11,
+  "abs_qty_gt_10000_detail": [
+    {
+      "Invoice": "497946",
+      "StockCode": "37410",
+      "Description": "BLACK AND WHITE PAISLEY FLOWER MUG",
+      "Quantity": 19152,
+      "InvoiceDate": "2010-02-15T11:57:00",
+      "Price": 0.1,
+      "Customer ID": "13902",
+      "Country": "Denmark"
+    },
+    {
+      "Invoice": "501534",
+      "StockCode": "21099",
+      "Description": "SET/6 STRAWBERRY PAPER CUPS",
+      "Quantity": 12960,
+      "InvoiceDate": "2010-03-17T13:09:00",
+      "Price": 0.1,
+      "Customer ID": "13902",
+      "Country": "Denmark"
+    },
+    {
+      "Invoice": "501534",
+      "StockCode": "21092",
+      "Description": "SET/6 STRAWBERRY PAPER PLATES",
+      "Quantity": 12480,
+      "InvoiceDate": "2010-03-17T13:09:00",
+      "Price": 0.1,
+      "Customer ID": "13902",
+      "Country": "Denmark"
+    },
+    {
+      "Invoice": "501534",
+      "StockCode": "21091",
+      "Description": "SET/6 WOODLAND PAPER PLATES",
+      "Quantity": 12960,
+      "InvoiceDate": "2010-03-17T13:09:00",
+      "Price": 0.1,
+      "Customer ID": "13902",
+      "Country": "Denmark"
+    },
+    {
+      "Invoice": "501534",
+      "StockCode": "21085",
+      "Description": "SET/6 WOODLAND PAPER CUPS",
+      "Quantity": 12744,
+      "InvoiceDate": "2010-03-17T13:09:00",
+      "Price": 0.1,
+      "Customer ID": "13902",
+      "Country": "Denmark"
+    },
+    {
+      "Invoice": "507637",
+      "StockCode": "84016",
+      "Description": "FLAG OF ST GEORGE CAR FLAG",
+      "Quantity": 10200,
+      "InvoiceDate": "2010-05-10T14:55:00",
+      "Price": 0.0,
+      "Customer ID": NaN,
+      "Country": "United Kingdom"
+    },
+    {
+      "Invoice": "541431",
+      "StockCode": "23166",
+      "Description": "MEDIUM CERAMIC TOP STORAGE JAR",
+      "Quantity": 74215,
+      "InvoiceDate": "2011-01-18T10:01:00",
+      "Price": 1.04,
+      "Customer ID": "12346",
+      "Country": "United Kingdom"
+    },
+    {
+      "Invoice": "C541433",
+      "StockCode": "23166",
+      "Description": "MEDIUM CERAMIC TOP STORAGE JAR",
+      "Quantity": -74215,
+      "InvoiceDate": "2011-01-18T10:17:00",
+      "Price": 1.04,
+      "Customer ID": "12346",
+      "Country": "United Kingdom"
+    },
+    {
+      "Invoice": "578841",
+      "StockCode": "84826",
+      "Description": "ASSTD DESIGN 3D PAPER STICKERS",
+      "Quantity": 12540,
+      "InvoiceDate": "2011-11-25T15:57:00",
+      "Price": 0.0,
+      "Customer ID": "13256",
+      "Country": "United Kingdom"
+    },
+    {
+      "Invoice": "581483",
+      "StockCode": "23843",
+      "Description": "PAPER CRAFT , LITTLE BIRDIE",
+      "Quantity": 80995,
+      "InvoiceDate": "2011-12-09T09:15:00",
+      "Price": 2.08,
+      "Customer ID": "16446",
+      "Country": "United Kingdom"
+    },
+    {
+      "Invoice": "C581484",
+      "StockCode": "23843",
+      "Description": "PAPER CRAFT , LITTLE BIRDIE",
+      "Quantity": -80995,
+      "InvoiceDate": "2011-12-09T09:27:00",
+      "Price": 2.08,
+      "Customer ID": "16446",
+      "Country": "United Kingdom"
+    }
+  ],
+  "qty_eq_0_rows": 0,
+  "stacked_duplicate_rows": 34335,
+  "stacked_unique_rows": 1033036,
+  "dup_within_sheet1": 6865,
+  "dup_within_sheet2": 5268,
+  "overlap_sheet1_rows": 22523,
+  "overlap_sheet1_min": "2010-12-01T08:26:00",
+  "overlap_sheet1_max": "2010-12-09T20:01:00",
+  "overlap_sheet2_rows": 22523,
+  "overlap_sheet2_min": "2010-12-01T08:26:00",
+  "overlap_sheet2_max": "2010-12-09T20:01:00",
+  "overlap_sheet1_distinct_rows": 22202,
+  "overlap_sheet2_distinct_rows": 22202,
+  "overlap_rows_shared_distinct": 22202,
+  "overlap_sheet1_distinct_only": 0,
+  "overlap_sheet2_distinct_only": 0,
+  "overlap_sheet1_dup_rows": 321,
+  "overlap_sheet2_dup_rows": 321,
+  "sheet1_last_invoice_date": "2010-12-09T20:01:00",
+  "sheet2_first_invoice_date": "2010-12-01T08:26:00",
+  "real_product_rows": 1061277,
+  "non_product_rows": 6094,
+  "non_product_code_counts": {
+    "POST": 2122,
+    "DOT": 1446,
+    "M": 1421,
+    "C2": 282,
+    "D": 177,
+    "S": 104,
+    "BANK CHARGES": 102,
+    "ADJUST": 67,
+    "AMAZONFEE": 43,
+    "DCGS0058": 31,
+    "gift_0001_20": 29,
+    "gift_0001_30": 29,
+    "DCGSSGIRL": 25,
+    "DCGSSBOY": 23,
+    "PADS": 19,
+    "gift_0001_10": 16,
+    "CRUK": 16,
+    "TEST001": 15,
+    "DCGS0076": 15,
+    "DCGS0003": 14,
+    "gift_0001_50": 8,
+    "gift_0001_40": 7,
+    "DCGS0069": 6,
+    "B": 6,
+    "DCGS0004": 5,
+    "m": 5,
+    "gift_0001_80": 4,
+    "DCGS0066N": 4,
+    "DCGS0072": 4,
+    "SP1002": 3,
+    "gift_0001_70": 3,
+    "DCGS0070": 3,
+    "DCGS0068": 3,
+    "ADJUST2": 3,
+    "gift_0001_90": 2,
+    "gift_0001_60": 2,
+    "DCGS0062": 2,
+    "DCGS0037": 2,
+    "TEST002": 2,
+    "DCGS0067": 1,
+    "DCGS0044": 1,
+    "C3": 1,
+    "DCGS0006": 1,
+    "DCGS0016": 1,
+    "DCGS0027": 1,
+    "DCGS0036": 1,
+    "DCGS0039": 1,
+    "DCGS0041": 1,
+    "DCGS0053": 1,
+    "DCGS0071": 1,
+    "DCGS0055": 1,
+    "DCGS0056": 1,
+    "GIFT": 1,
+    "DCGS0057": 1,
+    "DCGS0059": 1,
+    "DCGS0060": 1,
+    "DCGSLGIRL": 1,
+    "DCGSLBOY": 1,
+    "DCGS0075": 1,
+    "DCGS0074": 1,
+    "DCGS0073": 1,
+    "DCGS0066P": 1,
+    "47503J ": 1
+  },
+  "non_product_code_count": 63,
+  "stockcode_missing_rows": 0,
+  "stockcodes_with_outer_spaces": [
+    "47503J "
+  ],
+  "a_invoice_rows": 6,
+  "a_unique_invoices": 6,
+  "a_invoice_numbers": {
+    "A506401": 1,
+    "A516228": 1,
+    "A528059": 1,
+    "A563185": 1,
+    "A563186": 1,
+    "A563187": 1
+  },
+  "slice_rows_raw": 105335,
+  "slice_columns": [
+    "Invoice",
+    "StockCode",
+    "Description",
+    "Quantity",
+    "InvoiceDate",
+    "Price",
+    "Customer ID",
+    "Country"
+  ],
+  "slice_min_date": "2010-12-01T08:26:00",
+  "slice_max_date": "2011-02-28T17:04:00",
+  "slice_missing_customer_id": 36210,
+  "slice_missing_description": 304,
+  "slice_cancellation_rows": 1904,
+  "slice_duplicate_rows": 975,
+  "slice_non_product_rows": 588,
+  "lesson_steps": [
+    [
+      "start",
+      105335
+    ],
+    [
+      "drop_duplicates",
+      104360
+    ],
+    [
+      "remove C invoices",
+      102471
+    ],
+    [
+      "Quantity > 0",
+      102257
+    ],
+    [
+      "Price > 0",
+      101933
+    ],
+    [
+      "remove listed non-product codes",
+      101478
+    ],
+    [
+      "remove invoice 541431",
+      101477
+    ]
+  ],
+  "rows_removed_by_541431": 1,
+  "clean_non_product_rows_remaining": 19,
+  "clean_rows": 101477,
+  "clean_total_revenue": 1876839.9,
+  "clean_distinct_stockcodes": 3077,
+  "clean_distinct_invoices": 3723,
+  "clean_date_min": "2010-12-01T08:26:00",
+  "clean_date_max": "2011-02-28T17:01:00",
+  "top10_products": [
+    {
+      "StockCode": "22423",
+      "Description": "REGENCY CAKESTAND 3 TIER",
+      "Revenue": 51504.85,
+      "Rows": 440,
+      "RevenueSharePct": 2.7442,
+      "CumSharePct": 2.7442
+    },
+    {
+      "StockCode": "85123A",
+      "Description": "WHITE HANGING HEART T-LIGHT HOLDER",
+      "Revenue": 30780.98,
+      "Rows": 545,
+      "RevenueSharePct": 1.64,
+      "CumSharePct": 4.3843
+    },
+    {
+      "StockCode": "79321",
+      "Description": "CHILLI LIGHTS",
+      "Revenue": 17013.92,
+      "Rows": 194,
+      "RevenueSharePct": 0.9065,
+      "CumSharePct": 5.2908
+    },
+    {
+      "StockCode": "85099B",
+      "Description": "JUMBO BAG RED RETROSPOT",
+      "Revenue": 14684.04,
+      "Rows": 362,
+      "RevenueSharePct": 0.7824,
+      "CumSharePct": 6.0732
+    },
+    {
+      "StockCode": "21623",
+      "Description": "VINTAGE UNION JACK MEMOBOARD",
+      "Revenue": 14050.55,
+      "Rows": 63,
+      "RevenueSharePct": 0.7486,
+      "CumSharePct": 6.8218
+    },
+    {
+      "StockCode": "82484",
+      "Description": "WOOD BLACK BOARD ANT WHITE FINISH",
+      "Revenue": 11013.87,
+      "Rows": 155,
+      "RevenueSharePct": 0.5868,
+      "CumSharePct": 7.4086
+    },
+    {
+      "StockCode": "22470",
+      "Description": "HEART OF WICKER LARGE",
+      "Revenue": 10999.97,
+      "Rows": 315,
+      "RevenueSharePct": 0.5861,
+      "CumSharePct": 7.9947
+    },
+    {
+      "StockCode": "22469",
+      "Description": "HEART OF WICKER SMALL",
+      "Revenue": 10815.52,
+      "Rows": 410,
+      "RevenueSharePct": 0.5763,
+      "CumSharePct": 8.571
+    },
+    {
+      "StockCode": "22720",
+      "Description": "SET OF 3 CAKE TINS PANTRY DESIGN ",
+      "Revenue": 10050.01,
+      "Rows": 366,
+      "RevenueSharePct": 0.5355,
+      "CumSharePct": 9.1065
+    },
+    {
+      "StockCode": "84029E",
+      "Description": "RED WOOLLY HOTTIE WHITE HEART.",
+      "Revenue": 9652.62,
+      "Rows": 146,
+      "RevenueSharePct": 0.5143,
+      "CumSharePct": 9.6208
+    }
+  ],
+  "top10_product_codes": [
+    "22423",
+    "85123A",
+    "79321",
+    "85099B",
+    "21623",
+    "82484",
+    "22470",
+    "22469",
+    "22720",
+    "84029E"
+  ],
+  "abc": {
+    "A": {
+      "products": 671,
+      "pct_of_products": 21.807,
+      "revenue": 1500839.03,
+      "revenue_share_pct": 79.9663
+    },
+    "B": {
+      "products": 796,
+      "pct_of_products": 25.8694,
+      "revenue": 282144.5,
+      "revenue_share_pct": 15.033
+    },
+    "C": {
+      "products": 1610,
+      "pct_of_products": 52.3237,
+      "revenue": 93856.37,
+      "revenue_share_pct": 5.0008
+    }
+  },
+  "total_products": 3077,
+  "country_top5": [
+    {
+      "Country": "United Kingdom",
+      "Revenue": 1592000.36,
+      "SharePct": 84.8235
+    },
+    {
+      "Country": "Netherlands",
+      "Revenue": 58182.55,
+      "SharePct": 3.1
+    },
+    {
+      "Country": "EIRE",
+      "Revenue": 43426.19,
+      "SharePct": 2.3138
+    },
+    {
+      "Country": "Germany",
+      "Revenue": 37365.63,
+      "SharePct": 1.9909
+    },
+    {
+      "Country": "France",
+      "Revenue": 32392.39,
+      "SharePct": 1.7259
+    }
+  ],
+  "n_countries": 31,
+  "country_all": {
+    "United Kingdom": 1592000.36,
+    "Netherlands": 58182.55,
+    "EIRE": 43426.19,
+    "Germany": 37365.63,
+    "France": 32392.39,
+    "Australia": 24678.48,
+    "Japan": 13485.88,
+    "Spain": 13120.32,
+    "Switzerland": 7631.07,
+    "Sweden": 7590.12,
+    "Portugal": 6545.58,
+    "Cyprus": 6133.12,
+    "Belgium": 4606.18,
+    "Norway": 4378.02,
+    "Italy": 2945.01,
+    "Channel Islands": 2773.82,
+    "Greece": 2661.24,
+    "Hong Kong": 2230.96,
+    "Singapore": 2053.07,
+    "Lebanon": 1693.88,
+    "Lithuania": 1661.06,
+    "Finland": 1586.98,
+    "Denmark": 1500.72,
+    "Poland": 1465.43,
+    "Iceland": 1187.18,
+    "Israel": 1158.94,
+    "United Arab Emirates": 889.24,
+    "Austria": 595.56,
+    "Czech Republic": 549.26,
+    "Bahrain": 205.74,
+    "Saudi Arabia": 145.92
+  },
+  "monthly_revenue": {
+    "2010-12": {
+      "revenue": 775717.5,
+      "rows": 40829,
+      "invoices": 1550
+    },
+    "2011-01": {
+      "revenue": 593255.86,
+      "rows": 33904,
+      "invoices": 1080
+    },
+    "2011-02": {
+      "revenue": 507866.54,
+      "rows": 26744,
+      "invoices": 1093
+    }
+  },
+  "monthly_total_check": 1876839.9,
+  "first7_sheet2": [
+    {
+      "Invoice": "536365",
+      "StockCode": "85123A",
+      "Description": "WHITE HANGING HEART T-LIGHT HOLDER",
+      "Quantity": 6,
+      "Price": 2.55,
+      "InvoiceDate": "2010-12-01T08:26:00",
+      "CustomerID": "17850",
+      "Country": "United Kingdom"
+    },
+    {
+      "Invoice": "536365",
+      "StockCode": "71053",
+      "Description": "WHITE METAL LANTERN",
+      "Quantity": 6,
+      "Price": 3.39,
+      "InvoiceDate": "2010-12-01T08:26:00",
+      "CustomerID": "17850",
+      "Country": "United Kingdom"
+    },
+    {
+      "Invoice": "536365",
+      "StockCode": "84406B",
+      "Description": "CREAM CUPID HEARTS COAT HANGER",
+      "Quantity": 8,
+      "Price": 2.75,
+      "InvoiceDate": "2010-12-01T08:26:00",
+      "CustomerID": "17850",
+      "Country": "United Kingdom"
+    },
+    {
+      "Invoice": "536365",
+      "StockCode": "84029G",
+      "Description": "KNITTED UNION FLAG HOT WATER BOTTLE",
+      "Quantity": 6,
+      "Price": 3.39,
+      "InvoiceDate": "2010-12-01T08:26:00",
+      "CustomerID": "17850",
+      "Country": "United Kingdom"
+    },
+    {
+      "Invoice": "536365",
+      "StockCode": "84029E",
+      "Description": "RED WOOLLY HOTTIE WHITE HEART.",
+      "Quantity": 6,
+      "Price": 3.39,
+      "InvoiceDate": "2010-12-01T08:26:00",
+      "CustomerID": "17850",
+      "Country": "United Kingdom"
+    },
+    {
+      "Invoice": "536365",
+      "StockCode": "22752",
+      "Description": "SET 7 BABUSHKA NESTING BOXES",
+      "Quantity": 2,
+      "Price": 7.65,
+      "InvoiceDate": "2010-12-01T08:26:00",
+      "CustomerID": "17850",
+      "Country": "United Kingdom"
+    },
+    {
+      "Invoice": "536365",
+      "StockCode": "21730",
+      "Description": "GLASS STAR FROSTED T-LIGHT HOLDER",
+      "Quantity": 6,
+      "Price": 4.25,
+      "InvoiceDate": "2010-12-01T08:26:00",
+      "CustomerID": "17850",
+      "Country": "United Kingdom"
+    }
+  ],
+  "first7_sheet1": [
+    {
+      "Invoice": "489434",
+      "StockCode": "85048",
+      "Description": "15CM CHRISTMAS GLASS BALL 20 LIGHTS",
+      "Quantity": 12,
+      "Price": 6.95,
+      "InvoiceDate": "2009-12-01T07:45:00"
+    },
+    {
+      "Invoice": "489434",
+      "StockCode": "79323P",
+      "Description": "PINK CHERRY LIGHTS",
+      "Quantity": 12,
+      "Price": 6.75,
+      "InvoiceDate": "2009-12-01T07:45:00"
+    },
+    {
+      "Invoice": "489434",
+      "StockCode": "79323W",
+      "Description": " WHITE CHERRY LIGHTS",
+      "Quantity": 12,
+      "Price": 6.75,
+      "InvoiceDate": "2009-12-01T07:45:00"
+    },
+    {
+      "Invoice": "489434",
+      "StockCode": "22041",
+      "Description": "RECORD FRAME 7\" SINGLE SIZE ",
+      "Quantity": 48,
+      "Price": 2.1,
+      "InvoiceDate": "2009-12-01T07:45:00"
+    },
+    {
+      "Invoice": "489434",
+      "StockCode": "21232",
+      "Description": "STRAWBERRY CERAMIC TRINKET BOX",
+      "Quantity": 24,
+      "Price": 1.25,
+      "InvoiceDate": "2009-12-01T07:45:00"
+    },
+    {
+      "Invoice": "489434",
+      "StockCode": "22064",
+      "Description": "PINK DOUGHNUT TRINKET POT ",
+      "Quantity": 24,
+      "Price": 1.65,
+      "InvoiceDate": "2009-12-01T07:45:00"
+    },
+    {
+      "Invoice": "489434",
+      "StockCode": "21871",
+      "Description": "SAVE THE PLANET MUG",
+      "Quantity": 24,
+      "Price": 1.25,
+      "InvoiceDate": "2009-12-01T07:45:00"
+    }
+  ],
+  "repr_6x2_55": "15.299999999999999",
+  "round_15_3": "15.3",
+  "float_15_3": "15.3",
+  "float_15_3_equals_6x2_55": false,
+  "raw_sha256": "bcbe73b35f5b7babf197fb0cb983a11f5d9ff929078d4aa53d171b1f2df2e980",
+  "raw_size_bytes": 45622278,
+  "loaded_pickle_sheets": [
+    "Year 2009-2010",
+    "Year 2010-2011"
+  ],
+  "overlap_date_note": "overlap window defined as 2010-12-01 00:00 <= InvoiceDate < 2010-12-10 00:00",
+  "slice_qty_lt_0_rows": 2118,
+  "slice_price_lt_0_rows": 0,
+  "slice_invoice_541431_rows": 1,
+  "slice_duplicate_rows_after_dedup_note": 975
+}

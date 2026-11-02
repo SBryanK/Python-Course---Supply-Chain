@@ -1,0 +1,761 @@
+{
+ "A_dec2010_feb2011": {
+  "window": "2010-12-01 to 2011-03-01",
+  "raw_rows": 105335,
+  "clean_rows": 101478,
+  "clean_revenue": 1954023.5,
+  "biggest_lines": [
+   {
+    "invoice": "541431",
+    "stock_code": "23166",
+    "description": "MEDIUM CERAMIC TOP STORAGE JAR",
+    "quantity": 74215,
+    "price": 1.04,
+    "date": "2011-01-18 10:01:00",
+    "revenue": 77183.6
+   },
+   {
+    "invoice": "540815",
+    "stock_code": "21108",
+    "description": "FAIRY CAKE FLANNEL ASSORTED COLOUR",
+    "quantity": 3114,
+    "price": 2.1,
+    "date": "2011-01-11 12:55:00",
+    "revenue": 6539.4
+   },
+   {
+    "invoice": "540815",
+    "stock_code": "85123A",
+    "description": "WHITE HANGING HEART T-LIGHT HOLDER",
+    "quantity": 1930,
+    "price": 2.55,
+    "date": "2011-01-11 12:55:00",
+    "revenue": 4921.5
+   },
+   {
+    "invoice": "540818",
+    "stock_code": "48185",
+    "description": "DOORMAT FAIRY CAKE",
+    "quantity": 670,
+    "price": 6.75,
+    "date": "2011-01-11 12:57:00",
+    "revenue": 4522.5
+   },
+   {
+    "invoice": "540689",
+    "stock_code": "22470",
+    "description": "HEART OF WICKER LARGE",
+    "quantity": 1284,
+    "price": 3.21,
+    "date": "2011-01-11 08:43:00",
+    "revenue": 4121.64
+   },
+   {
+    "invoice": "537659",
+    "stock_code": "21623",
+    "description": "VINTAGE UNION JACK MEMOBOARD",
+    "quantity": 600,
+    "price": 6.38,
+    "date": "2010-12-07 16:43:00",
+    "revenue": 3828.0
+   },
+   {
+    "invoice": "537899",
+    "stock_code": "22328",
+    "description": "ROUND SNACK BOXES SET OF 4 FRUITS ",
+    "quantity": 1488,
+    "price": 2.55,
+    "date": "2010-12-09 10:44:00",
+    "revenue": 3794.4
+   },
+   {
+    "invoice": "540815",
+    "stock_code": "21175",
+    "description": "GIN + TONIC DIET METAL SIGN",
+    "quantity": 2000,
+    "price": 1.85,
+    "date": "2011-01-11 12:55:00",
+    "revenue": 3700.0
+   },
+   {
+    "invoice": "540818",
+    "stock_code": "47556B",
+    "description": "TEA TIME TEA TOWELS ",
+    "quantity": 1300,
+    "price": 2.55,
+    "date": "2011-01-11 12:57:00",
+    "revenue": 3315.0
+   },
+   {
+    "invoice": "540689",
+    "stock_code": "85123A",
+    "description": "WHITE HANGING HEART T-LIGHT HOLDER",
+    "quantity": 1010,
+    "price": 3.24,
+    "date": "2011-01-11 08:43:00",
+    "revenue": 3272.4
+   },
+   {
+    "invoice": "543378",
+    "stock_code": "21623",
+    "description": "VINTAGE UNION JACK MEMOBOARD",
+    "quantity": 504,
+    "price": 6.38,
+    "date": "2011-02-07 15:34:00",
+    "revenue": 3215.52
+   },
+   {
+    "invoice": "543379",
+    "stock_code": "21623",
+    "description": "VINTAGE UNION JACK MEMOBOARD",
+    "quantity": 504,
+    "price": 6.38,
+    "date": "2011-02-07 15:37:00",
+    "revenue": 3215.52
+   }
+  ],
+  "matched_cancelled_sales_rows": 455,
+  "matched_cancelled_sales_revenue": 95222.03,
+  "matched_pct_of_clean_revenue": 4.87,
+  "top_products_clean": [
+   {
+    "stock_code": "23166",
+    "description": "MEDIUM CERAMIC TOP STORAGE JAR",
+    "revenue": 77183.6
+   },
+   {
+    "stock_code": "22423",
+    "description": "REGENCY CAKESTAND 3 TIER",
+    "revenue": 51504.85
+   },
+   {
+    "stock_code": "85123A",
+    "description": "WHITE HANGING HEART T-LIGHT HOLDER",
+    "revenue": 30780.98
+   },
+   {
+    "stock_code": "79321",
+    "description": "CHILLI LIGHTS",
+    "revenue": 17013.92
+   },
+   {
+    "stock_code": "85099B",
+    "description": "JUMBO BAG RED RETROSPOT",
+    "revenue": 14684.04
+   },
+   {
+    "stock_code": "21623",
+    "description": "VINTAGE UNION JACK MEMOBOARD",
+    "revenue": 14050.55
+   },
+   {
+    "stock_code": "82484",
+    "description": "WOOD BLACK BOARD ANT WHITE FINISH",
+    "revenue": 11013.87
+   },
+   {
+    "stock_code": "22470",
+    "description": "HEART OF WICKER LARGE",
+    "revenue": 10999.97
+   },
+   {
+    "stock_code": "22469",
+    "description": "HEART OF WICKER SMALL",
+    "revenue": 10815.52
+   },
+   {
+    "stock_code": "22720",
+    "description": "SET OF 3 CAKE TINS PANTRY DESIGN ",
+    "revenue": 10050.01
+   }
+  ],
+  "first_rows": [
+   {
+    "invoice": "536365",
+    "stock_code": "85123A",
+    "description": "WHITE HANGING HEART T-LIGHT HOLDER",
+    "quantity": 6,
+    "price": 2.55,
+    "date": "2010-12-01 08:26:00",
+    "customer": 17850,
+    "country": "United Kingdom"
+   },
+   {
+    "invoice": "536365",
+    "stock_code": "71053",
+    "description": "WHITE METAL LANTERN",
+    "quantity": 6,
+    "price": 3.39,
+    "date": "2010-12-01 08:26:00",
+    "customer": 17850,
+    "country": "United Kingdom"
+   },
+   {
+    "invoice": "536365",
+    "stock_code": "84406B",
+    "description": "CREAM CUPID HEARTS COAT HANGER",
+    "quantity": 8,
+    "price": 2.75,
+    "date": "2010-12-01 08:26:00",
+    "customer": 17850,
+    "country": "United Kingdom"
+   },
+   {
+    "invoice": "536365",
+    "stock_code": "84029G",
+    "description": "KNITTED UNION FLAG HOT WATER BOTTLE",
+    "quantity": 6,
+    "price": 3.39,
+    "date": "2010-12-01 08:26:00",
+    "customer": 17850,
+    "country": "United Kingdom"
+   },
+   {
+    "invoice": "536365",
+    "stock_code": "84029E",
+    "description": "RED WOOLLY HOTTIE WHITE HEART.",
+    "quantity": 6,
+    "price": 3.39,
+    "date": "2010-12-01 08:26:00",
+    "customer": 17850,
+    "country": "United Kingdom"
+   },
+   {
+    "invoice": "536365",
+    "stock_code": "22752",
+    "description": "SET 7 BABUSHKA NESTING BOXES",
+    "quantity": 2,
+    "price": 7.65,
+    "date": "2010-12-01 08:26:00",
+    "customer": 17850,
+    "country": "United Kingdom"
+   },
+   {
+    "invoice": "536365",
+    "stock_code": "21730",
+    "description": "GLASS STAR FROSTED T-LIGHT HOLDER",
+    "quantity": 6,
+    "price": 4.25,
+    "date": "2010-12-01 08:26:00",
+    "customer": 17850,
+    "country": "United Kingdom"
+   },
+   {
+    "invoice": "536366",
+    "stock_code": "22633",
+    "description": "HAND WARMER UNION JACK",
+    "quantity": 6,
+    "price": 1.85,
+    "date": "2010-12-01 08:28:00",
+    "customer": 17850,
+    "country": "United Kingdom"
+   }
+  ]
+ },
+ "F_feb2011_apr2011": {
+  "window": "2011-02-01 to 2011-05-01",
+  "raw_rows": 94371,
+  "clean_rows": 90792,
+  "clean_revenue": 1713178.04,
+  "biggest_lines": [
+   {
+    "invoice": "550461",
+    "stock_code": "21108",
+    "description": "FAIRY CAKE FLANNEL ASSORTED COLOUR",
+    "quantity": 3114,
+    "price": 2.1,
+    "date": "2011-04-18 13:20:00",
+    "revenue": 6539.4
+   },
+   {
+    "invoice": "550461",
+    "stock_code": "85123A",
+    "description": "WHITE HANGING HEART T-LIGHT HOLDER",
+    "quantity": 1930,
+    "price": 2.4,
+    "date": "2011-04-18 13:20:00",
+    "revenue": 4632.0
+   },
+   {
+    "invoice": "550461",
+    "stock_code": "48185",
+    "description": "DOORMAT FAIRY CAKE",
+    "quantity": 670,
+    "price": 6.35,
+    "date": "2011-04-18 13:20:00",
+    "revenue": 4254.5
+   },
+   {
+    "invoice": "550461",
+    "stock_code": "21175",
+    "description": "GIN + TONIC DIET METAL SIGN",
+    "quantity": 2000,
+    "price": 1.69,
+    "date": "2011-04-18 13:20:00",
+    "revenue": 3380.0
+   },
+   {
+    "invoice": "543378",
+    "stock_code": "21623",
+    "description": "VINTAGE UNION JACK MEMOBOARD",
+    "quantity": 504,
+    "price": 6.38,
+    "date": "2011-02-07 15:34:00",
+    "revenue": 3215.52
+   },
+   {
+    "invoice": "543379",
+    "stock_code": "21623",
+    "description": "VINTAGE UNION JACK MEMOBOARD",
+    "quantity": 504,
+    "price": 6.38,
+    "date": "2011-02-07 15:37:00",
+    "revenue": 3215.52
+   },
+   {
+    "invoice": "544612",
+    "stock_code": "22053",
+    "description": "EMPIRE DESIGN ROSETTE",
+    "quantity": 3906,
+    "price": 0.82,
+    "date": "2011-02-22 10:43:00",
+    "revenue": 3202.92
+   },
+   {
+    "invoice": "550461",
+    "stock_code": "47556B",
+    "description": "TEA TIME TEA TOWELS ",
+    "quantity": 1300,
+    "price": 2.1,
+    "date": "2011-04-18 13:20:00",
+    "revenue": 2730.0
+   },
+   {
+    "invoice": "543669",
+    "stock_code": "22693",
+    "description": "GROW A FLYTRAP OR SUNFLOWER IN TIN",
+    "quantity": 2400,
+    "price": 0.94,
+    "date": "2011-02-11 11:22:00",
+    "revenue": 2256.0
+   },
+   {
+    "invoice": "547708",
+    "stock_code": "85066",
+    "description": "CREAM SWEETHEART MINI CHEST",
+    "quantity": 160,
+    "price": 12.98,
+    "date": "2011-03-24 18:34:00",
+    "revenue": 2076.8
+   },
+   {
+    "invoice": "546789",
+    "stock_code": "85099B",
+    "description": "JUMBO BAG RED RETROSPOT",
+    "quantity": 1200,
+    "price": 1.65,
+    "date": "2011-03-17 10:17:00",
+    "revenue": 1980.0
+   },
+   {
+    "invoice": "547812",
+    "stock_code": "21623",
+    "description": "VINTAGE UNION JACK MEMOBOARD",
+    "quantity": 300,
+    "price": 6.38,
+    "date": "2011-03-25 14:06:00",
+    "revenue": 1914.0
+   }
+  ],
+  "matched_cancelled_sales_rows": 506,
+  "matched_cancelled_sales_revenue": 13311.65,
+  "matched_pct_of_clean_revenue": 0.78,
+  "top_products_clean": [
+   {
+    "stock_code": "22423",
+    "description": "REGENCY CAKESTAND 3 TIER",
+    "revenue": 44181.69
+   },
+   {
+    "stock_code": "47566",
+    "description": "PARTY BUNTING",
+    "revenue": 24249.39
+   },
+   {
+    "stock_code": "85123A",
+    "description": "WHITE HANGING HEART T-LIGHT HOLDER",
+    "revenue": 20755.8
+   },
+   {
+    "stock_code": "85099B",
+    "description": "JUMBO BAG RED RETROSPOT",
+    "revenue": 20613.7
+   },
+   {
+    "stock_code": "22084",
+    "description": "PAPER CHAIN KIT EMPIRE",
+    "revenue": 13141.24
+   },
+   {
+    "stock_code": "84879",
+    "description": "ASSORTED COLOUR BIRD ORNAMENT",
+    "revenue": 11213.29
+   },
+   {
+    "stock_code": "21623",
+    "description": "VINTAGE UNION JACK MEMOBOARD",
+    "revenue": 10092.72
+   },
+   {
+    "stock_code": "22960",
+    "description": "JAM MAKING SET WITH JARS",
+    "revenue": 9330.72
+   },
+   {
+    "stock_code": "21621",
+    "description": "VINTAGE UNION JACK BUNTING",
+    "revenue": 9059.34
+   },
+   {
+    "stock_code": "85099F",
+    "description": "JUMBO BAG STRAWBERRY",
+    "revenue": 8719.78
+   }
+  ],
+  "first_rows": [
+   {
+    "invoice": "542776",
+    "stock_code": "21671",
+    "description": "RED SPOT CERAMIC DRAWER KNOB",
+    "quantity": 48,
+    "price": 1.25,
+    "date": "2011-02-01 08:23:00",
+    "customer": 15240,
+    "country": "United Kingdom"
+   },
+   {
+    "invoice": "542776",
+    "stock_code": "21668",
+    "description": "RED STRIPE CERAMIC DRAWER KNOB",
+    "quantity": 12,
+    "price": 1.25,
+    "date": "2011-02-01 08:23:00",
+    "customer": 15240,
+    "country": "United Kingdom"
+   },
+   {
+    "invoice": "542776",
+    "stock_code": "21670",
+    "description": "BLUE SPOT CERAMIC DRAWER KNOB",
+    "quantity": 12,
+    "price": 1.25,
+    "date": "2011-02-01 08:23:00",
+    "customer": 15240,
+    "country": "United Kingdom"
+   },
+   {
+    "invoice": "542776",
+    "stock_code": "17013D",
+    "description": "ORIGAMI ROSE INCENSE IN TUBE",
+    "quantity": 96,
+    "price": 0.42,
+    "date": "2011-02-01 08:23:00",
+    "customer": 15240,
+    "country": "United Kingdom"
+   },
+   {
+    "invoice": "542776",
+    "stock_code": "17096",
+    "description": "ASSORTED LAQUERED INCENSE HOLDERS",
+    "quantity": 48,
+    "price": 0.21,
+    "date": "2011-02-01 08:23:00",
+    "customer": 15240,
+    "country": "United Kingdom"
+   },
+   {
+    "invoice": "542776",
+    "stock_code": "22469",
+    "description": "HEART OF WICKER SMALL",
+    "quantity": 12,
+    "price": 1.65,
+    "date": "2011-02-01 08:23:00",
+    "customer": 15240,
+    "country": "United Kingdom"
+   },
+   {
+    "invoice": "542776",
+    "stock_code": "22077",
+    "description": "6 RIBBONS RUSTIC CHARM",
+    "quantity": 12,
+    "price": 1.65,
+    "date": "2011-02-01 08:23:00",
+    "customer": 15240,
+    "country": "United Kingdom"
+   },
+   {
+    "invoice": "542776",
+    "stock_code": "79321",
+    "description": "CHILLI LIGHTS",
+    "quantity": 4,
+    "price": 4.95,
+    "date": "2011-02-01 08:23:00",
+    "customer": 15240,
+    "country": "United Kingdom"
+   }
+  ]
+ },
+ "G_mar2011_may2011": {
+  "window": "2011-03-01 to 2011-06-01",
+  "raw_rows": 103694,
+  "clean_rows": 99784,
+  "clean_revenue": 1945347.83,
+  "biggest_lines": [
+   {
+    "invoice": "550461",
+    "stock_code": "21108",
+    "description": "FAIRY CAKE FLANNEL ASSORTED COLOUR",
+    "quantity": 3114,
+    "price": 2.1,
+    "date": "2011-04-18 13:20:00",
+    "revenue": 6539.4
+   },
+   {
+    "invoice": "550461",
+    "stock_code": "85123A",
+    "description": "WHITE HANGING HEART T-LIGHT HOLDER",
+    "quantity": 1930,
+    "price": 2.4,
+    "date": "2011-04-18 13:20:00",
+    "revenue": 4632.0
+   },
+   {
+    "invoice": "550461",
+    "stock_code": "48185",
+    "description": "DOORMAT FAIRY CAKE",
+    "quantity": 670,
+    "price": 6.35,
+    "date": "2011-04-18 13:20:00",
+    "revenue": 4254.5
+   },
+   {
+    "invoice": "550461",
+    "stock_code": "21175",
+    "description": "GIN + TONIC DIET METAL SIGN",
+    "quantity": 2000,
+    "price": 1.69,
+    "date": "2011-04-18 13:20:00",
+    "revenue": 3380.0
+   },
+   {
+    "invoice": "554366",
+    "stock_code": "22349",
+    "description": "DOG BOWL CHASING BALL DESIGN",
+    "quantity": 756,
+    "price": 4.18,
+    "date": "2011-05-24 10:24:00",
+    "revenue": 3160.08
+   },
+   {
+    "invoice": "554868",
+    "stock_code": "22197",
+    "description": "SMALL POPCORN HOLDER",
+    "quantity": 4300,
+    "price": 0.72,
+    "date": "2011-05-27 10:52:00",
+    "revenue": 3096.0
+   },
+   {
+    "invoice": "550461",
+    "stock_code": "47556B",
+    "description": "TEA TIME TEA TOWELS ",
+    "quantity": 1300,
+    "price": 2.1,
+    "date": "2011-04-18 13:20:00",
+    "revenue": 2730.0
+   },
+   {
+    "invoice": "554366",
+    "stock_code": "22350",
+    "description": "ILLUSTRATED CAT BOWL ",
+    "quantity": 888,
+    "price": 2.69,
+    "date": "2011-05-24 10:24:00",
+    "revenue": 2388.72
+   },
+   {
+    "invoice": "554366",
+    "stock_code": "22702",
+    "description": "BLACK AND WHITE CAT BOWL",
+    "quantity": 888,
+    "price": 2.4,
+    "date": "2011-05-24 10:24:00",
+    "revenue": 2131.2
+   },
+   {
+    "invoice": "547708",
+    "stock_code": "85066",
+    "description": "CREAM SWEETHEART MINI CHEST",
+    "quantity": 160,
+    "price": 12.98,
+    "date": "2011-03-24 18:34:00",
+    "revenue": 2076.8
+   },
+   {
+    "invoice": "546789",
+    "stock_code": "85099B",
+    "description": "JUMBO BAG RED RETROSPOT",
+    "quantity": 1200,
+    "price": 1.65,
+    "date": "2011-03-17 10:17:00",
+    "revenue": 1980.0
+   },
+   {
+    "invoice": "554845",
+    "stock_code": "85123A",
+    "description": "WHITE HANGING HEART T-LIGHT HOLDER",
+    "quantity": 608,
+    "price": 3.24,
+    "date": "2011-05-26 19:49:00",
+    "revenue": 1969.92
+   }
+  ],
+  "matched_cancelled_sales_rows": 582,
+  "matched_cancelled_sales_revenue": 16063.86,
+  "matched_pct_of_clean_revenue": 0.83,
+  "top_products_clean": [
+   {
+    "stock_code": "22423",
+    "description": "REGENCY CAKESTAND 3 TIER",
+    "revenue": 45818.17
+   },
+   {
+    "stock_code": "47566",
+    "description": "PARTY BUNTING",
+    "revenue": 39019.54
+   },
+   {
+    "stock_code": "85123A",
+    "description": "WHITE HANGING HEART T-LIGHT HOLDER",
+    "revenue": 26832.11
+   },
+   {
+    "stock_code": "85099B",
+    "description": "JUMBO BAG RED RETROSPOT",
+    "revenue": 22119.19
+   },
+   {
+    "stock_code": "84879",
+    "description": "ASSORTED COLOUR BIRD ORNAMENT",
+    "revenue": 13529.06
+   },
+   {
+    "stock_code": "22084",
+    "description": "PAPER CHAIN KIT EMPIRE",
+    "revenue": 11870.14
+   },
+   {
+    "stock_code": "22197",
+    "description": "SMALL POPCORN HOLDER",
+    "revenue": 9673.21
+   },
+   {
+    "stock_code": "22501",
+    "description": "PICNIC BASKET WICKER LARGE",
+    "revenue": 9473.04
+   },
+   {
+    "stock_code": "22386",
+    "description": "JUMBO BAG PINK POLKADOT",
+    "revenue": 9340.7
+   },
+   {
+    "stock_code": "20725",
+    "description": "LUNCH BAG RED RETROSPOT",
+    "revenue": 9324.89
+   }
+  ],
+  "first_rows": [
+   {
+    "invoice": "545220",
+    "stock_code": "21955",
+    "description": "DOORMAT UNION JACK GUNS AND ROSES",
+    "quantity": 2,
+    "price": 7.95,
+    "date": "2011-03-01 08:30:00",
+    "customer": 14620,
+    "country": "United Kingdom"
+   },
+   {
+    "invoice": "545220",
+    "stock_code": "48194",
+    "description": "DOORMAT HEARTS",
+    "quantity": 2,
+    "price": 7.95,
+    "date": "2011-03-01 08:30:00",
+    "customer": 14620,
+    "country": "United Kingdom"
+   },
+   {
+    "invoice": "545220",
+    "stock_code": "22556",
+    "description": "PLASTERS IN TIN CIRCUS PARADE ",
+    "quantity": 12,
+    "price": 1.65,
+    "date": "2011-03-01 08:30:00",
+    "customer": 14620,
+    "country": "United Kingdom"
+   },
+   {
+    "invoice": "545220",
+    "stock_code": "22139",
+    "description": "RETROSPOT TEA SET CERAMIC 11 PC ",
+    "quantity": 3,
+    "price": 4.95,
+    "date": "2011-03-01 08:30:00",
+    "customer": 14620,
+    "country": "United Kingdom"
+   },
+   {
+    "invoice": "545220",
+    "stock_code": "84029G",
+    "description": "KNITTED UNION FLAG HOT WATER BOTTLE",
+    "quantity": 4,
+    "price": 3.75,
+    "date": "2011-03-01 08:30:00",
+    "customer": 14620,
+    "country": "United Kingdom"
+   },
+   {
+    "invoice": "545220",
+    "stock_code": "21485",
+    "description": "RETROSPOT HEART HOT WATER BOTTLE",
+    "quantity": 3,
+    "price": 4.95,
+    "date": "2011-03-01 08:30:00",
+    "customer": 14620,
+    "country": "United Kingdom"
+   },
+   {
+    "invoice": "545220",
+    "stock_code": "17091J",
+    "description": "VANILLA INCENSE IN TIN",
+    "quantity": 6,
+    "price": 1.25,
+    "date": "2011-03-01 08:30:00",
+    "customer": 14620,
+    "country": "United Kingdom"
+   },
+   {
+    "invoice": "545220",
+    "stock_code": "84678",
+    "description": "CLASSICAL ROSE SMALL VASE",
+    "quantity": 6,
+    "price": 2.55,
+    "date": "2011-03-01 08:30:00",
+    "customer": 14620,
+    "country": "United Kingdom"
+   }
+  ]
+ }
+}

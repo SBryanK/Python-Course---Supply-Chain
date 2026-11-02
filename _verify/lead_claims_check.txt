@@ -1,0 +1,277 @@
+
+=== A. slice non-product classification ===
+slice non-product rows (regex): 588
+slice non-product breakdown:
+StockCode
+POST            217
+DOT             175
+M                90
+S                30
+C2               20
+D                13
+AMAZONFEE        11
+BANK CHARGES      9
+gift_0001_20      3
+DCGS0003          3
+gift_0001_30      3
+DCGS0076          2
+DCGSSBOY          2
+DCGS0057          1
+DCGS0069          1
+DCGS0072          1
+DCGS0074          1
+DCGS0070          1
+DCGS0055          1
+gift_0001_50      1
+m                 1
+gift_0001_40      1
+DCGSSGIRL         1
+slice rows in Lead's 13-code list: 565
+slice rows in the 8 lesson codes: 565
+slice non-product rows NOT in Lead 13-code list: 23
+StockCode
+gift_0001_20    3
+DCGS0003        3
+gift_0001_30    3
+DCGS0076        2
+DCGSSBOY        2
+DCGS0057        1
+DCGS0069        1
+DCGS0072        1
+DCGS0074        1
+DCGS0070        1
+DCGS0055        1
+gift_0001_50    1
+m               1
+gift_0001_40    1
+DCGSSGIRL       1
+
+=== B. whole-file claims ===
+MATCH combined rows: mine=1067371 lead=1067371
+MATCH distinct invoices: mine=53628 lead=53628
+MATCH distinct customers: mine=5942 lead=5942
+MATCH distinct countries: mine=43 lead=43
+MATCH distinct stock codes: mine=5305 lead=5305
+MATCH distinct descriptions: mine=5698 lead=5698
+memory use deep combined: 341.6 MB (report 313.2 MB)
+MATCH missing desc sheet1: mine=2928 lead=2928
+MATCH missing desc sheet2: mine=1454 lead=1454
+MATCH missing cust sheet1: mine=107927 lead=107927
+MATCH missing cust sheet2: mine=135080 lead=135080
+MATCH desc missing rows with price 0: mine=4382 lead=4382
+MATCH desc missing rows total: mine=4382 lead=4382
+invoice first-char counts: {'5': 939382, '4': 108489, 'C': 19494, 'A': 6}
+MATCH invoice first char 5 rows: mine=939382 lead=939382
+MATCH invoice first char 4 rows: mine=108489 lead=108489
+MATCH invoice first char C rows: mine=19494 lead=19494
+MATCH invoice first char A rows: mine=6 lead=6
+C row(s) with qty>=0:
+       Invoice StockCode Description  Quantity         InvoiceDate   Price Customer ID         Country
+76799  C496350         M      Manual         1 2010-02-01 08:24:00  373.57         NaN  United Kingdom
+MATCH neg qty not C rows: mine=3457 lead=3457
+neg qty not C: missing desc rows: 2689 (report 2,689)
+neg qty not C: desc value counts (top 20):
+Description
+<NaN>                     2689
+check                      123
+damages                     84
+?                           83
+damaged                     78
+missing                     27
+sold as set on dotcom       20
+Damaged                     17
+Unsaleable, destroyed.       9
+smashed                      9
+thrown away                  9
+dotcom                       8
+??                           7
+damages?                     7
+given away                   6
+crushed                      6
+wet damaged                  5
+checked                      5
+Damages                      5
+counted                      5
+
+-- prices --
+MATCH price min: mine=-53594.36 lead=-53594.36
+MATCH price max: mine=38970.0 lead=38970.0
+MATCH price mean 4dp: mine=4.6494 lead=4.6494
+MATCH price median: mine=2.1 lead=2.1
+MATCH negative price rows: mine=5 lead=5
+MATCH zero price rows: mine=6202 lead=6202
+MATCH price under 0.01 rows: mine=6225 lead=6225
+MATCH price over 100 rows: mine=1946 lead=1946
+MATCH price over 1000 rows: mine=245 lead=245
+MATCH zero price positive qty rows: mine=2745 lead=2745
+price>1000 by stock code: {'M': 166, 'AMAZONFEE': 39, 'DOT': 29, 'BANK CHARGES': 2, 'D': 2, 'POST': 2, 'CRUK': 2, 'ADJUST': 1, '84016': 1, 'B': 1}
+price>1000 rows that are not known non-product codes:
+       Invoice StockCode                 Description  Quantity         InvoiceDate    Price Customer ID         Country
+192196  507637     84016  FLAG OF ST GEORGE CAR FLAG         1 2010-05-10 14:55:00  1157.15         NaN  United Kingdom
+
+-- quantities --
+MATCH qty min: mine=-80995 lead=-80995
+MATCH qty max: mine=80995 lead=80995
+MATCH qty mean 2dp: mine=9.94 lead=9.94
+MATCH qty median: mine=3.0 lead=3.0
+MATCH negative qty rows: mine=22950 lead=22950
+MATCH qty over 1000 rows: mine=352 lead=352
+MATCH qty over 10000 rows: mine=9 lead=9
+
+-- revenue --
+MATCH gross revenue: mine=19287250.57 lead=19287250.57
+MATCH positive revenue sum: mine=20972968.14 lead=20972968.14
+MATCH negative revenue sum: mine=-1685717.57 lead=-1685717.57
+MATCH negative revenue rows: mine=19498 lead=19498
+
+-- descriptions --
+MATCH description rows with outer spaces: mine=213035 lead=213035
+DIFF  distinct descriptions strip+upper: mine=5631 lead=5632
+DIFF  distinct descriptions strip+lower: mine=5631 lead=5632
+MATCH rows with lowercase stock code letter: mine=3471 lead=3471
+
+-- countries --
+country row counts top 15:
+Country
+United Kingdom     981330
+EIRE                17866
+Germany             17624
+France              14330
+Netherlands          5140
+Spain                3811
+Switzerland          3189
+Belgium              3123
+Portugal             2620
+Australia            1913
+Channel Islands      1664
+Italy                1534
+Norway               1455
+Sweden               1364
+Cyprus               1176
+MATCH country rows United Kingdom: mine=981330 lead=981330
+MATCH country rows EIRE: mine=17866 lead=17866
+MATCH country rows Germany: mine=17624 lead=17624
+MATCH country rows France: mine=14330 lead=14330
+MATCH country rows Netherlands: mine=5140 lead=5140
+MATCH country rows Spain: mine=3811 lead=3811
+MATCH country rows Switzerland: mine=3189 lead=3189
+MATCH country rows Belgium: mine=3123 lead=3123
+MATCH country rows Portugal: mine=2620 lead=2620
+MATCH country rows Australia: mine=1913 lead=1913
+MATCH country rows Channel Islands: mine=1664 lead=1664
+MATCH country rows Italy: mine=1534 lead=1534
+MATCH country rows Norway: mine=1455 lead=1455
+MATCH country rows Sweden: mine=1364 lead=1364
+MATCH country rows Cyprus: mine=1176 lead=1176
+MATCH UK row share pct: mine=91.94 lead=91.94
+
+-- monthly rows whole file --
+MATCH monthly rows 2009-12: mine=45228 lead=45228
+MATCH monthly rows 2010-01: mine=31555 lead=31555
+MATCH monthly rows 2010-02: mine=29388 lead=29388
+MATCH monthly rows 2010-03: mine=41511 lead=41511
+MATCH monthly rows 2010-04: mine=34057 lead=34057
+MATCH monthly rows 2010-05: mine=35323 lead=35323
+MATCH monthly rows 2010-06: mine=39983 lead=39983
+MATCH monthly rows 2010-07: mine=33383 lead=33383
+MATCH monthly rows 2010-08: mine=33306 lead=33306
+MATCH monthly rows 2010-09: mine=42091 lead=42091
+MATCH monthly rows 2010-10: mine=59098 lead=59098
+MATCH monthly rows 2010-11: mine=78015 lead=78015
+MATCH monthly rows 2010-12: mine=65004 lead=65004
+MATCH monthly rows 2011-01: mine=35147 lead=35147
+MATCH monthly rows 2011-02: mine=27707 lead=27707
+MATCH monthly rows 2011-03: mine=36748 lead=36748
+MATCH monthly rows 2011-04: mine=29916 lead=29916
+MATCH monthly rows 2011-05: mine=37030 lead=37030
+MATCH monthly rows 2011-06: mine=36874 lead=36874
+MATCH monthly rows 2011-07: mine=39518 lead=39518
+MATCH monthly rows 2011-08: mine=35284 lead=35284
+MATCH monthly rows 2011-09: mine=50226 lead=50226
+MATCH monthly rows 2011-10: mine=60742 lead=60742
+MATCH monthly rows 2011-11: mine=84711 lead=84711
+MATCH monthly rows 2011-12: mine=25526 lead=25526
+monthly rows sum: 1067371
+
+-- duplicates --
+MATCH stacked duplicate rows: mine=34335 lead=34335
+MATCH dup within sheet1: mine=6865 lead=6865
+MATCH dup within sheet2: mine=5268 lead=5268
+MATCH overlap sheet1 rows: mine=22523 lead=22523
+MATCH overlap sheet2 rows: mine=22523 lead=22523
+MATCH overlap inner-join pairs: mine=23221 lead=23221
+overlap inner-join pairs detail: 23221
+MATCH overlap distinct shared rows: mine=22202 lead=22202
+sheet2 overlap-window rows that also occur in sheet1 (row count, join): 22523
+
+=== C. raw slice claims ===
+MATCH slice rows: mine=105335 lead=105335
+MATCH slice columns: mine=8 lead=8
+MATCH slice invoices: mine=4894 lead=4894
+MATCH slice products raw: mine=3159 lead=3159
+MATCH slice countries: mine=31 lead=31
+MATCH slice missing customer: mine=36210 lead=36210
+MATCH slice missing description: mine=304 lead=304
+MATCH slice cancellation rows: mine=1904 lead=1904
+MATCH slice unique C invoices: mine=805 lead=805
+MATCH slice duplicate rows: mine=975 lead=975
+MATCH slice negative qty rows: mine=2118 lead=2118
+MATCH slice zero price rows: mine=540 lead=540
+MATCH slice negative price rows: mine=0 lead=0
+MATCH slice Germany rows: mine=1741 lead=1741
+MATCH slice raw revenue: mine=1807019.93 lead=1807019.93
+DIFF  slice non-product rows (regex): mine=588 lead=565
+
+=== D. clean table claims ===
+MATCH clean rows: mine=101477 lead=101477
+MATCH clean invoices: mine=3723 lead=3723
+MATCH clean products: mine=3077 lead=3077
+MATCH clean customers with ID: mine=1679 lead=1679
+MATCH clean missing customer rows: mine=35383 lead=35383
+MATCH clean missing description rows: mine=0 lead=0
+MATCH clean revenue: mine=1876839.9 lead=1876839.9
+MATCH clean Germany rows: mine=1514 lead=1514
+MATCH clean trading days: mine=68 lead=68
+MATCH clean best day revenue: mine=81454.99 lead=81454.99
+MATCH clean best day: mine='2010-12-07' lead='2010-12-07'
+MATCH clean worst day revenue: mine=3439.67 lead=3439.67
+MATCH clean codes with >1 description: mine=40 lead=40
+MATCH clean lowercase code rows: mine=541 lead=541
+MATCH clean dup invoice+stockcode rows: mine=932 lead=932
+MATCH clean top1 revenue: mine=51504.85 lead=51504.85
+MATCH clean top2 revenue: mine=30780.98 lead=30780.98
+MATCH clean top3 revenue: mine=17013.92 lead=17013.92
+MATCH clean top10 cumulative pct: mine=9.62 lead=9.62
+MATCH clean ABC A products: mine=671 lead=671
+MATCH clean ABC A revenue: mine=1500839.03 lead=1500839.03
+MATCH clean ABC B products: mine=796 lead=796
+MATCH clean ABC B revenue: mine=282144.5 lead=282144.5
+MATCH clean ABC C products: mine=1610 lead=1610
+MATCH clean ABC C revenue: mine=93856.37 lead=93856.37
+clean non-product rows remaining: 19
+StockCode
+DCGS0003        3
+gift_0001_30    3
+gift_0001_20    3
+DCGS0076        2
+DCGSSBOY        2
+gift_0001_40    1
+DCGS0070        1
+m               1
+gift_0001_50    1
+DCGS0069        1
+DCGSSGIRL       1
+DIFF  clean non-product rows remaining: mine=19 lead='not in report'
+
+=== E. alternative window 2011-02-01 to 2011-04-30 ===
+MATCH alt raw rows: mine=94371 lead=94371
+DIFF  alt clean rows: mine=90793 lead=90792
+MATCH alt clean revenue: mine=1713178.04 lead=1713178.04
+MATCH alt top1 code: mine='22423' lead='22423'
+MATCH alt top1 revenue: mine=44181.69 lead=44181.69
+MATCH alt top2 code: mine='47566' lead='47566'
+MATCH alt top2 revenue: mine=24249.39 lead=24249.39
+
+=== F. overlap multiset detail ===
+o1 rows: 22523 o1 distinct: 22202 o2 rows: 22523 o2 distinct: 22202 shared: 22202
+multiset identical: True

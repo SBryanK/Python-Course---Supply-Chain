@@ -1,0 +1,61 @@
+ppt-maker toolchain validation for PySC-101 (sandbox: workspace-write, macOS)
+Run date: 2026-11-02. Everything below was run and passed.
+
+ENVIRONMENT (all commands were run with this shell setup)
+  cd "<repo root>"
+  export PATH="/opt/homebrew/bin:$PATH"          # soffice, pdftoppm, pdffonts (already on PATH in this shell)
+  export MPLCONFIGDIR="$PWD/_tools/deck_check/mplconfig"   # only needed if a build draws matplotlib charts
+  export PPT_MAKER_PROFILE="$PWD/_tools/deck_check/lo_profile"   # optional; patched render.py defaults to this path
+
+1. BUILD A DECK (new_deck.py then fill in build(), run the script)
+   _tools/venv/bin/python _tools/ppt_maker/ppt-maker/scripts/new_deck.py --theme L --format live --tone regular --align left --out _tools/deck_check/build_pysc101.py --deck-name pysc101_demo
+   _tools/venv/bin/python _tools/deck_check/build_pysc101.py
+
+2. RENDER PDF + PAGE IMAGES + CONTACT SHEET (embeds Proxima Nova, prints a font check)
+   _tools/venv/bin/python _tools/ppt_maker/ppt-maker/scripts/render.py _tools/deck_check/pysc101_demo.pptx --dpi 80
+
+3. AUDIT
+   _tools/venv/bin/python _tools/ppt_maker/ppt-maker/scripts/audit.py _tools/deck_check/pysc101_demo.pptx --format live --fonts "Proxima Nova"
+
+4. FIVE-VARIANT THEME PREVIEW
+   _tools/venv/bin/python _tools/ppt_maker/ppt-maker/scripts/preview_themes.py _tools/deck_check/spec.json --themes "L,L:soft,D,M,E:hard" --format live --out _tools/deck_check/preview_live.pptx
+
+All four commands also work with cwd = _tools/deck_check using ../venv/bin/python and
+../ppt_maker/ppt-maker/scripts/... (verified). The build script is self-contained
+(no skill import needed) and works from any cwd because it resolves paths from __file__.
+
+PATCHES TO OUR SKILL COPY (only _tools/ppt_maker/ppt-maker/scripts/render.py, 2 small changes)
+  a) PROFILE no longer ~/.cache (blocked by the sandbox). It is now:
+       _DEFAULT_PROFILE = Path(__file__).resolve().parents[3] / "deck_check" / "lo_profile"
+       PROFILE = Path(os.environ.get("PPT_MAKER_PROFILE") or _DEFAULT_PROFILE).expanduser().resolve()
+  b) The LibreOffice profile URL now uses PROFILE.as_uri() instead of
+     f"file://{PROFILE}". Reason: this repo path contains spaces, and soffice aborts
+     with an uncaught com::sun::star::uno::RuntimeException (SIGABRT) when the
+     -env:UserInstallation file URL has raw spaces. as_uri() percent-encodes them.
+  Do not revert either change for later decks.
+
+RESULTS
+  build:  _tools/deck_check/pysc101_demo.pptx (3 slides, theme L, live, regular, left, no logo)
+  render: _tools/deck_check/pysc101_demo.pdf + pysc101_demo_render/page-1..3.png + sheet_01.png
+  audit:  1 warning only: slide 2 has 68 visible words (live aim is 45); fonts used: Proxima Nova (36)
+  preview: preview_live.pptx, preview_live.pdf, 15 page PNGs, sheet_01.png (5 rows x 3)
+           "L,L:soft,D,M,E:hard" worked; all 5 variants rendered.
+  fonts:   pdffonts shows ProximaNova-Bold and ProximaNova-Regular, emb=yes, no substitute.
+  visual:  contact sheet checked at 120 dpi, no clipping, no overlap, no missing text.
+           Only cosmetic artifact: a faint drop shadow under the thin cover rule on every
+           theme (python-pptx connector default effectRef); harmless, can be ignored.
+
+REMAINING WORKAROUNDS FOR ALL LATER DECKS
+  - Keep using the patched render.py for the PDF; prefer it over the --pdf option embedded
+    in a new_deck.py build script. That option runs soffice with no profile override and
+    no font check. It did happen to produce a valid PDF with Proxima Nova embedded here,
+    but the default LibreOffice profile (~/Library/Application Support/LibreOffice) is not
+    writable in this sandbox, so it is not the reliable route. render.py also prints the
+    font-substitution check and makes the page images and contact sheet.
+  - Keep decks and build scripts inside the repo. Rendering a pptx outside the workspace
+    would need to write a LibreOffice profile outside the workspace, which is blocked.
+  - PATH must include /opt/homebrew/bin (soffice, pdftoppm, pdffonts); HOME/XDG overrides
+    are not needed for render.py. Set MPLCONFIGDIR only when a build uses matplotlib.
+  - Proxima Nova is found under /System/Library/AssetsV2/com_apple_MobileAsset_Font8 and is
+    embedded. Montserrat in ~/Library/Fonts is available as the fallback if ever needed.
+  - No NUS logo or NUS content was used anywhere (private course).
