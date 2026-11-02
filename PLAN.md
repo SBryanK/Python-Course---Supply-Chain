@@ -2,7 +2,7 @@
 
 Phase 1 plan for the 10-session course. Written 2 Nov 2026. Source of truth is the master build brief, version 1.0, 2 Nov 2026. This plan adjusts the brief where the real data or the real environment requires it, and lists the questions Bryan must answer before Phase 2 starts.
 
-Status: Phase 1 deliverables are `data/EXPLORATION.md`, this file, and the untouched raw data in `data/raw/`. The numbers have been through two review rounds. An independent verifier recomputed every number from the raw xlsx and found four defects in the first draft of the exploration report. A second review added `_tools/fact_check.py`, which now re-checks 151 facts and reports 151/151 passed after the fixes. The corrected figures are the non-product row totals (6,093 rows, 62 codes), slice non-product rows, the distinct description count, the clean-table missing-customer count (35,364) and the alternative-window row count. The deck toolchain was tested end to end (build, PDF, page images, audit, five-variant preview). On 2 Nov 2026 the seven P1 fixes and the selected P2 fixes from `_review/pedagogy-review.md` were applied to this plan (micro-cycles in every outline, S4 to S7 timing, month extraction, fair exercises, scoring anchors, buffer policy), and every changed number was recomputed from the slice. STOP here until Bryan answers section 9.
+Status: Phase 1 deliverables are `data/EXPLORATION.md`, this file, and the untouched raw data in `data/raw/`. The numbers have been through two independent review rounds. An independent verifier recomputed every number from the raw xlsx and found four defects in the first draft; a second review added `_tools/fact_check.py`, a regression check of 155 values, and a pedagogy review caught shape and timing problems. All findings are fixed in this version. The corrected figures include the non-product totals (6,093 rows, 62 codes), the clean-table missing-customer count (35,364), the S6 merge lesson (3,066 to 3,107 to 3,066), the S4 80-minute plan and the S1 micro-cycle shape. The deck toolchain was tested end to end (build, PDF, page images, audit, five-variant preview). STOP here until Bryan answers section 9.
 
 ## 1. What changed from the brief's assumptions
 
@@ -10,15 +10,15 @@ Everything marked [VERIFY] in the brief is now checked against the real file. Fi
 
 1. The column names are exactly as the brief guessed: `Invoice`, `StockCode`, `Description`, `Quantity`, `InvoiceDate`, `Price`, `Customer ID`, `Country`. The price column is `Price`, not `UnitPrice`. The brief's code samples work as written.
 2. The lesson slice needs a rule that avoids counting the 9-day overlap between the two yearly sheets twice. Proposal: all rows of the `Year 2010-2011` sheet from 2010-12-01 to 2011-02-28. See section 2 and open question 6.
-3. The slice contains one huge cancelled order (invoice 541431, 74,215 units of stock code 23166, worth 77,183.60). The simple S4 cleaning keeps the positive line and drops the cancellation, which would make this cancelled order the number one product. Proposal: the learner sees it at the top of the S4 "biggest revenue rows" step, and S5 opens with a 5-minute investigation that finds C541433 and removes that one invoice with a commented line. See open question 7.
-4. The brief's S4 step "remove invoices starting with C" is redundant once `quantity > 0` runs: after `drop_duplicates`, both orders end at 102,257 rows. The plan drops the C step (two fewer concepts, `~` and `.str.startswith`, in the heaviest session) and keeps one line that saves the cancellation rows for project question 3.
-5. The brief's non-product list for S4 is too short. The slice has 588 non-product rows: postage, fees, samples, discounts, manual lines, gift vouchers and old DCGS catalogue codes. Proposal: keep the rows whose stock code starts with a digit. Every real product code starts with a digit, every charge or voucher code starts with a letter, so one line removes all 588 and cannot miss a new fee code. A hard-coded 8-code list would leave 19 of those rows in the clean table.
-6. The S6 seaborn chart, done exactly as the brief drafts it, would show one huge UK bar and five tiny bars, because the UK is 84.8% of slice revenue. Proposal: show the top 5 countries outside the UK and say so on the slide. See open question 8.
+3. The slice contains one huge cancelled order (invoice 541431, 74,215 units of stock code 23166, worth 77,183.60). The simple S4 cleaning keeps the positive line and drops the cancellation, which would make this cancelled order the number one product. Proposal: the learner sees it at the top of the S4 "biggest revenue rows" step, investigates it, and removes that one invoice with a commented line. If S4 runs late, the investigation moves to the first 5 minutes of S5. See open question 7.
+4. The brief's non-product list for S4 is too short. The slice has 588 non-product rows: postage, fees, samples, discounts, manual lines, gift vouchers and old DCGS catalogue codes. Proposal: keep the rows whose stock code starts with a digit. Every real product code starts with a digit, every charge or voucher code starts with a letter. The step removes the 474 non-product rows still present at that point, and no non-product row reaches the clean table (the earlier steps removed the other 114). A hard-coded 8-code list would leave 19 of those rows in the clean table. See open question 11.
+5. The S6 seaborn chart, done exactly as the brief drafts it, would show one huge UK bar and five tiny bars, because the UK is 84.8% of slice revenue. Proposal: show the top 5 countries outside the UK and say so on the slide. See open question 8.
 
 Smaller adjustments:
 
-7. The S5 cold test "revenue by month for the top country" works but has only three months. Keep it: December 2010, January 2011, February 2011. It needs a month column, which no session in the brief teaches, so S4 adds one line: `sales_clean["month"] = sales_clean["invoice_date"].dt.to_period("M")`. Expected answers are in section 4, S5.
-8. A saved CSV forgets that a column was a date. After `sales_clean.csv` is loaded again in S5 to S9, `invoice_date` is text, so every load cell converts it again with `pd.to_datetime` (checked on the slice). `invoice` comes back as a whole number because no C invoices are left.
+6. The S5 cold test "revenue by month for the top country" works but has only three months. Keep it: December 2010, January 2011, February 2011. It needs a month column, which no session in the brief teaches, so S4 adds one line: `sales_clean["month"] = sales_clean["invoice_date"].dt.to_period("M")`. Expected answers are in section 4, S5.
+7. A saved CSV forgets that a column was a date. After `sales_clean.csv` is loaded again in S5 to S9, `invoice_date` is text, so every load cell converts it again with `pd.to_datetime`. `invoice` comes back as a whole number because no C invoices are left, so the load cells keep it as text only if a later step needs it.
+8. S4 plans 80 minutes inside the 90-minute slot: 35 minutes, break, 40 minutes. That is 5 minutes over the brief's 75-minute plan, because the cleaning will not fit in 35. This needs Bryan's explicit sign-off (open question 12). If he wants the strict 75, the S4 fallback moves the giant order investigation to the first 5 minutes of S5 and `describe` stays homework.
 9. The brief says "ask the open items in Section 14"; the open items are in Section 15 of the brief. They are all in section 9 below, with recommendations.
 
 What stays fixed, so later phases do not add scope:
@@ -79,7 +79,7 @@ Data caveats that must stay true in every later material:
 
 - Prices are in pounds sterling (GBP). Do not relabel them as dollars or rupiah.
 - The slice covers 1 December 2010 to 28 February 2011 only. Do not describe it as a year of data.
-- Cancellation rows are removed in S4, but the original positive sale stays in the data unless it is the one giant cancelled order. This is a real limitation: a small share of clean revenue is later cancelled. Say "about 1%" in the teacher notes, never on a learner slide.
+- Cancellation rows are removed in S4, but the original positive sale stays in the data unless it is the one giant cancelled order. This is a real limitation: about 1% of clean revenue inside the slice is later cancelled, and some slice sales are cancelled after the window (for example invoice 540815 in April 2011). Say "about 1% inside the slice" in the teacher notes, never on a learner slide.
 - Rows with a missing customer ID are kept for product analysis (35,364 of the 101,458 clean rows, 34.9%). Customer-level analysis has to drop them, and the course says so.
 - Lowercase stock codes are not normalised, so a few products are split across two spellings. The course does not fix this; the teacher card notes it.
 - Some stock codes have more than one description: 3,066 codes but 3,107 code-description pairs in the clean slice (40 codes have more than one name). S6 uses this as the real merge lesson: the first merge takes 3,066 rows to 3,107, she finds the 41 extra rows, dedupes the names table on `stock_code`, and merges again to get 3,066.
@@ -117,9 +117,9 @@ Times: 15:00 SGT, 14:00 WIB. The slot is 90 minutes. Block 1 is 35 minutes, then
 
 Every session pack contains: `student.ipynb`, `solution.ipynb`, `deck.pptx`, `deck.pdf`, `handout.pdf`, `teacher_card.md`, `exit_ticket.md`, `recall.md`. Notebook cap is 30 cells. Handout cap is 2 pages. Teacher card cap is 1 page. Deck is 6 to 10 slides.
 
-Deck rules for all 10 decks, from the skill overrides: format `live`, no logo, English slide text, speaker notes in Bahasa Indonesia with English technical terms, code at most 6 lines in Consolas or DejaVu Sans Mono, theme chosen once in Phase 2 and reused. The S1 deck is 9 slides with a 10-minute budget: 1 minute cover and course map together, 2 minutes why Python, 1.5 minutes Colab tour, then 3 concept slides at 1.5 minutes each, 1.5 minutes errors, 1 minute Now in Colab, 1 minute homework and close. Arithmetic and round are taught live in Colab, not on a slide. Every session pack has all eight files. S10's exit ticket is two written questions in the last 3 minutes of Block 2; Bryan reads them after class and uses them in the retro.
+Deck rules for all 10 decks, from the skill overrides: format `live`, no logo, English slide text, speaker notes in Bahasa Indonesia with English technical terms, code at most 6 lines in Consolas or DejaVu Sans Mono, theme chosen once in Phase 2 and reused. The S1 deck is 9 slides with a budget of exactly 10 minutes: cover 0.75, course map 1.25, why Python 1.25, Colab tour 1.5, print and variable 1.25, three data types 1.25, arithmetic/round/f-string 1.25, errors 0.75, Now in Colab plus homework 0.75. Part of the Block 1 slots is live demo, not slides: why Python has a 3-minute slot and the Colab tour a 4-minute slot, and the deck itself stays at 10 minutes. Arithmetic and round are demonstrated live in Colab. Every session pack has all eight files. S10's exit ticket is two written questions in the last 7 minutes of Block 2 (28-35); Bryan reads them after class and uses them in the retro.
 
-Daily recall is planned at 3 short questions for each day between sessions, 66 questions in total across 9 recall files. Each day mixes one old topic and two new ones. In class the recall is self-marked in 2 minutes: she says the answers, then explains the one she missed. Every `recall.md` has the answers in a separate section at the end.
+Daily recall is planned at 3 short questions for each day between sessions, 66 questions in total across 9 recall files. Each day mixes one old topic and two new ones. In class the 10-minute opener is 5 minutes of recall and 5 minutes of paper warm-up; the recall part is self-marked in 2 minutes and the missed question is explained. Every `recall.md` and every `exit_ticket.md` has the questions first and a separate answers section at the end that Bryan keeps.
 
 ### How every file must be written (the style contract for Phase 3)
 
@@ -148,7 +148,7 @@ Notebook format:
 - Max 30 cells. A short text cell before every code cell. One idea per cell.
 - Exercise cells start with `# TODO`, say what to do in a comment, and the text cell above gives the expected output.
 - The solution notebook is the same notebook with the answers filled in.
-- Every notebook runs top to bottom on its own. In S4 she saves the clean table to Drive as `sales_clean.csv`; from S5 on, the first cells load that file and then check `sales_clean.shape` against the shape in the answer key (101,458 rows and 10 columns). A wrong shape means the file is stale or the cleaning failed, and she stops and fixes it before the lesson.
+- Every notebook runs top to bottom on its own. In S4 she saves the clean table to the `PySC-101/work/` folder as `sales_clean.csv`; from S5 on, the first cells load that file, convert `invoice_date` with `pd.to_datetime` again (a CSV stores dates as text), and check `sales_clean.shape` against the shape in the answer key (101,458 rows and 10 columns). A wrong shape means the file is stale or the cleaning failed, and she stops and fixes it before the lesson. If S4 did not remove the giant order, S5 does that first and then checks the shape.
 - Every notebook shows a learner action after at most two concept cells. S1 demonstrates this rule, because it is the style sample. A session where the first 15 minutes are all concept cells fails the contract.
 
 Language and layout rules:
@@ -174,6 +174,8 @@ Shape, adjusted so every concept gets a learner action inside Block 1. The brief
 - Block 1: 0-8 opening video (if it is longer than 8 minutes, stop at 8 and send the rest as homework; never more than 10 minutes of video in class), 8-11 why Python, 11-15 Colab tour (including 1 minute to open the shared PySC-101 Drive folder and preview the CSV so "the data" is a real file she has seen), 15-35 micro-cycles.
 - The Block 1 micro-cycles, each ending with a learner action: print and variable (6 minutes: print, store in a label, print the label, then predict what changes when the value changes), three data types (6 minutes: `type()` calls, then predict the `"5" + 5` error), arithmetic, round and f-string (8 minutes: the first order line, the `15.299999999999999` moment, `round`, the f-string, then modify the price and predict again).
 - Block 2: 0-10 exercises 1 and 2 (two more real order lines), 10-16 the error zoo as PRIMM (predict, run, investigate), 16-22 exercise 3 (the f-string sentence) and fix three broken cells, 22-30 exit ticket, 30-35 close.
+
+Concepts, grouped into four blocks: 1) output and variables (`print`, variable), 2) data types (int, float, str), 3) arithmetic and round, 4) f-strings and first errors. The table below lists the sub-skills under those blocks.
 
 | Concept | Daily life | Excel bridge | Limit to say out loud |
 |---|---|---|---|
@@ -212,11 +214,11 @@ Notebook plan (about 25 cells, each concept followed by an action):
 24. Text + code exercise 4 (TODO): fix three broken cells.
 25. Text: recap, homework, recall plan, and the prerequisite checklist (Google account, Chrome or Edge, laptop and charger, the PySC-101 Drive folder shared with her, headset).
 
-Deck (9 slides, budget 10 minutes): 1 cover; 2 course map with 10 sessions and how a session works (35/5/35) on one slide; 3 why Python for supply chain, three reasons; 4 Colab tour; 5 print and variable; 6 three data types; 7 arithmetic, round and f-string with one short code sample; 8 errors and how to read them; 9 Now in Colab, homework and close. Arithmetic and round are demonstrated live in Colab, not read from a slide. The 3 discussion questions for the opening video wait for Bryan's answer (open question 1).
+Deck (9 slides, budget 10 minutes): 1 cover; 2 course map with 10 sessions and how a session works (35/5/35, and 35/5/40 in S4) on one slide; 3 why Python for supply chain, three reasons; 4 Colab tour; 5 print and variable; 6 three data types; 7 arithmetic, round and f-string with one short code sample; 8 errors and how to read them; 9 Now in Colab, homework and close. Arithmetic and round are demonstrated live in Colab, not read from a slide. The 3 discussion questions for the opening video wait for Bryan's answer (open question 1).
 
-Handout (2 pages, black and white): the six concepts with daily life, Excel bridge and limit; the code patterns; the three errors and their fixes; the exercise list with expected outputs; the first 12 real order lines from the slice (invoice 536365 plus invoice 540815) so the homework has a real source before she can open the CSV.
+Handout (2 pages, black and white): the six concepts with daily life, Excel bridge and limit; the code patterns; the three errors and their fixes; the exercise list with expected outputs; the 7 lines of invoice 536365 and the 3 lines of invoice 540815 (10 rows in total, and rows 8 to 10 are the three 540815 lines) so the homework has a real source before she can open the CSV.
 
-Teacher card (Bahasa Indonesia, 1 page): the question; the order of ideas; analogies and their limits; the two likely mistakes (forgetting the f, mismatched quotes, and the NameError that comes from not running the cells above); hint ladder for exercise 4; timing with the video slot marked.
+Teacher card (Bahasa Indonesia, 1 page): the question; the order of ideas; analogies and their limits; the three likely mistakes (forgetting the f, mismatched quotes, and the NameError that comes from not running the cells above); hint ladder for exercise 4; timing with the video slot marked.
 
 Exit ticket: (1) predict the output of a 3-line cell that prints a value and a rounded value. (2) name the error type in one broken cell and fix it. Answers in `exit_ticket.md` under a section Bryan keeps.
 
@@ -230,7 +232,7 @@ Business question: Which orders are big orders?
 
 Recall (5): three S1 questions from `recall.md`; she explains the one she missed. Warm-up (5): write the Excel formula that adds two cells and rounds the result, then predict what `print(quantity)` shows after `quantity = 12`.
 
-Concepts: list, index from 0, `len`/`sum`/`min`/`max`, dict, comparison, if/elif/else.
+Concepts, grouped into three blocks: 1) lists and their functions (list, index from 0, `len`/`sum`/`min`/`max`), 2) the dict product card, 3) comparison and decisions (comparison, if/elif/else).
 
 | Concept | Daily life | Excel bridge | Limit |
 |---|---|---|---|
@@ -295,9 +297,9 @@ Block 1: load and look. Block 2: clean and compute. S4 is the one session that p
 
 - Block 1 (35): 0-5 recall, 5-10 warm-up, 10-20 load the file and look (`read_csv`, `head`, `shape`), 20-27 missing values and rename with the dict, 27-32 `info` and the new words (NaN, boolean filter, `&` not `and`), 32-35 cleaning log setup. `describe` moves to the handout and homework, where it is shown as the same "look first" habit with one summary line.
 - Block 2 (40): 0-8 boolean filter and new column (two micro-cycles, she types), 8-17 she drives the cleaning steps with hints only (drop duplicates, remove C invoices, keep quantity above 0, keep price above 0, keep product codes), 17-25 revenue, date conversion, month column and sort top 10, 25-31 the cancelled order investigation, 31-37 exit ticket, 37-40 cleaning log review, homework and close.
-- If the session runs late, the giant order investigation moves to the first 5 minutes of S5, where it explains the ABC ranking. The core of S4 is load, rename, clean, revenue and sort. If `describe` or the big revenue exercise is cut, they are handout and homework.
+- If the session runs late, the giant order investigation moves to the first 5 minutes of S5, where it explains the ABC ranking. In that case S4 saves a table with 101,459 rows; S5 removes invoice 541431, saves the final table with 101,458 rows, and only then starts the ABC work. The core of S4 is load, rename, clean, revenue and sort. If `describe` or the big revenue exercise is cut, they are handout and homework.
 
-Concepts: pandas and DataFrame, `read_csv`, `head`/`shape`/`info`/`describe`, rename with a dict, boolean filter, new column, `sort_values`, dates.
+Concepts, grouped into four blocks: 1) the DataFrame and loading (pandas, `read_csv`, `head`, `shape`, `info`, `describe`), 2) renaming with a dict, 3) filtering and new columns (boolean filter, new column, copy, NaN), 4) dates and sorting (date column, month, `sort_values`). The table lists the sub-skills under those blocks.
 
 | Concept | Daily life | Excel bridge | Limit |
 |---|---|---|---|
@@ -328,7 +330,7 @@ Real data anchors:
 - The cancelled giant order investigation: `sales_clean.sort_values("revenue", ascending=False).head(10)` shows invoice 541431 at 77,183.60. She checks the raw rows, finds C541433 cancelling the same 74,215 units 16 minutes later, and removes invoice 541431 with one commented line. If Bryan chooses to keep it, the numbers are in `data/EXPLORATION.md` section 12.
 - Exit ticket Germany filter on the clean table gives 1,514 rows.
 
-Notebook plan (about 28 cells): import pandas and mount Drive; read the CSV; head; shape; missing values; rename with the dict; check columns; text cell with the cleaning log table; save `cancellations` before dropping C rows; drop duplicates and log; remove C invoices and log; quantity > 0 and log; price > 0 and log; keep only product codes and log; `.copy()` with the Save As sentence; revenue column; `pd.to_datetime`; month column; sort top 10; the giant order investigation (2 cells and 1 text cell); final shape and log; save `sales_clean.csv` and `cancellations.csv` to Drive; exercises (filter Germany, filter big revenue lines); recap and homework.
+Notebook plan (about 28 cells): import pandas and mount Drive; read the CSV; head; shape; missing values; rename with the dict; check columns; text cell with the cleaning log table; save `cancellations` before dropping C rows; drop duplicates and log; remove C invoices and log; quantity > 0 and log; price > 0 and log; keep only product codes and log; `.copy()` with the Save As sentence; revenue column; `pd.to_datetime`; month column; sort top 10; the giant order investigation (2 cells and 1 text cell); final shape and log; save `sales_clean.csv` and `cancellations.csv` to the work folder; exercises (filter Germany, filter big revenue lines); recap and homework.
 
 Deck (10 slides): cover; today's question; the whole sheet in Python (pandas and DataFrame); open and look; rename with a dict; keep only the good rows (boolean filter); write a new column; sort; Now in Colab (notebook name); recap and homework. The cancelled order investigation is teacher-led in the notebook and goes in the speaker notes, not on a slide.
 
@@ -348,7 +350,7 @@ Business question: Which products drive most of the value?
 
 Recall (5): three S4 questions from `recall.md`, including one month question; she explains the one she missed. Warm-up (5): write the Excel PivotTable steps that would total revenue by product.
 
-Block 1 (35): 0-5 recall, 5-10 warm-up, 10-20 groupby, sort and reset_index, 20-27 cumsum and cumulative share, 27-35 abc_class and apply. `value_counts` and revenue by country are 2-minute copy-alongs at the end; if the block runs late they become homework, because Block 2 is the cold test and must not be cut.
+Block 1 (35): 0-5 recall, 5-10 warm-up, 10-20 groupby, sort and reset_index, 20-27 cumsum and cumulative share, 27-33 abc_class and apply, 33-35 value_counts and revenue by country as copy-alongs inside the block. If it runs late they become homework, because Block 2 is the cold test and must not be cut.
 
 Concepts: `groupby` with `sum`, `cumsum`, ABC analysis with a function, `.apply` with a named function.
 
@@ -363,7 +365,7 @@ Real data anchors: 3,066 products; class A 671 products (21.9%) with 79.98% of r
 
 Block 2 is the cold test. Exact split: 0-20 cold test, notes allowed, Bryan silent; 20-25 look at one solution together; 25-32 exit ticket; 32-35 homework and close. Question: revenue by month for the top country, using the month column she built in S4. Expected answers: United Kingdom; December 2010 705,166.72; January 2011 468,651.61; February 2011 417,876.17. Rubric: runs (1), correct numbers (1), clear names (1), one sentence of meaning (1). Bryan grades the cold test after class and records the result next to the exit ticket scores.
 
-Notebook plan (about 24 cells): import pandas and load `sales_clean.csv` from Drive (2 cells); recall; revenue by product; sort; reset_index; total revenue; cumsum; cumulative share; abc_class function; apply; value_counts; revenue by country; exercise (find a B product, then count class A products with `(product_value["abc_class"] == "A").sum()`); save `product_value.csv` to Drive for the S7 Power BI export; cold test section with the question and a blank cell; recap and homework.
+Notebook plan (about 24 cells): import pandas and load `sales_clean.csv` from the work folder (2 cells); recall; revenue by product; sort; reset_index; total revenue; cumsum; cumulative share; abc_class function; apply; value_counts; revenue by country; exercise (find a B product, then count class A products with `(product_value["abc_class"] == "A").sum()`); save `product_value.csv` to the work folder for the S7 Power BI export; cold test section with the question and a blank cell; recap and homework.
 
 Deck (9 slides): cover; today's question; groupby is a PivotTable; running total with cumsum; ABC with a function; the finding slide with the real number and one chart (22% of products, 80% of revenue); Now in Colab and cold test; recap; homework and recall.
 
@@ -385,9 +387,9 @@ Recall (5): three S5 questions from `recall.md`; she explains the one she missed
 
 Block 1 (35): 0-5 recall, 5-10 warm-up, 10-22 merge with the real row-count lesson, 22-32 top 10 table and the horizontal bar chart, 32-35 the title rule.
 
-Block 2 (35): 0-10 daily revenue table and the line chart, 10-18 the cumulative share curve as a copy-along pattern (this is the second cut: if the room is behind, it moves to homework), 18-22 the chart-fix exercise, 22-30 exit ticket, 30-35 close, homework and the case hunt handout.
+Block 2 (35): 0-10 daily revenue table and the line chart, 10-18 the cumulative share curve as a copy-along pattern (our own optional trim: if the room is behind, it moves to homework), 18-22 the chart-fix exercise, 22-30 exit ticket, 30-35 close, homework and the case hunt handout.
 
-Default plan: two matplotlib charts in class, the top 10 bar and the daily line. The cumulative curve is a copy-along if time allows. Seaborn is homework by default, with the copy-pattern and an expected image on handout page 2; it is the bonus content and the first thing the brief's cut order removes.
+Default plan: two matplotlib charts in class, the top 10 bar and the daily line. The cumulative curve is a copy-along if time allows. Seaborn is homework by default, with the copy-pattern and an expected image on handout page 2. It is bonus content: in the brief's cut order it is the second cut, after the S7 intros become self-study guides. The cumulative curve is our own optional trim inside S6, not part of the brief's cut order.
 
 Concepts: merge (VLOOKUP), matplotlib, seaborn (bonus, homework by default), chart titles that state the finding.
 
@@ -401,7 +403,7 @@ Real data anchors: the clean slice has 3,066 product codes but 3,107 code-descri
 
 Case hunt is handed out and explained in the last 5 minutes. It is homework due in S8, one page, 5 points, and Bryan does not find cases for her. The teacher card has two prepared fallback cases in case she does not find one.
 
-Notebook plan (about 25 cells): import pandas and load `sales_clean.csv` from Drive (2 cells); recall; product names table with `drop_duplicates()`; merge and row count 3,066 to 3,107; find and explain the 41 extra rows; dedupe names on `stock_code`; merge again and check 3,066; top 10 table; horizontal bar chart; daily revenue table with `.dt.date` as a 3-minute copy-along; line chart; product rank and cumulative share curve (copy-along); seaborn bar chart for non-UK countries as a homework pattern in the notebook; chart title rule; chart-fix exercise; recap, case hunt and homework.
+Notebook plan (about 25 cells): import pandas and load `sales_clean.csv` from the work folder (2 cells); rebuild `product_value` with a groupby on `sales_clean` (1 cell); recall; product names table with `drop_duplicates()`; merge and row count 3,066 to 3,107; find and explain the 41 extra rows; dedupe names on `stock_code`; merge again and check 3,066; top 10 table; horizontal bar chart; daily revenue table with `.dt.date` as a 3-minute copy-along; line chart; product rank and cumulative share curve (copy-along); seaborn bar chart for non-UK countries as a homework pattern in the notebook; chart title rule; chart-fix exercise; recap, case hunt and homework.
 
 Deck (9 slides): cover; today's question; merge is VLOOKUP, with the row-count check; matplotlib, one chart step by step; the title says the finding; seaborn template; Now in Colab; the case hunt; recap and homework.
 
@@ -435,9 +437,9 @@ Project menu, rescoped so every question is answerable with what she has been ta
 
 If a question needs a skill we did not teach, we change the question, not the skill.
 
-An Olist note goes in `project_plan.md` as an optional idea only, with a licence check reminder.
+An Olist note goes in `project_plan.md` as an optional January-only idea, not a lesson dataset, with a licence check reminder.
 
-Notebook plan (about 22 cells): import pandas and load `sales_clean.csv` from Drive (2 cells); SQL setup with sqlite3; the same table; two queries live, each next to its pandas version; the third query as a homework cell; reading the result; Power BI steps as text plus a small export cell that loads `product_value.csv`; the project question template; a checklist cell.
+Notebook plan (about 22 cells): import pandas and load `sales_clean.csv` from the work folder (2 cells); SQL setup with sqlite3; the same table; two queries live, each next to its pandas version; the third query as a homework cell; reading the result; Power BI steps as text plus a small export cell that loads `product_value.csv`; the project question template; a checklist cell.
 
 Deck (9 slides): cover; today's question (what question will I answer); SQL and pandas side by side; SQL query patterns; Power BI in three clicks; what makes a good question; project plan template; Now in Colab and project kickoff; homework.
 
@@ -457,11 +459,11 @@ Shape from the brief: 0-10 case hunt discussion (she presents her case in 2 minu
 
 AI rule from here: AI may help, but she explains and tests every line, and records the tool and the prompt in `project_plan.md` or a small AI log.
 
-Notebook plan (about 17 cells): load `sales_clean.csv` from Drive; project checklist; her question restated in her own words; the columns she needs; the first analysis cell; chart draft; the 3-sentence status; the AI log table.
+Notebook plan (about 17 cells): load `sales_clean.csv` from the work folder; project checklist; her question restated in her own words; the columns she needs; the first analysis cell; chart draft; the 3-sentence status; the AI log table.
 
 Deck (7 slides): cover; today's question (her question); case hunt discussion; project checklist; AI rules; Now in Colab; what I found so far.
 
-Handout: project checklist and the 3-sentence template; AI log table.
+Handout: project checklist and the 3-sentence template; AI log table; the one-page GitHub account guide for the homework.
 
 Teacher card: how to use the hint ladder without taking the keyboard; two likely mistakes (scope too big, jumping to a chart before checking the numbers); how to keep the session silent.
 
@@ -477,7 +479,7 @@ Block 1 (35): 0-25 final charts and the 3-sentence conclusion (answer, evidence,
 
 If the project is behind, the minimum for S9 is the GitHub upload, one chart and one finding sentence. The slides can be finished as homework.
 
-Notebook plan (about 15 cells): load `sales_clean.csv` from Drive; final chart checklist; the 3-sentence conclusion template; the GitHub steps as text; README template; the slide template walkthrough; reflection questions.
+Notebook plan (about 15 cells): load `sales_clean.csv` from the work folder; final chart checklist; the 3-sentence conclusion template; the GitHub steps as text; README template; the slide template walkthrough; reflection questions.
 
 Deck (7 slides): cover; today's question (can I explain the finding in three sentences); final chart checklist; GitHub in the browser; README template; the 3 slides; reflection.
 
@@ -495,7 +497,7 @@ Homework: finish slides, rehearse the 5-minute presentation once, complete the r
 
 0 to 5 setup and nerves check. 5 to 10 her presentation (5 minutes). 10 to 25 interview-style Q&A. 25 to 35 feedback with the scoring sheet (2 strengths, 1 thing to improve). Break. Block 2: 0-15 review the reflection together; 15-25 course retro (keep, stop, start); 25-28 next steps for January (optional module outline only); 28-35 exit ticket and close, which gives the two written answers 7 minutes.
 
-Presentation format: 3 content slides (question, finding, recommendation) plus cover and thank-you, built from `presentation_template.pptx`. 5-minute structure: 1 minute question and context, 2 minutes finding and evidence, 1 minute recommendation, 1 minute of margin. Slides are in English; she may present in English or Bahasa Indonesia. Delivery is scored on structure and pace, not accent. The 2-minute "walk me through your project" version is only for the Q&A.
+Presentation format: 3 content slides (question, finding, recommendation) plus cover and thank-you, built from `presentation_template.pptx`. 5-minute structure: 1 minute question and context, 2 minutes finding and evidence, 1 minute recommendation, 1 minute of margin. Slides are in English. She presents in English; if she is very nervous, she may answer questions in Bahasa Indonesia. Delivery is scored on structure and pace, not accent. The 2-minute "walk me through your project" version is only for the Q&A.
 
 Q&A questions: walk me through your project in 2 minutes; why did you remove those rows; what would you do with more time; how did you check the numbers; if you used AI, how did you check its code and what did you record.
 
@@ -529,6 +531,7 @@ Recall: no daily recall after S10. S10's `recall.md` is a short optional practic
 | `course_home/intro_sql.md`, `sql_playground.md`, `intro_powerbi.md` | 1 page each, the self-study versions of the S7 bonus | 4 |
 | `course_home/presentation_template.pptx` | cover, question, finding, recommendation, thank you, same theme | 2 with the theme, filled in 4 |
 | `course_home/glossary.md` | about 25 English terms with a one-line Bahasa Indonesia explanation (DataFrame, index, boolean, traceback, repository, README, NaN, CSV, and the rest) | 4 |
+| `course_home/github_guide.md` | one page: create the account, create an empty public repository, save the notebook from Colab, write the README; used as S8 homework and S9 handout | 4 |
 | `course_home/optional_jan_module.md` | outline only: deeper Power BI, SQL lessons, VS Code, git command line | 4 |
 | `data/online_retail_ii_lesson.csv` | the slice | 2 |
 | `data/EXPLORATION.md` | this phase's report | 1 |
@@ -538,7 +541,7 @@ Recall: no daily recall after S10. S10's `recall.md` is a short optional practic
 
 ### Course outline content plan (built in Phase 2)
 
-Header fields: course code PySC-101; title Python for Supply Chain Analytics; class dates 16/11/2026 to 17/12/2026; online, 10 sessions, 15:00 SGT (14:00 WIB), 90-minute slot; instructor Bryan Kusno; email placeholder until open question 4 is answered. No NUS name, logo or branding. Black and white, plain, 4 pages maximum.
+Header fields: course code PySC-101; title Python for Supply Chain Analytics; class dates 16/11/2026 to 17/12/2026; online, 10 sessions, 15:00 SGT (14:00 WIB), 90-minute slot; instructor Bryan Kusno; email placeholder until open question 4 is answered. The slot is 90 minutes; S4 may use 5 minutes of the buffer, and the outline says so in its schedule row for S4. No NUS name, logo or branding. Black and white, plain, 4 pages maximum.
 
 Five objectives and where they are taught:
 
@@ -550,7 +553,7 @@ Five objectives and where they are taught:
 | Build clear charts with matplotlib and seaborn | S6 |
 | Present a finding in 5 minutes, answer first | S7 to S10 |
 
-Assessment table as the brief fixes it: class participation and daily recall 20%, cold test 15%, project 30%, final presentation 20%, self-reflection 15%, total 100%. One line says the course is not graded and the weights show what matters most. The scoring detail: presentation criteria with one-line anchors, project 10/10/10 (question and plan, analysis and checked numbers, chart and finding), cold test out of 4 with a 0.01 tolerance, reflection complete, partial or missing. The outline states that slides are in English, she may present in English or Bahasa Indonesia, and delivery is scored on structure and pace, not accent.
+Assessment table as the brief fixes it: class participation and daily recall 20%, cold test 15%, project 30%, final presentation 20%, self-reflection 15%, total 100%. One line says the course is not graded and the weights show what matters most. The scoring detail: presentation criteria with one-line anchors, project 10/10/10 (question and plan, analysis and checked numbers, chart and finding), cold test out of 4 with a 0.01 tolerance, reflection complete, partial or missing. The outline states that slides are in English, she presents in English (the questions may be answered in Bahasa Indonesia if she is nervous), and delivery is scored on structure and pace, not accent.
 
 Schedule table: 10 rows, one per session, with lesson number, date, session summary and objectives, resources and indicative deadlines. Resources are only what we really provide: notebook, handout, deck, the S1 opening video, the dataset citation, sql-practice.com for S7, and the templates. Deadlines: cold test in S5; case hunt handed out in S6 and due in S8; project plan in S7; project and GitHub in S9; reflection before S10; presentation in S10.
 
@@ -560,6 +563,8 @@ Schedule table: 10 rows, one per session, with lesson number, date, session summ
 PySC-101/
   00_course_home/   course_home, course_outline, learner guides, templates
   data/             online_retail_ii_lesson.csv only (never the raw file)
+  work/             learner-made files from S4 onward: sales_clean.csv,
+                    cancellations.csv, product_value.csv
   week_1/           S1, S2: student notebook, deck PDF, handout, recall
   week_2/           S3, S4
   week_3/           S5, S6
@@ -572,7 +577,7 @@ Week mapping: week 1 = 16 and 18 Nov; week 2 = 23 and 26 Nov; week 3 = 30 Nov an
 
 PUSH_LIST dates, always the day before the session: S1 by 15 Nov, S2 by 17 Nov, S3 by 22 Nov, S4 by 25 Nov, S5 by 29 Nov, S6 by 2 Dec, S7 by 6 Dec, S8 by 9 Dec, S9 by 13 Dec, S10 by 16 Dec. Course home and course outline and the data slice by 14 Nov.
 
-The raw xlsx never goes to Drive for the learner. The lesson CSV is the only data file in her folders. Internal scratch is not delivered: `_tools/` (venv, extracted skill, scripts, runbook), `_verify/` (independent verification), `data/work/` (full CSV conversions and the slice working copy).
+The raw xlsx never goes to Drive for the learner. The lesson CSV is the only data file we deliver in `data/`; the learner's own working files live in `work/`. Internal scratch is not delivered: `_tools/` (venv, extracted skill, scripts, runbook), `_verify/` (independent verification), `data/work/` (full CSV conversions and the slice working copy).
 
 ## 7. Build order and quality gates
 
@@ -665,15 +670,16 @@ These block or shape Phase 2. Recommendations are in the last column.
 |---|---|---|---|
 | 1 | Opening video: what is it about and how long is it? We cannot watch it and must not guess its content. The link is https://youtu.be/Nxy_UROEkd4?si=a7To3M4s_K6fd9Z4 | Send topic and length. If it is longer than 10 minutes, we show the first 10 in class and send the rest as homework, and we write 3 discussion questions from the topic | Phase 2, S1 deck |
 | 2 | S2 is Wed 18 Nov, not Thu 19 Nov. Confirm | Confirm. All 10 dates are checked against the 2026 calendar and the weekdays match | Phase 2 |
-| 3 | Is 14:00 WIB safe for her schedule (public speaking class, family)? | Confirm | Phase 2 |
+| 3 | Is 14:00 WIB safe for her schedule (other classes, family)? | Confirm | Phase 2 |
 | 4 | Which email goes in the course outline header? | Reply with the address | Phase 2, outline |
 | 5 | May we search and download openly licensed photos (Wikimedia Commons, Openverse) for the decks? We would credit each photo on the slide and use no NUS logo | Yes, with credit, only where a photo teaches something (warehouse, shelves, shipping, receipts). If no, decks use colour and typography only | Phase 2 |
-| 6 | Lesson slice rule: 2010-12-01 to 2011-02-28 from the 2010-2011 sheet, 105,335 rows, 9.28 MB. Alternative: 2011-02-01 to 2011-04-30, 94,371 rows | Take the December to February window: it contains the first rows of the sheet, the December peak, and 22,523 rows of sheet overlap are avoided. The alternative has no cancelled large order but loses the story continuity and the seasonal chart | Phase 2 |
+| 6 | Lesson slice rule: 2010-12-01 to 2011-02-28 from the 2010-2011 sheet, 105,335 rows, 9.28 MB. Alternative: 2011-02-01 to 2011-04-30, 94,371 rows | Take the December to February window: it contains the first rows of the sheet, the December peak, and 22,523 rows of sheet overlap are avoided. The alternative has no positive sale inside the window whose cancellation is also inside the window, so its product ranking is not distorted; it does contain the April 2011 cancellation of a January 2011 order (C550456). It loses the story continuity and the seasonal chart | Phase 2 |
 | 7 | The cancelled giant order (invoice 541431, 77,183.60, cancelled 16 minutes later). Remove it in S4 or keep it? | Remove it in S4 as part of the "look at the biggest rows" investigation. It teaches that cleaning needs judgment, and it stops a cancelled order from becoming the number one product. All numbers in this plan assume it is removed | Phase 2, S4 |
 | 8 | S6 seaborn chart: top 5 countries including the UK (one huge bar, 84.8% of revenue) or top 5 countries outside the UK? | Exclude the UK from the chart and say "outside the UK" on the slide and in the title | Phase 3, S6 |
 | 9 | Should learner-facing files use her first name or stay neutral ("you")? The brief does not name her | Neutral "you" in files, and her name only on the GitHub template if she wants it. Confirm | Phase 2 |
 | 10 | Colab's AI settings screen changes over time. Can you send or confirm the exact menu path to turn off Colab AI features, so the S1 notebook matches the real screen? | Send a screenshot or the current path. If not, the notebook says "Tools, Settings, AI features" and you correct it live | Phase 2 |
-| 11 | S4 non-product cleaning: keep stock codes whose first character is a digit, instead of a hard-coded list of charge codes | Use the one-character rule: it removes all 588 non-product rows in the slice and cannot miss a new fee code. The hard-coded list would leave 19 rows and 11 non-product codes in the clean table | Phase 2, S4 |
+| 11 | S4 non-product cleaning: keep stock codes whose first character is a digit, instead of a hard-coded list of charge codes | Use the one-character rule: it removes the 474 non-product rows still present at that step, no non-product row reaches the clean table, and it cannot miss a new fee code. The hard-coded list would leave 19 rows and 11 non-product codes in the clean table | Phase 2, S4 |
+| 12 | S4 runs 80 minutes inside the 90-minute slot (35 + 5 break + 40), 5 minutes over the brief's 75-minute plan | Allow the 80 minutes for S4 only, because the cleaning will not fit in 35. If you want the strict 75, the S4 fallback moves the giant order investigation to S5 and `describe` stays homework; say which one you want | Phase 2, S4 |
 
 The theme choice is a Phase 2 question, asked after the preview (5 variants, 3 slides each), not now.
 
@@ -691,6 +697,7 @@ Which answers block which Phase 2 output:
 | Q9 learner name | The course home, the GitHub README template and every learner-facing file header |
 | Q10 Colab AI menu | The Colab tour section in the S1 notebook |
 | Q11 non-product rule | The S4 cleaning steps and all downstream numbers |
+| Q12 S4 80-minute exception | The S4 notebook and teacher card, and the course outline's session note |
 
 If an answer is still missing when Phase 2 starts, build the part that does not depend on it and leave a visible placeholder, for example `[BRYAN: email]` in the outline. Do not guess.
 

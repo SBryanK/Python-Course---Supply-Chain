@@ -1,5 +1,5 @@
 {
- "passed": 151,
+ "passed": 155,
  "failed": 0,
  "checks": [
   {
@@ -703,6 +703,24 @@
    "pass": true
   },
   {
+   "check": "clean shape",
+   "got": [
+    101458,
+    10
+   ],
+   "want": [
+    101458,
+    10
+   ],
+   "pass": true
+  },
+  {
+   "check": "clean months",
+   "got": 3,
+   "want": 3,
+   "pass": true
+  },
+  {
    "check": "clean revenue",
    "got": 1876534.04,
    "want": 1876534.04,
@@ -826,6 +844,18 @@
    "check": "product table rows (merge check)",
    "got": 3066,
    "want": 3066,
+   "pass": true
+  },
+  {
+   "check": "name pairs before dedupe",
+   "got": 3107,
+   "want": 3107,
+   "pass": true
+  },
+  {
+   "check": "extra name-pair rows",
+   "got": 41,
+   "want": 41,
    "pass": true
   },
   {

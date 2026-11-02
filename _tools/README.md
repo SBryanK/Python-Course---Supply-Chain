@@ -14,9 +14,9 @@ Run in this order from the repo root. The raw file must be restored first, see `
 | `explore_details.py` | Odd values, the sheet overlap, non-product codes, candidate slices | `_tools/exploration_details.json` |
 | `check_windows.py` | Compares candidate lesson windows for cancelled-order artefacts | `_tools/window_check.json` |
 | `slice_canonical_v2.py` | Final slice cleaning steps, ABC, country, monthly and daily numbers | `_tools/slice_canonical_v2.json` |
-| `fact_check.py` | Re-checks 151 facts stated in `data/EXPLORATION.md` and `PLAN.md` against the data | `_tools/fact_check_results.json` |
+| `fact_check.py` | Checks 155 values against the data as a regression test (it does not read the prose) | `_tools/fact_check_results.json` |
 
-`fact_check.py` is the regression test for the numbers. It reads the CSV conversions in `data/work/`, so run `convert_sheets.py` first if those files are missing. A run that does not end with `151/151 checks passed, 0 failed` means a document, a script or the data changed and one of them is now stale.
+`fact_check.py` is the regression test for the numbers. It reads the CSV conversions in `data/work/`, so run `convert_sheets.py` first if those files are missing. A run that does not end with `155/155 checks passed, 0 failed` means a document, a script or the data changed and one of them is now stale.
 
 ## Deck toolchain
 

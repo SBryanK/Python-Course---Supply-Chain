@@ -1,5 +1,7 @@
 # PySC-101: Python for Supply Chain Analytics
 
+Repository: https://github.com/SBryanK/Python_Course_Supply_Chain
+
 Build repository for a 10-session beginner course for one adult learner. The learner is a final-year logistics and supply chain student with no coding experience but strong Excel skills. The course runs online, one to one, from 16 November to 17 December 2026, uses Google Colab, and ends with one 5-minute presentation on a cleaned real sales dataset.
 
 The course teaches just enough Python to be useful in supply chain work: variables, lists, functions, pandas, groupby and ABC analysis, matplotlib and seaborn, a short SQL and Power BI introduction, and one small project. It uses the real UCI Online Retail II dataset. No synthetic data.
@@ -24,12 +26,12 @@ UCI Online Retail II. Chen, D. (2012). Online Retail II [Dataset]. UCI Machine L
 
 The raw xlsx is not committed because it is 43.5 MiB and does not change. `data/raw/README.md` has the download URL and checksum. The course data file, `data/online_retail_ii_lesson.csv`, will be committed when Phase 2 builds it. It is an adaptation of the dataset and stays under CC BY 4.0 with the citation above.
 
-The teaching slice is one three-month window from the `Year 2010-2011` sheet, 1 December 2010 to 28 February 2011, uncleaned: 105,335 rows, 8 columns, about 9.3 MB. Cleaning is the learner's work in session 4. The full rule and the reasoning are in `data/EXPLORATION.md` section 12.
+The teaching slice is one three-month window from the `Year 2010-2011` sheet, 1 December 2010 to 28 February 2011, uncleaned: 105,335 rows, 8 columns, about 9.3 MB. Cleaning is the learner's work in session 4; the files she makes after that (sales_clean.csv, cancellations.csv, product_value.csv) live in her `PySC-101/work/` Drive folder. The full rule and the reasoning are in `data/EXPLORATION.md` section 12.
 
 ## Verification
 
 - An independent audit recomputed every number in the exploration report from the raw xlsx. Its report is `_verify/VERIFICATION.md`.
-- `_tools/fact_check.py` is the regression check: it re-checks 151 facts in `data/EXPLORATION.md` and `PLAN.md` against the data and must end with `151/151 checks passed, 0 failed`.
+- `_tools/fact_check.py` is the regression check: it checks 155 values against the data and must end with `155/155 checks passed, 0 failed`. It does not read the prose, so a doc typo still needs a human read.
 - The deck toolchain was tested end to end: build, PDF, page images, audit and a five-variant theme preview, with Proxima Nova embedded. Commands and sandbox patches are in `_tools/deck_check/RUNBOOK.txt`.
 
 ## Repository layout
@@ -53,7 +55,7 @@ _tools/                  internal scripts and the deck runbook
 _verify/                 independent verification report
 ```
 
-The folders `sessions/` and `course_home/` are created in Phase 2 and 3. Learner-facing files go to Google Drive, not to this repository. Teacher-only files (solutions, teacher cards, answer keys, exit ticket answers) stay in `teacher_only/` and are never shared with the learner.
+The repository is the build source; the Google Drive tree is the delivery copy. `sessions/` maps to `week_1` to `week_4` in Drive, `course_home/` maps to `00_course_home/`, and `teacher_only/` (solutions, teacher cards, answer keys, exit ticket answers) is never shared with the learner. The `_tools/ppt_maker` copy is third-party tooling, not course content; its NUS theme references and crest are unused by this course.
 
 ## Environment
 

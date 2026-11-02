@@ -2,7 +2,7 @@
 
 Phase 1 report for PySC-101. Written 2 Nov 2026 from the real UCI file. Every number below was computed by running pandas on the raw file, not typed from memory. STOP: Bryan must review this file before Phase 2 starts.
 
-Verification: an independent audit recomputed the whole-file and slice numbers from the raw xlsx, and `_tools/fact_check.py` re-checks 151 facts from this report against the data on demand. Two review rounds found and fixed five stale figures (non-product row totals, slice non-product rows, missing descriptions count, a clean-table customer count and one alternative-window row count). The numbers in this file are the corrected ones.
+Verification: an independent audit recomputed the whole-file and slice numbers from the raw xlsx, and `_tools/fact_check.py` checks 155 values against the data as a regression test. It does not read this prose; a typo in a sentence still needs a human read. Two review rounds found and fixed five stale figures (non-product row totals, slice non-product rows, missing descriptions count, a clean-table customer count and one alternative-window row count). The numbers in this file are the corrected ones.
 
 ## 1. Source and files
 
@@ -15,7 +15,7 @@ Verification: an independent audit recomputed the whole-file and slice numbers f
 | Downloaded from | https://archive.ics.uci.edu/static/public/502/online+retail+ii.zip on 2 Nov 2026 |
 | Raw file kept | `data/raw/online_retail_II.xlsx` (untouched, 45,622,278 bytes = 43.5 MiB) |
 | Raw checksum | sha256 `bcbe73b35f5b7babf197fb0cb983a11f5d9ff929078d4aa53d171b1f2df2e980` |
-| Derived slice licence | CC BY 4.0, same as the source, with the citation above on every page that uses it |
+| Derived slice licence | CC BY 4.0, same as the source, with the citation above wherever it is used (data README, S4 notebook, course outline, course home, GitHub README template) |
 | Zip checksum | sha256 `572e36277c2390fbfde10664750731e0a86f55e33470d91919085f0408e67bfb` |
 
 Working copies for our own analysis live in `data/work/` and are never delivered: `sheet_2009_2010.csv`, `sheet_2010_2011.csv`, `online_retail_ii_with_sheet.csv`, plus the proposed lesson slice `slice_dec2010_feb2011_raw.csv`. They are a direct conversion of the two sheets, no cleaning.
@@ -34,7 +34,7 @@ What the company is: a UK-based, registered, non-store online retailer that main
 | Date range, sheet 2009-2010 | 2009-12-01 07:45 to 2010-12-09 20:01 |
 | Date range, sheet 2010-2011 | 2010-12-01 08:26 to 2011-12-09 12:50 |
 | Date range, combined | 2009-12-01 07:45 to 2011-12-09 12:50 |
-| Memory, combined, pandas | 313.2 MB |
+| Memory, combined, with Customer ID read as text | 313.2 MB |
 | Distinct invoices | 53,628 |
 | Distinct customers | 5,942 |
 | Distinct countries | 43 |
@@ -83,7 +83,7 @@ The single C row with a positive quantity is invoice `C496350`, stock code `M` (
 
 The 3,457 negative quantity rows without a C invoice are stock adjustments. Their descriptions are mostly missing (2,689 rows), or words such as `check` (123), `damages` (84), `?` (83), `damaged` (78), `missing` (27), `sold as set on dotcom` (20), `Unsaleable, destroyed.` (9), `smashed` (9), `thrown away` (9).
 
-The 6 `A` invoices are bad debt adjustments, all with stock code `B`, description `Adjust bad debt`, customer missing, and 0 or 1 quantity. Details:
+The 6 `A` invoices are bad debt adjustments, all with stock code `B`, description `Adjust bad debt`, customer missing, and quantity 1. Details:
 
 | Invoice | Date | Quantity | Price | Country |
 |---|---|---|---|---|
@@ -195,7 +195,7 @@ The last row that fails the pattern is `47503J` with a trailing space. It is a r
 
 Course rule for S4: instead of a hard-coded list, the notebook keeps the rows whose stock code starts with a digit. Every real product code starts with a digit. Every charge, voucher, manual line and old code starts with a letter. In the slice this one rule removes postage, fees, samples, discounts, manual lines, gift vouchers and the old DCGS codes in one step, and it cannot go out of date when a new fee code appears.
 
-The slice has 588 non-product rows in total. 565 of them are the eight main codes: POST 217 (216 plus one with a missing description), DOT 175, M 90, S 30, C2 20, D 13, AMAZONFEE 11, BANK CHARGES 9. The other 23 rows are gift vouchers, old DCGS codes and lower-case Manual entries. The hard-coded 8-code list would leave 19 of those rows in the clean table and 11 non-product codes would show up as products. The first-character rule removes all 588.
+The slice has 588 non-product rows in total. 565 of them are the eight main codes: POST 217 (216 plus one with a missing description), DOT 175, M 90, S 30, C2 20, D 13, AMAZONFEE 11, BANK CHARGES 9. The other 23 rows are gift vouchers, old DCGS codes and lower-case Manual entries. The hard-coded 8-code list would leave 19 of those rows in the clean table and 11 non-product codes would show up as products. The first-character rule removes the 474 rows still present at that step; no non-product row survives to the clean table. The other 114 non-product rows were already removed by the dedupe, cancellation, quantity and price steps.
 
 Product code case is messy: 3,471 rows in the whole file and 541 rows in the raw slice have a lower-case letter in the code, for example `15056bl`, `85123a`, `84997c`. These are real products, but the same product can appear under two spellings (`85123A` and `85123a`), so a groupby on stock code splits it. The course does not clean this in S4 (it would add a new concept and risk the merging lesson in S6); the teacher card notes it as a data quirk. In the clean slice, 40 stock codes have more than one description.
 
@@ -283,7 +283,7 @@ Note: 2010-12 counts the overlap rows twice. November and December are the peak 
 | Germany rows | 1,741 |
 | Revenue, raw rows | 1,807,019.93 |
 
-What the slice deliberately excludes: the 2009-2010 year, the November 2011 peak, the bad debt A invoices (August 2011), the 80,995 unit buy-and-cancel pair (December 2011) and all rows outside the three months. Those rows stay in the untouched raw file, and no learner material claims anything about them.
+What the slice deliberately excludes: the 2009-2010 year, the November 2011 peak, the bad debt A invoices (three in 2010 and three in August 2011), the 80,995 unit buy-and-cancel pair (December 2011) and all rows outside the three months. Those rows stay in the untouched raw file, and no learner material claims anything about them.
 
 The CSV will keep the original column names, the original column order and the original row order. `Customer ID` is blank when missing, `Invoice` and `StockCode` are written as text, `InvoiceDate` is written as `YYYY-MM-DD HH:MM:SS`. In Colab, `read_csv` gives `quantity` as int, `price` as float, `customer_id` as float with NaN, and the three text columns as object.
 
@@ -399,7 +399,7 @@ These are verified and safe to reuse. All money is GBP.
 
 ### Quirks the course materials must treat honestly
 
-- Cancellations are removed in S4, but the original positive sale stays in the clean table unless it is the one giant order. About 1% of clean revenue is later cancelled. This is a limitation, not a bug we fix.
+- Cancellations are removed in S4, but the original positive sale stays in the clean table unless it is the one giant order. About 1% of clean revenue inside the slice is later cancelled. Some slice sales are cancelled after the window, for example invoice 540815 in April 2011, so the teacher note says "about 1% inside the slice".
 - 35,364 clean rows (34.9%) have no customer ID. Product analysis keeps them; customer analysis cannot.
 - 541 rows in the raw slice carry a lowercase letter in the stock code, so a few products split across two spellings. The course does not normalise them.
 - 40 stock codes in the clean slice have more than one description. The S6 merge keeps the first one and checks the row count before and after.
@@ -415,13 +415,13 @@ The raw file is untouched. The analysis used Python 3.12.13 with pandas 2.3.3, m
 - `_tools/explore_details.py` computes the odd values, overlap and candidate windows and writes `_tools/exploration_details.json`.
 - `_tools/check_windows.py` compares candidate windows and writes `_tools/window_check.json`.
 - `_tools/slice_canonical.py` and `_tools/slice_canonical_v2.py` compute the slice cleaning steps and ABC numbers and write `_tools/slice_canonical.json` and `_tools/slice_canonical_v2.json`. The v2 script has the final rule (keep stock codes whose first character is a digit) and its numbers are the ones used in this report.
-- `_tools/fact_check.py` re-checks 151 facts in this report against the data and writes `_tools/fact_check_results.json`. Run it after any data or doc change. It reads the CSV conversions in `data/work/`, so run `_tools/convert_sheets.py` first if they are missing.
+- `_tools/fact_check.py` checks 155 values against the data and writes `_tools/fact_check_results.json`. Run it after any data or doc change. It reads the CSV conversions in `data/work/`, so run `_tools/convert_sheets.py` first if they are missing.
 
 ## 15. What Bryan must decide before Phase 2
 
 1. Confirm the lesson slice rule in section 12 (2010-12-01 to 2011-02-28, 2010-2011 sheet only), or ask for the alternative in section 12.
 2. Confirm how to treat the cancelled giant order in S4: remove invoice 541431 with a commented line (recommended), or leave it in.
-3. Confirm the non-product rule for S4: keep stock codes whose first character is a digit (recommended, removes all 588 non-product rows in the slice), instead of a hard-coded list.
+3. Confirm the non-product rule for S4: keep stock codes whose first character is a digit (recommended; it removes the 474 non-product rows still present at that step and none reaches the clean table), instead of a hard-coded list.
 4. Answer the five open items in section 15 of the build brief (video topic and length, S2 date, WIB time, email, photo permission).
 5. Confirm the additional plan choices listed in `PLAN.md` section 9, in particular excluding the UK from the seaborn country chart in S6 and addressing the learner by name or not.
 
