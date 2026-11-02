@@ -150,6 +150,7 @@ Notebook format:
 - The solution notebook is the same notebook with the answers filled in.
 - Every notebook runs top to bottom on its own. In S4 she saves the clean table to the `PySC-101/work/` folder as `sales_clean.csv`; from S5 on, the first cells load that file, convert `invoice_date` with `pd.to_datetime` again (a CSV stores dates as text), and check `sales_clean.shape` against the shape in the answer key (101,458 rows and 10 columns). A wrong shape means the file is stale or the cleaning failed, and she stops and fixes it before the lesson. If S4 did not remove the giant order, S5 does that first and then checks the shape.
 - Every notebook shows a learner action after at most two concept cells. S1 demonstrates this rule, because it is the style sample. A session where the first 15 minutes are all concept cells fails the contract.
+- Each notebook may add one optional text cell titled "Why does this happen?" after the core path. It explains one thing in plain words and ends with what it means for a supply chain analyst. Examples: S1 why `6 * 2.55` is not exactly 15.3 (so money is rounded at the end, not in the middle); S2 why counting starts at 0 (the index is the number of steps from the start); S4 why a filter does not change the original table; S5 why ABC uses 80 and 95 (a habit from inventory practice, not a law). The exercises never depend on it. It counts toward the 30-cell cap.
 
 Language and layout rules:
 
@@ -285,7 +286,7 @@ Exit ticket: (1) find the bug in a function that prints instead of returning. (2
 
 Recall: 2 days (Tue 24, Wed 25 Nov), 6 questions mixing S1 to S3.
 
-Homework: write `line_value` and use it on the 5 real lines on the handout; one function of her own with a return.
+Homework: write `line_value` and use it on the 5 real lines on the handout; one function of her own with a return; open a blank Colab notebook, run `from google.colab import drive` and `drive.mount("/content/drive")`, accept the Google permission screen once, and check that she can see the `PySC-101` folder. This takes the first-time permission pop-up out of S4, the heaviest session.
 
 ### S4, Thu 26 Nov: From one row to the whole file (heaviest session)
 
@@ -319,7 +320,7 @@ Real data anchors:
 
 - Load path in Colab: `/content/drive/MyDrive/PySC-101/data/online_retail_ii_lesson.csv`.
 - Raw `sales.shape` is (105335, 8).
-- Missing values: Description 304, Customer ID 36,210, all other columns 0. `Customer ID` shows NaN because it is empty for those rows.
+- Missing values: Description 304, Customer ID 36,210, all other columns 0. `Customer ID` shows NaN because it is empty for those rows. The filled IDs print as `12346.0`: a number column with empty cells is stored as decimals, so pandas adds `.0`. One line in the notebook says so, because she will ask.
 - Column names after rename: invoice, stock_code, description, quantity, invoice_date, price, customer_id, country.
 - Cleaning steps and row counts: 105,335 start; 104,360 after `drop_duplicates`; 102,471 after removing C invoices; 102,257 after `quantity > 0`; 101,933 after `price > 0`; 101,459 after keeping only product codes; 101,458 after removing invoice 541431. The learner writes each number in the cleaning log text cell.
 - Non-product rule in code: `first_character = sales_clean["stock_code"].str[0]`, then `is_product_code = first_character.str.isdigit()`, then keep the true rows with the boolean filter she already knows. Three short lines, no list to mistype.
@@ -717,6 +718,9 @@ If an answer is still missing when Phase 2 starts, build the part that does not 
 | Numbers drift between notebook, deck, handout and answer key | One source: `data/ANSWER_KEY.md`, computed from the slice. Deck and handout writers copy from it, and the verifier checks it |
 | She misses a session (S4 or S6 is the dangerous one) | Send the notebook plus the one-page solution walkthrough the same day. The next session's recall and warm-up (10 minutes) become the catch-up. If S4 is missed, the project drops to the 2-session minimum and the teacher builds the clean table on the share screen with her |
 | Colab disconnects or restarts in the middle | Every notebook after S4 starts with the load and shape check, so a restart costs one cell. S4's teacher card says run all from the top. The CSV is on Drive, so nothing is lost |
+| Login, Drive sharing or screen share fails in the first minutes of S1 | Async tech check by 13 Nov: she opens a shared Colab link, runs `print("hello")`, sends a screenshot, and confirms she can open the PySC-101 Drive folder and share her screen on the call tool |
+| Drive's first-time permission pop-up interrupts S4 | She mounts Drive once as S3 homework. Fallback in S4: Files pane upload, or `pd.read_csv` from a public URL of the lesson CSV |
+| The build repository is public, so solutions, answer keys and her scores could be found | `teacher_only/` is gitignored. Solution notebooks, answer keys, exit ticket answers and the teaching tracker are never committed |
 | Two different buffer stories confuse the teacher on the day | One policy only: the 90-minute slot, 75 planned minutes for nine sessions, 80 for S4, hard stop at 90 |
 
 Next action: STOP for Bryan's answers to section 9. On his reply, start Phase 2 with the data slice and the S1 pilot.
