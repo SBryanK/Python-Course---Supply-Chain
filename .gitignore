@@ -43,3 +43,10 @@ sessions/**/*_render/
 sessions/**/page-*.png
 sessions/**/sheet_*.png
 data/**/*_render/
+
+# Internal review scratch (not part of the course build)
+_review/
+_verify/lead_claims_check.*
+
+# Teacher-only files: solutions, answer keys, review, tracker with learner scores (repo is public)
+teacher_only/

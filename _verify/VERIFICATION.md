@@ -1,5 +1,11 @@
 # PySC-101 Phase 1: independent data verification
 
+Post-audit note (2 Nov 2026, second review): this file records the first independent audit as it was performed. After it, two review rounds changed one cleaning rule and corrected five figures in `data/EXPLORATION.md`. Where this report and the current docs differ, the current docs and `_tools/fact_check_results.json` are authoritative. The differences:
+- Non-product rows: 6,093 in 62 codes (this report counted the trailing-space product code `47503J ` as non-product, giving 6,094 in 63 codes; its own stripped check in section 13 already shows 6,093 and 62).
+- The clean table now uses the first-character product rule, not the 8-code list: 101,458 rows, 3,066 products, 1,876,534.04 revenue, 35,364 missing customer IDs. This report used the 8-code list: 101,477 rows, 3,077 products, 1,876,839.90 revenue, 35,383 missing customer IDs.
+- Distinct descriptions after stripping and upper-casing: 5,631, not 5,632.
+- Alternative window clean rows with the first-character rule: 90,771, not 90,792.
+
 Verifier: data-verifier. Date: 2 Nov 2026.
 Method: every number below was computed independently from the raw file
 `data/raw/online_retail_II.xlsx` (both sheets, `pd.read_excel` with `Invoice`,
@@ -12,7 +18,7 @@ were opened only afterwards, to attribute the differences listed in section 13.
 - Environment: Python 3.12.13, pandas 2.3.3, openpyxl 3.1.5, `MPLCONFIGDIR=$PWD/_tools/mplconfig`.
 - Scripts and raw output: `_verify/load_raw.py`, `_verify/analyze.py` (items 1 to 11),
   `_verify/verify2.py` (cross-check of every claim in `data/EXPLORATION.md`).
-  Results: `_verify/results.json`, `_verify/results.txt`, `_verify/lead_claims_check.json`.
+  Results: `_verify/results.json` (committed); the long logs and the claim-check tables are local only and not committed.
 - Cross-check of sheet sizes with openpyxl dimensions: 525,462 and 541,911 rows
   including the header row, consistent with 525,461 and 541,910 data rows.
 
