@@ -1,0 +1,453 @@
+{
+ "clean": {
+  "rows": 101458,
+  "cols": 10,
+  "revenue": 1876534.04,
+  "products": 3066,
+  "trading_days": 68
+ },
+ "abc": {
+  "A": {
+   "n": 671,
+   "pct_products": 21.9,
+   "revenue": 1500839.03,
+   "pct_revenue": 79.98
+  },
+  "B": {
+   "n": 794,
+   "pct_products": 25.9,
+   "revenue": 281777.11,
+   "pct_revenue": 15.02
+  },
+  "C": {
+   "n": 1601,
+   "pct_products": 52.2,
+   "revenue": 93917.9,
+   "pct_revenue": 5.0
+  }
+ },
+ "curve": [
+  {
+   "rank": 1,
+   "share": 0.0274
+  },
+  {
+   "rank": 5,
+   "share": 0.0682
+  },
+  {
+   "rank": 10,
+   "share": 0.0962
+  },
+  {
+   "rank": 25,
+   "share": 0.1637
+  },
+  {
+   "rank": 50,
+   "share": 0.2445
+  },
+  {
+   "rank": 100,
+   "share": 0.3602
+  },
+  {
+   "rank": 200,
+   "share": 0.5057
+  },
+  {
+   "rank": 300,
+   "share": 0.6011
+  },
+  {
+   "rank": 400,
+   "share": 0.6725
+  },
+  {
+   "rank": 500,
+   "share": 0.7278
+  },
+  {
+   "rank": 671,
+   "share": 0.7998
+  },
+  {
+   "rank": 800,
+   "share": 0.8394
+  },
+  {
+   "rank": 1000,
+   "share": 0.8846
+  },
+  {
+   "rank": 1500,
+   "share": 0.9533
+  },
+  {
+   "rank": 2000,
+   "share": 0.9851
+  },
+  {
+   "rank": 2500,
+   "share": 0.9969
+  },
+  {
+   "rank": 3066,
+   "share": 1.0
+  }
+ ],
+ "top10": [
+  {
+   "code": "22423",
+   "name": "REGENCY CAKESTAND 3 TIER",
+   "revenue": 51504.85
+  },
+  {
+   "code": "85123A",
+   "name": "WHITE HANGING HEART T-LIGHT HOLDER",
+   "revenue": 30780.98
+  },
+  {
+   "code": "79321",
+   "name": "CHILLI LIGHTS",
+   "revenue": 17013.92
+  },
+  {
+   "code": "85099B",
+   "name": "JUMBO BAG RED RETROSPOT",
+   "revenue": 14684.04
+  },
+  {
+   "code": "21623",
+   "name": "VINTAGE UNION JACK MEMOBOARD",
+   "revenue": 14050.55
+  },
+  {
+   "code": "82484",
+   "name": "WOOD BLACK BOARD ANT WHITE FINISH",
+   "revenue": 11013.87
+  },
+  {
+   "code": "22470",
+   "name": "HEART OF WICKER LARGE",
+   "revenue": 10999.97
+  },
+  {
+   "code": "22469",
+   "name": "HEART OF WICKER SMALL",
+   "revenue": 10815.52
+  },
+  {
+   "code": "22720",
+   "name": "SET OF 3 CAKE TINS PANTRY DESIGN ",
+   "revenue": 10050.01
+  },
+  {
+   "code": "84029E",
+   "name": "RED WOOLLY HOTTIE WHITE HEART.",
+   "revenue": 9652.62
+  }
+ ],
+ "daily": [
+  {
+   "date": "2010-12-01",
+   "revenue": 57442.33
+  },
+  {
+   "date": "2010-12-02",
+   "revenue": 47596.42
+  },
+  {
+   "date": "2010-12-03",
+   "revenue": 44788.9
+  },
+  {
+   "date": "2010-12-05",
+   "revenue": 30908.67
+  },
+  {
+   "date": "2010-12-06",
+   "revenue": 51667.12
+  },
+  {
+   "date": "2010-12-07",
+   "revenue": 81454.99
+  },
+  {
+   "date": "2010-12-08",
+   "revenue": 44153.98
+  },
+  {
+   "date": "2010-12-09",
+   "revenue": 49976.39
+  },
+  {
+   "date": "2010-12-10",
+   "revenue": 56685.62
+  },
+  {
+   "date": "2010-12-12",
+   "revenue": 17125.65
+  },
+  {
+   "date": "2010-12-13",
+   "revenue": 36574.67
+  },
+  {
+   "date": "2010-12-14",
+   "revenue": 44327.11
+  },
+  {
+   "date": "2010-12-15",
+   "revenue": 30367.56
+  },
+  {
+   "date": "2010-12-16",
+   "revenue": 48868.14
+  },
+  {
+   "date": "2010-12-17",
+   "revenue": 41188.15
+  },
+  {
+   "date": "2010-12-19",
+   "revenue": 7288.47
+  },
+  {
+   "date": "2010-12-20",
+   "revenue": 25448.51
+  },
+  {
+   "date": "2010-12-21",
+   "revenue": 43630.69
+  },
+  {
+   "date": "2010-12-22",
+   "revenue": 4856.57
+  },
+  {
+   "date": "2010-12-23",
+   "revenue": 11222.29
+  },
+  {
+   "date": "2011-01-04",
+   "revenue": 15324.88
+  },
+  {
+   "date": "2011-01-05",
+   "revenue": 31918.97
+  },
+  {
+   "date": "2011-01-06",
+   "revenue": 39968.45
+  },
+  {
+   "date": "2011-01-07",
+   "revenue": 27661.67
+  },
+  {
+   "date": "2011-01-09",
+   "revenue": 15400.68
+  },
+  {
+   "date": "2011-01-10",
+   "revenue": 23305.29
+  },
+  {
+   "date": "2011-01-11",
+   "revenue": 67856.96
+  },
+  {
+   "date": "2011-01-12",
+   "revenue": 23418.55
+  },
+  {
+   "date": "2011-01-13",
+   "revenue": 19581.65
+  },
+  {
+   "date": "2011-01-14",
+   "revenue": 46154.96
+  },
+  {
+   "date": "2011-01-16",
+   "revenue": 6973.89
+  },
+  {
+   "date": "2011-01-17",
+   "revenue": 27746.68
+  },
+  {
+   "date": "2011-01-18",
+   "revenue": 17180.93
+  },
+  {
+   "date": "2011-01-19",
+   "revenue": 25090.4
+  },
+  {
+   "date": "2011-01-20",
+   "revenue": 20387.35
+  },
+  {
+   "date": "2011-01-21",
+   "revenue": 31544.2
+  },
+  {
+   "date": "2011-01-23",
+   "revenue": 10198.1
+  },
+  {
+   "date": "2011-01-24",
+   "revenue": 24296.87
+  },
+  {
+   "date": "2011-01-25",
+   "revenue": 28106.65
+  },
+  {
+   "date": "2011-01-26",
+   "revenue": 19141.17
+  },
+  {
+   "date": "2011-01-27",
+   "revenue": 23279.97
+  },
+  {
+   "date": "2011-01-28",
+   "revenue": 19618.67
+  },
+  {
+   "date": "2011-01-30",
+   "revenue": 6542.61
+  },
+  {
+   "date": "2011-01-31",
+   "revenue": 22478.84
+  },
+  {
+   "date": "2011-02-01",
+   "revenue": 28508.93
+  },
+  {
+   "date": "2011-02-02",
+   "revenue": 20155.79
+  },
+  {
+   "date": "2011-02-03",
+   "revenue": 22929.2
+  },
+  {
+   "date": "2011-02-04",
+   "revenue": 23836.22
+  },
+  {
+   "date": "2011-02-06",
+   "revenue": 3439.67
+  },
+  {
+   "date": "2011-02-07",
+   "revenue": 25508.46
+  },
+  {
+   "date": "2011-02-08",
+   "revenue": 19899.76
+  },
+  {
+   "date": "2011-02-09",
+   "revenue": 15521.33
+  },
+  {
+   "date": "2011-02-10",
+   "revenue": 14590.39
+  },
+  {
+   "date": "2011-02-11",
+   "revenue": 22391.91
+  },
+  {
+   "date": "2011-02-13",
+   "revenue": 5645.48
+  },
+  {
+   "date": "2011-02-14",
+   "revenue": 26202.48
+  },
+  {
+   "date": "2011-02-15",
+   "revenue": 39534.09
+  },
+  {
+   "date": "2011-02-16",
+   "revenue": 24588.36
+  },
+  {
+   "date": "2011-02-17",
+   "revenue": 24718.38
+  },
+  {
+   "date": "2011-02-18",
+   "revenue": 15827.4
+  },
+  {
+   "date": "2011-02-20",
+   "revenue": 9434.4
+  },
+  {
+   "date": "2011-02-21",
+   "revenue": 35263.5
+  },
+  {
+   "date": "2011-02-22",
+   "revenue": 32130.82
+  },
+  {
+   "date": "2011-02-23",
+   "revenue": 25775.21
+  },
+  {
+   "date": "2011-02-24",
+   "revenue": 22570.98
+  },
+  {
+   "date": "2011-02-25",
+   "revenue": 20128.56
+  },
+  {
+   "date": "2011-02-27",
+   "revenue": 9364.71
+  },
+  {
+   "date": "2011-02-28",
+   "revenue": 19817.39
+  }
+ ],
+ "best_day": {
+  "date": "2010-12-07",
+  "revenue": 81454.99
+ },
+ "monthly": {
+  "2010-12": 775572.23,
+  "2011-01": 593178.39,
+  "2011-02": 507783.42
+ },
+ "uk_monthly": {
+  "2010-12": 705166.72,
+  "2011-01": 468651.61,
+  "2011-02": 417876.17
+ },
+ "top5_countries": {
+  "United Kingdom": 1591694.5,
+  "Netherlands": 58182.55,
+  "EIRE": 43426.19,
+  "Germany": 37365.63,
+  "France": 32392.39
+ },
+ "top5_outside_uk": {
+  "Netherlands": 58182.55,
+  "EIRE": 43426.19,
+  "Germany": 37365.63,
+  "France": 32392.39,
+  "Australia": 24678.48
+ }
+}

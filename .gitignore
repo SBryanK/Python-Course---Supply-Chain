@@ -43,6 +43,7 @@ sessions/**/*_render/
 sessions/**/page-*.png
 sessions/**/sheet_*.png
 data/**/*_render/
+course_home/*_render/
 
 # Internal review scratch (not part of the course build)
 _review/

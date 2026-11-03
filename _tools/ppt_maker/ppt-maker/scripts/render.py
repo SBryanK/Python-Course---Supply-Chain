@@ -23,6 +23,8 @@ from pathlib import Path
 from pptx import Presentation
 
 FONT_DIRS = [
+    # Project fonts shipped with this repo (DejaVu Sans Mono for code), found first.
+    str(Path(__file__).resolve().parents[3] / "fonts"),
     "~/Library/Fonts",
     "/Library/Fonts",
     "/System/Library/Fonts",

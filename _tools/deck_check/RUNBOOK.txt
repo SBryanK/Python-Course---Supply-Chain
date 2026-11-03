@@ -24,7 +24,15 @@ All four commands also work with cwd = _tools/deck_check using ../venv/bin/pytho
 ../ppt_maker/ppt-maker/scripts/... (verified). The build script is self-contained
 (no skill import needed) and works from any cwd because it resolves paths from __file__.
 
-PATCHES TO OUR SKILL COPY (only _tools/ppt_maker/ppt-maker/scripts/render.py, 2 small changes)
+DECK BUILD SCRIPTS (repo tooling)
+  All session decks are built from _tools/deck_builds/sNN_deck.py with the shared
+  kit _tools/deck_builds/deckkit.py (theme L:soft, live, left, regular, no logo).
+  Build one:   _tools/venv/bin/python _tools/deck_builds/s01_deck.py
+  Build all:   for s in _tools/deck_builds/s*_deck.py; do _tools/venv/bin/python "$s"; done
+  Template:    _tools/venv/bin/python _tools/deck_builds/presentation_template.py
+  Check all:   _tools/venv/bin/python _tools/check_decks.py
+
+PATCHES TO OUR SKILL COPY (_tools/ppt_maker/ppt-maker/scripts/render.py, 3 small changes)
   a) PROFILE no longer ~/.cache (blocked by the sandbox). It is now:
        _DEFAULT_PROFILE = Path(__file__).resolve().parents[3] / "deck_check" / "lo_profile"
        PROFILE = Path(os.environ.get("PPT_MAKER_PROFILE") or _DEFAULT_PROFILE).expanduser().resolve()
@@ -32,7 +40,8 @@ PATCHES TO OUR SKILL COPY (only _tools/ppt_maker/ppt-maker/scripts/render.py, 2 
      f"file://{PROFILE}". Reason: this repo path contains spaces, and soffice aborts
      with an uncaught com::sun::star::uno::RuntimeException (SIGABRT) when the
      -env:UserInstallation file URL has raw spaces. as_uri() percent-encodes them.
-  Do not revert either change for later decks.
+  c) FONT_DIRS now looks first in _tools/fonts, where DejaVuSansMono.ttf lives, so
+     deck PDFs embed DejaVu Sans Mono for code. Do not revert this change.
 
 RESULTS
   build:  _tools/deck_check/pysc101_demo.pptx (3 slides, theme L, live, regular, left, no logo)
