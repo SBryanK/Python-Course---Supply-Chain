@@ -1,4 +1,4 @@
-ppt-maker toolchain validation for PySC-101 (sandbox: workspace-write, macOS)
+ppt-maker toolchain validation for Python for Supply Chain (sandbox: workspace-write, macOS)
 Run date: 2026-11-02. Everything below was run and passed.
 
 ENVIRONMENT (all commands were run with this shell setup)

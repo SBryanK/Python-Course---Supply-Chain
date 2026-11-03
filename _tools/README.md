@@ -1,6 +1,6 @@
 # Tools
 
-Small scripts used to build and check the course. Nothing here is delivered to the learner. They run with the repo Python environment described in the root `README.md`.
+Small scripts used to build and check the course. Nothing here is delivered to the learner. They run with `_tools/venv` (Python 3.12, pandas 2.3.3, matplotlib, seaborn, python-pptx, python-docx, openpyxl), which is not committed.
 
 ## Data pipeline
 

@@ -1,6 +1,6 @@
 # Online Retail II: data exploration
 
-Phase 1 report for Python for Supply Chain. Written 2 Nov 2026 from the real UCI file. Every number below was computed by running pandas on the raw file, not typed from memory. STOP: Bryan must review this file before Phase 2 starts.
+Data report for Python for Supply Chain. Written 2 Nov 2026 from the real UCI file. Every number below was computed by running pandas on the raw file, not typed from memory. The choices this report raised are settled in `PLAN.md` section 2.
 
 Verification: an independent audit recomputed the whole-file and slice numbers from the raw xlsx, and `_tools/fact_check.py` checks 155 values against the data as a regression test. It does not read this prose; a typo in a sentence still needs a human read. Two review rounds found and fixed five stale figures (non-product row totals, slice non-product rows, missing descriptions count, a clean-table customer count and one alternative-window row count). The numbers in this file are the corrected ones.
 
@@ -54,7 +54,7 @@ What the company is: a UK-based, registered, non-store online retailer that main
 | `Customer ID` | Customer number. Missing for many rows | float64 (because of NaN) | `customer_id` |
 | `Country` | Country of the customer | object (text) | `country` |
 
-The [VERIFY] items in the brief are confirmed: the real column names are `Invoice`, `StockCode`, `Description`, `Quantity`, `InvoiceDate`, `Price`, `Customer ID`, `Country`, with a space in `Customer ID`. The price column really is called `Price`, not `UnitPrice`. All prices are in GBP.
+The column names were checked against the real file. They are `Invoice`, `StockCode`, `Description`, `Quantity`, `InvoiceDate`, `Price`, `Customer ID`, `Country`, with a space in `Customer ID`. The price column really is called `Price`, not `UnitPrice`. All prices are in GBP.
 
 ## 3. Missing values
 
@@ -299,7 +299,7 @@ The first rows are the first rows of the 2010-2011 sheet, which makes the story 
 | 536365 | 22752 | SET 7 BABUSHKA NESTING BOXES | 2 | 7.65 |
 | 536365 | 21730 | GLASS STAR FROSTED T-LIGHT HOLDER | 6 | 4.25 |
 
-The brief's sample numbers are real: the first 7 quantities are [6, 6, 8, 6, 6, 2, 6], `len` is 7, `sum` is 40, `min` is 2, `max` is 8, index 0 is 6, index 2 is 8, and index -1 is 6. `6 * 2.55` prints `15.299999999999999`, so the float teaching moment is real.
+The sample numbers used in the lessons are real: the first 7 quantities are [6, 6, 8, 6, 6, 2, 6], `len` is 7, `sum` is 40, `min` is 2, `max` is 8, index 0 is 6, index 2 is 8, and index -1 is 6. `6 * 2.55` prints `15.299999999999999`, so the float teaching moment is real.
 
 ### The S4 cleaning steps on this slice
 
@@ -330,7 +330,7 @@ Clean table after all steps:
 
 Invoice `541431`, 18 Jan 2011 10:01, customer 12346, stock code `23166`, MEDIUM CERAMIC TOP STORAGE JAR, 74,215 units at 1.04, revenue 77,183.60. Sixteen minutes later invoice `C541433` cancels the same quantity at the same price. The simple S4 cleaning drops the C row, so the positive 77,183.60 line stays, becomes the number one product, and counts as 3.95% of revenue if it is kept. That is wrong for a revenue analysis: the sale was cancelled.
 
-Proposal: let the learner find this line in the S4 "biggest revenue rows" step, investigate it, and remove that one invoice with a commented line. The cleaning log then records one extra decision. Full reasons and options are in `PLAN.md`, open question 7. If Bryan prefers not to touch it, the slice numbers become: revenue 1,953,717.64, products 3,067, top product 23166 at 77,183.60, and the ABC split changes from A 671 products to A 649 products.
+Decision: the learner finds this line in the S4 "biggest revenue rows" step, investigates it, and removes that one invoice with a commented line. The cleaning log then records one extra decision. If the order were kept instead, the slice numbers become: revenue 1,953,717.64, products 3,067, top product 23166 at 77,183.60, and the ABC split changes from A 671 products to A 649 products.
 
 ### On the clean table (with invoice 541431 removed)
 
@@ -356,7 +356,7 @@ Proposal: let the learner find this line in the S4 "biggest revenue rows" step, 
 
 S5 key finding: 21.9% of products (671 of 3,066) bring 79.98% of revenue. The slide title can say "22% of the products bring 80% of the revenue". These numbers come from the run above.
 
-### Alternative window, if Bryan prefers no special case in S4
+### Alternative window (not used)
 
 Window 2011-02-01 to 2011-04-30, also from the 2010-2011 sheet only:
 
@@ -413,12 +413,11 @@ The raw file is untouched. The analysis used Python 3.12.13 with pandas 2.3.3, m
 - `_tools/convert_sheets.py` converts the two xlsx sheets to CSV in `data/work/`.
 - `_tools/fact_check.py` checks 155 values against the data. Run it after any data or doc change. It reads the CSV conversions in `data/work/`, so run `convert_sheets.py` first if they are missing.
 
-## 15. What Bryan must decide before Phase 2
+## 15. Decisions taken
 
-1. Confirm the lesson slice rule in section 12 (2010-12-01 to 2011-02-28, 2010-2011 sheet only), or ask for the alternative in section 12.
-2. Confirm how to treat the cancelled giant order in S4: remove invoice 541431 with a commented line (recommended), or leave it in.
-3. Confirm the non-product rule for S4: keep stock codes whose first character is a digit (recommended; it removes the 474 non-product rows still present at that step and none reaches the clean table), instead of a hard-coded list.
-4. Answer the five open items in section 15 of the build brief (video topic and length, S2 date, WIB time, email, photo permission).
-5. Confirm the additional plan choices listed in `PLAN.md` section 9, in particular excluding the UK from the seaborn country chart in S6 and addressing the learner by name or not.
+All of these are written in `PLAN.md` section 2.
 
-All other [VERIFY] items in the brief are now checked and correct: column names, cancellation prefix C, number of duplicates, missing values, negative and zero prices, non-product codes and the 6 * 2.55 float behaviour.
+1. The lesson slice is 2010-12-01 to 2011-02-28 from the 2010-2011 sheet. The alternative window above is not used.
+2. The cancelled giant order (invoice 541431) is removed in S4.
+3. Non-product rows are removed by keeping stock codes whose first character is a digit. It removes the 474 non-product rows still present at that step, and none reaches the clean table.
+4. The S6 country chart leaves out the UK.

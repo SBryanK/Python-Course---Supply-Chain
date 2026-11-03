@@ -117,7 +117,7 @@ Write `teacher_only/ANSWER_KEY.md` with every expected answer for every exercise
 
 **Self-explanatory.** She must be able to reopen the notebook alone at home and follow it. So: define each new word in one line the first time it appears, put the expected output in the cell above every exercise, and give every error a one-line "what it means".
 
-**Plain English for a second-language reader.** Common words. Short sentences. One idea per sentence. Say "table", not "dataframe object". No idioms. Active voice.
+**Plain English for a second-language reader.** Common words. Short sentences. One idea per sentence. Say "DataFrame" once in S4 as "a table in pandas", then just say "table". No idioms. Active voice.
 
 **Sample (the level to aim for):**
 
@@ -232,7 +232,7 @@ print(round(sales_value, 2))
 print(f"We sold {quantity} units of {product_name} for {round(sales_value, 2)} pounds.")
 ```
 
-**Notebook (about 25 cells).** Start with how to run a cell and two rules: cells run in the order you click, so a NameError usually means "run the cells above"; NaN means empty. Then: print, variable, *predict what changes if quantity is 7*, multiply (the 15.299999999999999 moment), round, *change the price to 3.39, predict, check 20.34*, `type()`, *predict `"5" + 5`*, f-string, *change it to print units*, exercises 1 to 3 (WHITE METAL LANTERN 20.34, CREAM CUPID HEARTS COAT HANGER 22.0, one f-string sentence about the first line), error zoo (NameError from a typo, SyntaxError from a missing bracket, TypeError from `"5" + 5`, read the last line first), exercise 4 (fix three broken cells), recap, homework, and a checklist (Google account, Chrome or Edge, charger, headset, the Drive folder opens). End with the optional "Why does this happen?" cell.
+**Notebook (about 25 cells).** Start with how to run a cell and one rule: cells run in the order you click, so a NameError usually means "run the cells above". Then: print, variable, *predict what changes if quantity is 7*, multiply (the 15.299999999999999 moment), round, *change the price to 3.39, predict, check 20.34*, `type()`, *predict `"5" + 5`*, f-string, *change it to print units*, exercises 1 to 3 (WHITE METAL LANTERN 20.34, CREAM CUPID HEARTS COAT HANGER 22.0, one f-string sentence about the first line), error zoo (NameError from a typo, SyntaxError from a missing bracket, TypeError from `"5" + 5`, read the last line first), exercise 4 (fix three broken cells), recap, homework, and a checklist (Google account, Chrome or Edge, charger, headset, the Drive folder opens). End with the optional "Why does this happen?" cell.
 
 **Handout:** the concepts table, code patterns, the three errors and fixes, exercises with answers, and the first 12 real order lines (invoice 536365 plus 540815) for homework.
 **Exit ticket:** (1) predict a 3-line cell that prints a value and its rounded value. (2) name the error in one broken cell and fix it.
