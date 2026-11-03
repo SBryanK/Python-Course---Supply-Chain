@@ -68,6 +68,12 @@ def table(doc, rows, widths, header=True, size=8.5):
     t = doc.add_table(rows=len(rows), cols=len(rows[0]))
     t.alignment = WD_TABLE_ALIGNMENT.CENTER
     t.autofit = False
+    tblPr = t._tbl.tblPr
+    layout = OxmlElement("w:tblLayout")
+    layout.set(qn("w:type"), "fixed")
+    tblPr.append(layout)
+    for j, w in enumerate(widths):
+        t.columns[j].width = Cm(w)
     for i, row in enumerate(rows):
         for j, val in enumerate(row):
             c = t.cell(i, j)
