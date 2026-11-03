@@ -1,6 +1,6 @@
 # Online Retail II: data exploration
 
-Phase 1 report for PySC-101. Written 2 Nov 2026 from the real UCI file. Every number below was computed by running pandas on the raw file, not typed from memory. STOP: Bryan must review this file before Phase 2 starts.
+Phase 1 report for Python for Supply Chain. Written 2 Nov 2026 from the real UCI file. Every number below was computed by running pandas on the raw file, not typed from memory. STOP: Bryan must review this file before Phase 2 starts.
 
 Verification: an independent audit recomputed the whole-file and slice numbers from the raw xlsx, and `_tools/fact_check.py` checks 155 values against the data as a regression test. It does not read this prose; a typo in a sentence still needs a human read. Two review rounds found and fixed five stale figures (non-product row totals, slice non-product rows, missing descriptions count, a clean-table customer count and one alternative-window row count). The numbers in this file are the corrected ones.
 

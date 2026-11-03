@@ -1,4 +1,4 @@
-# PySC-101 Phase 1: independent data verification
+# Python for Supply Chain: Phase 1 independent data verification
 
 Post-audit note (2 Nov 2026, second review): this file records the first independent audit as it was performed. After it, two review rounds changed one cleaning rule and corrected five figures in `data/EXPLORATION.md`. Where this report and the current docs differ, the current docs and `_tools/fact_check_results.json` are authoritative. The differences:
 - Non-product rows: 6,093 in 62 codes (this report counted the trailing-space product code `47503J ` as non-product, giving 6,094 in 63 codes; its own stripped check in section 13 already shows 6,093 and 62).

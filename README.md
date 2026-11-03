@@ -1,4 +1,4 @@
-# PySC-101: Python for Supply Chain Analytics
+# Python for Supply Chain
 
 Repository: https://github.com/SBryanK/Python_Course_Supply_Chain
 
@@ -8,7 +8,7 @@ The course teaches just enough Python to be useful in supply chain work: variabl
 
 ## Status
 
-Phase 1 is complete: the data is explored and the 10-session plan is written. The build is stopped until the five brief questions and six data decisions in `PLAN.md` section 9 are answered. Phase 2 is the S1 pilot: the lesson CSV, the S1 to S3 answer key, the S1 pack, the theme choice and the course outline.
+Phase 1 is complete: the data is explored and the 10-session plan is written. The build is stopped until the five brief questions in `PLAN.md` section 10 are answered. Phase 2 is the S1 pilot: the lesson CSV, the S1 to S3 answer key, the S1 pack, the theme choice and the course outline.
 
 ## What is in the repository now
 
@@ -26,7 +26,7 @@ UCI Online Retail II. Chen, D. (2012). Online Retail II [Dataset]. UCI Machine L
 
 The raw xlsx is not committed because it is 43.5 MiB and does not change. `data/raw/README.md` has the download URL and checksum. The course data file, `data/online_retail_ii_lesson.csv`, will be committed when Phase 2 builds it. It is an adaptation of the dataset and stays under CC BY 4.0 with the citation above.
 
-The teaching slice is one three-month window from the `Year 2010-2011` sheet, 1 December 2010 to 28 February 2011, uncleaned: 105,335 rows, 8 columns, about 9.3 MB. Cleaning is the learner's work in session 4; the files she makes after that (sales_clean.csv, cancellations.csv, product_value.csv) live in her `PySC-101/work/` Drive folder. The full rule and the reasoning are in `data/EXPLORATION.md` section 12.
+The teaching slice is one three-month window from the `Year 2010-2011` sheet, 1 December 2010 to 28 February 2011, uncleaned: 105,335 rows, 8 columns, about 9.3 MB. Cleaning is the learner's work in session 4; the files she makes after that (sales_clean.csv, cancellations.csv, product_value.csv) live in her `Python for Supply Chain/work/` Drive folder. The full rule and the reasoning are in `data/EXPLORATION.md` section 12.
 
 ## Verification
 
