@@ -50,3 +50,4 @@ _verify/lead_claims_check.*
 
 # Teacher-only files: solutions, answer keys, review, tracker with learner scores (repo is public)
 teacher_only/
+_tools/fact_check_results.json

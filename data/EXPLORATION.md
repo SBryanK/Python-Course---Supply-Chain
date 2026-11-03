@@ -411,11 +411,7 @@ These are verified and safe to reuse. All money is GBP.
 The raw file is untouched. The analysis used Python 3.12.13 with pandas 2.3.3, matplotlib 3.11.2, seaborn 0.13.2, openpyxl 3.1.5. Internal scripts (not delivered):
 
 - `_tools/convert_sheets.py` converts the two xlsx sheets to CSV in `data/work/`.
-- `_tools/explore_data.py` computes the whole-file numbers in sections 1 to 11 and writes `_tools/exploration_stats.json`.
-- `_tools/explore_details.py` computes the odd values, overlap and candidate windows and writes `_tools/exploration_details.json`.
-- `_tools/check_windows.py` compares candidate windows and writes `_tools/window_check.json`.
-- `_tools/slice_canonical.py` and `_tools/slice_canonical_v2.py` compute the slice cleaning steps and ABC numbers and write `_tools/slice_canonical.json` and `_tools/slice_canonical_v2.json`. The v2 script has the final rule (keep stock codes whose first character is a digit) and its numbers are the ones used in this report.
-- `_tools/fact_check.py` checks 155 values against the data and writes `_tools/fact_check_results.json`. Run it after any data or doc change. It reads the CSV conversions in `data/work/`, so run `_tools/convert_sheets.py` first if they are missing.
+- `_tools/fact_check.py` checks 155 values against the data. Run it after any data or doc change. It reads the CSV conversions in `data/work/`, so run `convert_sheets.py` first if they are missing.
 
 ## 15. What Bryan must decide before Phase 2
 
