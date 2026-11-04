@@ -42,9 +42,9 @@ This file tells a builder (a person or an AI) exactly what to make. Read all of 
 
 UCI Online Retail II, a UK online gift shop. Chen, D. (2012). Online Retail II [Dataset]. UCI Machine Learning Repository. https://doi.org/10.24432/C5CG6D. Licence CC BY 4.0. Put this credit in `data/README.md`, the first notebook that loads the data (S4), the course outline, the course home, and the README template she writes in S9.
 
-The raw file is `data/raw/online_retail_II.xlsx` (restore it with `data/raw/README.md`). `_tools/convert_sheets.py` turns it into CSV files in `data/work/`.
+The raw file is `data/raw/online_retail_II.xlsx` (restore it with `data/raw/README.md`). `tools/1_data/convert_sheets.py` turns it into CSV files in `data/work/`.
 
-**Build the lesson file** `data/online_retail_ii_lesson.csv` with `_tools/build_slice.py`. Rule: every row of the `Year 2010-2011` sheet with InvoiceDate from 2010-12-01 00:00 up to but not including 2011-03-01 00:00. Keep the original column names, order and row order. Do not clean it. Write `InvoiceDate` as `YYYY-MM-DD HH:MM:SS`, leave Customer ID blank when missing. Check it against this table:
+**Build the lesson file** `data/online_retail_ii_lesson.csv` with `tools/1_data/build_slice.py`. Rule: every row of the `Year 2010-2011` sheet with InvoiceDate from 2010-12-01 00:00 up to but not including 2011-03-01 00:00. Keep the original column names, order and row order. Do not clean it. Write `InvoiceDate` as `YYYY-MM-DD HH:MM:SS`, leave Customer ID blank when missing. Check it against this table:
 
 | Property | Value |
 |---|---|
@@ -107,7 +107,7 @@ The first rows of the file (use these in S1 to S3):
 
 A real big order for S3: invoice 540815 (1,930 at 2.55, 2,000 at 1.85, 3,114 at 2.10).
 
-Write `teacher_only/ANSWER_KEY.md` with every expected answer for every exercise, each computed by running code. `python _tools/fact_check.py` must end with `155/155 checks passed, 0 failed`.
+Write `teacher_only/ANSWER_KEY.md` with every expected answer for every exercise, each computed by running code. `python tools/1_data/fact_check.py` must end with `155/155 checks passed, 0 failed`.
 
 ## 5. How to write for her
 
@@ -165,7 +165,7 @@ Repo folders: `sessions/sNN_short_name/` for learner files, `teacher_only/sessio
 - Every notebook runs top to bottom on its own, in a fresh kernel, with no error.
 - S4 saves her clean table to `work/sales_clean.csv`. From S5 on, the first cells load it, run `pd.to_datetime` on `invoice_date` (a CSV forgets that it was a date), then check `sales_clean.shape` is (101458, 10). A wrong shape means stop and fix before the lesson.
 - Notebooks S4 to S9 mount Drive with `from google.colab import drive` and `drive.mount("/content/drive")`. Data path: `/content/drive/MyDrive/Python for Supply Chain/data/online_retail_ii_lesson.csv`. Her files path: `.../Python for Supply Chain/work/`.
-- Build with `nbformat` from a script and execute with `nbconvert` in `_tools/venv`. In Colab, mount cells will not run on a laptop, so for the test run replace the Drive path by the local file and keep the Drive cells in the final file.
+- Build with `nbformat` from a script and execute with `nbconvert` in a local venv built from `tools/requirements.txt`. In Colab, mount cells will not run on a laptop, so for the test run replace the Drive path by the local file and keep the Drive cells in the final file.
 
 **Course-wide (`course_home/`)**
 
@@ -188,7 +188,7 @@ Teacher-only: `teacher_guide.md` (Bahasa Indonesia: hint ladder, feedback rules,
 
 ## 7. How to build the slides
 
-Use the `ppt-maker` skill. Environment, patches and exact commands are in `_tools/deck_check/RUNBOOK.txt`. Always make the PDF with the patched `render.py`, then run `audit.py` and look at every slide image.
+Use the `ppt-maker` skill. Environment, patches and exact commands are in `tools/3_slides/RUNBOOK.txt`. Always make the PDF with the patched `render.py`, then run `audit.py` and look at every slide image.
 
 - Format `live`, theme `L:soft`, left aligned, regular tone. Same in every deck. No logo, no photos.
 - 6 to 10 slides. One idea per slide. A slide is a title that says the idea in plain words, one picture or analogy, the Excel bridge, 3 to 6 lines of code (monospace, Consolas or DejaVu Sans Mono), and the limit in one line. Body text stays in the theme font.
@@ -551,16 +551,16 @@ Python for Supply Chain/
 
 Upload the day before each session: S1 by 15 Nov, S2 by 17 Nov, S3 by 22 Nov, S4 by 25 Nov, S5 by 29 Nov, S6 by 2 Dec, S7 by 6 Dec, S8 by 9 Dec, S9 by 13 Dec, S10 by 16 Dec. Course home, outline and data by 14 Nov. Write `PUSH_LIST.md` with this schedule.
 
-**Never upload:** `teacher_only/` (solutions, teacher cards, exit ticket answers, answer key, PPTX of decks, the tracker), the raw xlsx, `_tools/`, `data/work/`.
+**Never upload:** `teacher_only/` (solutions, teacher cards, exit ticket answers, answer key, PPTX of decks, the tracker), the raw xlsx, `tools/`, `data/work/`.
 
 ## 11. Build order
 
-1. Build the slice (`_tools/build_slice.py`), write `data/README.md`, and check the slice against section 3.
+1. Build the slice (`tools/1_data/build_slice.py`), write `data/README.md`, and check the slice against section 3.
 2. Write `teacher_only/ANSWER_KEY.md` for S1 to S3. Run `fact_check.py`.
 3. Build S1 completely (notebook, solution, deck, handout, recall, teacher card, exit ticket). This is the style sample. Re-read it as a non-programmer with English as a second language.
 4. Build the course outline.
 5. Build S2 to S10, one at a time, copying the S1 style. After S4, re-check S2 to S4 together.
-6. Build the course-wide files, `presentation_template.pptx` and `PUSH_LIST.md`.
+6. Build the course-wide files, `presentation_template.pptx`, and the upload dates in `PROGRESS.md`.
 7. Final check (section 12).
 
 ## 12. Checks before calling anything done
@@ -585,4 +585,4 @@ Cut in this order: (1) S7 SQL and Power BI become the two self-study pages. (2) 
 
 ## 14. Environment
 
-Python 3.12 with pandas 2.3.3, matplotlib 3.11.2, seaborn 0.13.2, python-pptx 1.0.2, python-docx 1.2.0, openpyxl 3.1.5, in `_tools/venv` (not committed). Colab may run a newer pandas, so use only stable pandas 2.x calls. Deck commands, the `/opt/homebrew/bin` PATH requirement and the two patches to `render.py` are in `_tools/deck_check/RUNBOOK.txt`. Set `MPLCONFIGDIR` only when a deck draws a chart.
+Python 3.12 with pandas 2.3.3, matplotlib 3.11.2, seaborn 0.13.2, python-pptx 1.0.2, python-docx 1.2.0, openpyxl 3.1.5, in a local venv built from `tools/requirements.txt` (not committed, kept outside the repo). Colab may run a newer pandas, so use only stable pandas 2.x calls. Deck commands, the `/opt/homebrew/bin` PATH requirement and the two patches to `render.py` are in `tools/3_slides/RUNBOOK.txt`. Set `MPLCONFIGDIR` only when a deck draws a chart.

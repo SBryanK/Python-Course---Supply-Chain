@@ -1,15 +1,15 @@
 """Re-check every number the Phase 1 docs claim against the real data.
 
-Run after _tools/convert_sheets.py and any change to the docs or the slice.
-Writes _tools/fact_check_results.json and prints PASS/FAIL.
+Run after tools/1_data/convert_sheets.py and any change to the docs or the slice.
+Writes tools/1_data/fact_check_results.json and prints PASS/FAIL.
 """
 import json
 from pathlib import Path
 
 import pandas as pd
 
-ROOT = Path(__file__).resolve().parent.parent
-OUT = ROOT / "_tools" / "fact_check_results.json"
+ROOT = Path(__file__).resolve().parents[2]
+OUT = ROOT / "tools" / "1_data" / "fact_check_results.json"
 
 dtypes = {"Invoice": str, "StockCode": str, "Description": str, "Customer ID": float}
 s1 = pd.read_csv(ROOT / "data/work/sheet_2009_2010.csv", dtype=dtypes, parse_dates=["InvoiceDate"])

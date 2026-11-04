@@ -6,7 +6,7 @@ import deckkit as k
 
 ROOT = Path(__file__).resolve().parents[2]
 OUT = ROOT / "sessions" / "s05_star_products" / "deck.pptx"
-DATA = json.loads((ROOT / "_tools" / "deck_builds" / "deck_data.json").read_text())
+DATA = json.loads((ROOT / "tools" / "3_slides" / "deck_data.json").read_text())
 
 
 def draw_abc(deck, slide, x, y, w, h):

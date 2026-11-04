@@ -8,50 +8,26 @@ __pycache__/
 venv/
 .venv/
 
-# Local Python environment and package caches (rebuild with uv, see PLAN.md)
-_tools/venv/
-_tools/uv-cache/
-_tools/pythons/
-_tools/mplconfig/
-_tools/cache/
-
-# Full CSV conversions and the slice working copy (raw data stays local)
+# Temporary CSV conversions of the raw file (rebuild with tools/1_data/convert_sheets.py)
 data/work/
 
 # Raw dataset: 43.5 MiB, does not change, restore with data/raw/README.md
 data/raw/*
 !data/raw/README.md
 
-# Deck toolchain test output (keep only the runbook)
-_tools/deck_check/*
-!_tools/deck_check/RUNBOOK.txt
+# Build output that is not a deliverable
+**/*_render/
+**/page-*.png
+**/sheet_*.png
 **/lo_profile/
+tools/1_data/fact_check_results.json
 
-# Third-party skill assets for NUS decks, not used by this course (private course, no NUS branding)
-_tools/ppt_maker/ppt-maker/assets/logos/
-_tools/ppt_maker/ppt-maker/assets/images/
-
-# Verification scratch: keep the report, the tables and the scripts
-_verify/raw_sheets.pkl
-_verify/results.txt
-_verify/run.log
-_verify/verify2.log
-_verify/message.txt
-
-# Generated deck renders (the PDF and PPTX are the deliverables)
-sessions/**/*_render/
-sessions/**/page-*.png
-sessions/**/sheet_*.png
-data/**/*_render/
-course_home/*_render/
-
-# Internal review scratch (not part of the course build)
-_review/
-_verify/lead_claims_check.*
+# Third-party skill assets not used by this course
+tools/3_slides/ppt_maker/ppt-maker/assets/logos/
+tools/3_slides/ppt_maker/ppt-maker/assets/images/
 
 # Teacher-only files: solutions, answer keys, review, tracker with learner scores (repo is public)
 teacher_only/
-_tools/fact_check_results.json
 
-# Learner-only Drive folder assembled by _tools/assemble_drive.py
+# Learner-only Drive folder, made by tools/5_drive/assemble_drive.py
 drive_package/

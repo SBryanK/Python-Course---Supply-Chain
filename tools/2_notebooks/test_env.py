@@ -1,7 +1,7 @@
 """Run the saved notebooks (student and solution) in the current Python environment.
 
 Use it in a fresh venv with a chosen pandas version, to see if the course still runs there.
-Run:  <python> _tools/notebooks/test_env.py [work_dir]
+Run:  <python> tools/2_notebooks/test_env.py [work_dir]
 """
 import sys
 from pathlib import Path

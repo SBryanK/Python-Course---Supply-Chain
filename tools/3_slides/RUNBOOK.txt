@@ -1,0 +1,33 @@
+Slides: how to build, render and check the decks
+Run every command from the repo root, with the venv from tools/requirements.txt active.
+
+SETUP
+  export PATH="/opt/homebrew/bin:$PATH"            # soffice, pdftoppm, pdffonts
+  export MPLCONFIGDIR="${TMPDIR:-/tmp}/mplconfig"  # only for decks that draw charts (S5, S6)
+
+BUILD
+  One deck:    python tools/3_slides/s01_deck.py       -> sessions/s01_hello_python/deck.pptx
+  All decks:   for s in tools/3_slides/s*_deck.py; do python "$s"; done
+  Template:    python tools/3_slides/presentation_template.py   -> course_home/presentation_template.pptx
+
+RENDER (PDF with the real fonts, plus page images and a contact sheet)
+  python tools/3_slides/ppt_maker/ppt-maker/scripts/render.py sessions/s01_hello_python/deck.pptx --dpi 80
+  The page images go to a *_render/ folder next to the deck. It is gitignored.
+
+CHECK
+  python tools/3_slides/check_decks.py      # audit + word counts + Bahasa notes, all 11 decks
+  Then look at every slide image in the contact sheet.
+
+LOOK (do not change)
+  Theme L:soft, live format, left aligned, regular tone, no logo, no photos.
+  Body font Proxima Nova, code font DejaVu Sans Mono (tools/3_slides/fonts). Speaker notes in Bahasa.
+
+PATCHES IN OUR COPY OF render.py (keep them)
+  a) The LibreOffice profile lives in the system temp folder, not ~/.cache.
+     Override with PPT_MAKER_PROFILE if needed.
+  b) The profile URL uses PROFILE.as_uri(), because the repo path has spaces and
+     soffice crashes on a raw file:// URL with spaces.
+  c) FONT_DIRS looks first in tools/3_slides/fonts, so PDFs embed DejaVu Sans Mono.
+
+Always make the PDF with render.py, not the --pdf option of new_deck.py: render.py
+also checks for font substitution.

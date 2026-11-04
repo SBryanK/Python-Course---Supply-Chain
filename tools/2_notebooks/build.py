@@ -6,7 +6,7 @@ For every session it writes
 then runs both in a fresh kernel. Drive cells are swapped for local paths during the
 test run only; the saved files keep the Drive cells.
 
-Run:  _tools/venv/bin/python _tools/notebooks/build.py [s01 s02 ...]
+Run:  python tools/2_notebooks/build.py [s01 s02 ...]
 """
 import copy
 import importlib

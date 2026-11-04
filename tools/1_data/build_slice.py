@@ -4,13 +4,13 @@ Reads the untouched raw workbook, keeps every row of the `Year 2010-2011`
 sheet from 2010-12-01 00:00 up to but not including 2011-03-01 00:00,
 and writes the uncleaned CSV the course uses.
 
-Run:  _tools/venv/bin/python _tools/build_slice.py
+Run:  python tools/1_data/build_slice.py
 """
 from pathlib import Path
 
 import pandas as pd
 
-ROOT = Path(__file__).resolve().parent.parent
+ROOT = Path(__file__).resolve().parents[2]
 RAW = ROOT / "data" / "raw" / "online_retail_II.xlsx"
 OUT = ROOT / "data" / "online_retail_ii_lesson.csv"
 SHEET = "Year 2010-2011"

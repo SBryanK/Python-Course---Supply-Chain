@@ -6,7 +6,7 @@ exclamation marks, no em dashes, a speaker header and Bahasa Indonesia notes on
 every slide, a title on every content slide, a Now in Colab slide where the plan
 asks for one, and the audit.py warning count.
 
-Run:  _tools/venv/bin/python _tools/check_decks.py
+Run:  python tools/3_slides/check_decks.py
 """
 import re
 import subprocess
@@ -15,8 +15,8 @@ from pathlib import Path
 
 from pptx import Presentation
 
-ROOT = Path(__file__).resolve().parent.parent
-AUDIT = ROOT / "_tools" / "ppt_maker" / "ppt-maker" / "scripts" / "audit.py"
+ROOT = Path(__file__).resolve().parents[2]
+AUDIT = ROOT / "tools" / "3_slides" / "ppt_maker" / "ppt-maker" / "scripts" / "audit.py"
 FONTS = {"Proxima Nova", "DejaVu Sans Mono"}
 BANNED = ["delve", "leverage", "seamless", "journey"]
 NAMES = ["michella", "natalia", "bryan"]

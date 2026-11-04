@@ -6,7 +6,7 @@ A session file defines SESSION (dict) with:
   cells    list made with md(), code(), exercise(), zoo()
   expect   strings that must appear in the executed solution output
 
-Run:  _tools/venv/bin/python _tools/notebooks/build.py [s01 s02 ...]
+Run:  python tools/2_notebooks/build.py [s01 s02 ...]
 """
 import nbformat as nbf
 

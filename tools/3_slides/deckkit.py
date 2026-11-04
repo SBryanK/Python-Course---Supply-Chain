@@ -1,7 +1,7 @@
 """Shared deck kit for the Python for Supply Chain course decks.
 
 One theme for every deck: L (Maritime blue), soft tone, left aligned, live format,
-no logo, no photos. Code is set in DejaVu Sans Mono (shipped in _tools/fonts).
+no logo, no photos. Code is set in DejaVu Sans Mono (shipped in tools/3_slides/fonts).
 
 Slide helpers keep every deck on the same grid:
   cover, question, concept, code_slide, code_compare, errors_slide,
@@ -14,7 +14,7 @@ from pathlib import Path
 from pptx.util import Inches, Pt
 
 ROOT = Path(__file__).resolve().parents[2]
-SKILL = ROOT / "_tools" / "ppt_maker" / "ppt-maker"
+SKILL = ROOT / "tools" / "3_slides" / "ppt_maker" / "ppt-maker"
 sys.path.insert(0, str(SKILL / "scripts"))
 
 from pptkit import Deck, M, CW, FOOT_Y, rgb  # noqa: E402

@@ -1,6 +1,6 @@
 """Build handout.pdf, recall.md, exit_ticket.md and teacher_card.md for every session.
 
-Run:  _tools/venv/bin/python _tools/materials/build_materials.py
+Run:  python tools/4_handouts_and_docs/build_materials.py
 Needs soffice (LibreOffice) on PATH for the handout PDFs.
 """
 import re

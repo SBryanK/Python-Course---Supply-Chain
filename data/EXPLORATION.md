@@ -2,7 +2,7 @@
 
 Data report for Python for Supply Chain. Written 2 Nov 2026 from the real UCI file. Every number below was computed by running pandas on the raw file, not typed from memory. The choices this report raised are settled in `PLAN.md` section 2.
 
-Verification: an independent audit recomputed the whole-file and slice numbers from the raw xlsx, and `_tools/fact_check.py` checks 155 values against the data as a regression test. It does not read this prose; a typo in a sentence still needs a human read. Two review rounds found and fixed five stale figures (non-product row totals, slice non-product rows, missing descriptions count, a clean-table customer count and one alternative-window row count). The numbers in this file are the corrected ones.
+Verification: an independent audit recomputed the whole-file and slice numbers from the raw xlsx, and `tools/1_data/fact_check.py` checks 155 values against the data as a regression test. It does not read this prose; a typo in a sentence still needs a human read. Two review rounds found and fixed five stale figures (non-product row totals, slice non-product rows, missing descriptions count, a clean-table customer count and one alternative-window row count). The numbers in this file are the corrected ones.
 
 ## 1. Source and files
 
@@ -410,8 +410,8 @@ These are verified and safe to reuse. All money is GBP.
 
 The raw file is untouched. The analysis used Python 3.12.13 with pandas 2.3.3, matplotlib 3.11.2, seaborn 0.13.2, openpyxl 3.1.5. Internal scripts (not delivered):
 
-- `_tools/convert_sheets.py` converts the two xlsx sheets to CSV in `data/work/`.
-- `_tools/fact_check.py` checks 155 values against the data. Run it after any data or doc change. It reads the CSV conversions in `data/work/`, so run `convert_sheets.py` first if they are missing.
+- `tools/1_data/convert_sheets.py` converts the two xlsx sheets to CSV in `data/work/`.
+- `tools/1_data/fact_check.py` checks 155 values against the data. Run it after any data or doc change. It reads the CSV conversions in `data/work/`, so run `convert_sheets.py` first if they are missing.
 
 ## 15. Decisions taken
 

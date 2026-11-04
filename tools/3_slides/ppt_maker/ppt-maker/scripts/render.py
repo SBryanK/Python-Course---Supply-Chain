@@ -15,6 +15,7 @@ substituted (from pdffonts).
 import argparse
 import glob
 import os
+import tempfile
 import shutil
 import subprocess
 import sys
@@ -35,7 +36,7 @@ FONT_DIRS = [
 ]
 # The default ~/.cache profile is blocked in this workspace-write sandbox, so the
 # profile lives inside the project unless PPT_MAKER_PROFILE says otherwise.
-_DEFAULT_PROFILE = Path(__file__).resolve().parents[3] / "deck_check" / "lo_profile"
+_DEFAULT_PROFILE = Path(tempfile.gettempdir()) / "ppt_maker_lo_profile"
 PROFILE = Path(os.environ.get("PPT_MAKER_PROFILE") or _DEFAULT_PROFILE).expanduser().resolve()
 
 

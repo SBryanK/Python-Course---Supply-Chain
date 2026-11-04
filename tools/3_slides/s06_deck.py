@@ -6,7 +6,7 @@ import deckkit as k
 
 ROOT = Path(__file__).resolve().parents[2]
 OUT = ROOT / "sessions" / "s06_numbers_talk" / "deck.pptx"
-DATA = json.loads((ROOT / "_tools" / "deck_builds" / "deck_data.json").read_text())
+DATA = json.loads((ROOT / "tools" / "3_slides" / "deck_data.json").read_text())
 MONTHS = {"01": "Jan", "02": "Feb", "03": "Mar", "04": "Apr", "05": "May", "06": "Jun",
           "07": "Jul", "08": "Aug", "09": "Sep", "10": "Oct", "11": "Nov", "12": "Dec"}
 

@@ -1,6 +1,6 @@
-"""Build course_outline.docx/.pdf, course_home.docx, ANSWER_KEY.md, teacher_guide.md, PUSH_LIST.md, data/README.md.
+"""Build course_outline.docx/.pdf, course_home.docx, ANSWER_KEY.md, teacher_guide.md, data/README.md.
 
-Run:  _tools/venv/bin/python _tools/materials/build_course_docs.py
+Run:  python tools/4_handouts_and_docs/build_course_docs.py
 """
 import shutil
 import subprocess
@@ -184,19 +184,6 @@ Cek 10 menit sebelum 16 Nov: dia membuka link Colab, menjalankan `print("hello")
 """
     (ROOT / "teacher_only" / "teacher_guide.md").write_text(G)
 
-    # Push list
-    P = ["# Push list: what goes to Google Drive, and when", "",
-         "Folder: `Python for Supply Chain/`. Upload by the day **before** the session. Never upload anything from `teacher_only/`, `_tools/` or `data/raw/`.", "",
-         "| By | What | Drive folder |", "|---|---|---|",
-         "| 14 Nov | course outline (pdf), course home (docx), glossary, templates and guides | 00_course_home |",
-         "| 14 Nov | `online_retail_ii_lesson.csv` | data |",
-         "| 14 Nov | empty `work` folder | work |"]
-    dates = {1: "15 Nov", 2: "17 Nov", 3: "22 Nov", 4: "25 Nov", 5: "29 Nov", 6: "2 Dec", 7: "6 Dec", 8: "9 Dec", 9: "13 Dec", 10: "16 Dec"}
-    wk = {1: "week_1", 2: "week_1", 3: "week_2", 4: "week_2", 5: "week_3", 6: "week_3", 7: "week_4", 8: "week_4", 9: "week_4", 10: "week_4"}
-    for S in ALL:
-        P.append(f"| {dates[S['no']]} | Session {S['no']}: notebook (`student.ipynb`, saved in Drive as `s{S['no']}_...ipynb`, the name on the slide), `deck.pdf`, `handout.pdf`, `recall.md` (from `sessions/{S['folder']}/`) | {wk[S['no']]} |")
-    P += ["", "Also by 7 Dec: `presentation_template.pptx`. Keep `deck.pptx` files, solutions, teacher cards and exit tickets in `teacher_only/` (not shared)."]
-    (ROOT / "PUSH_LIST.md").write_text("\n".join(P) + "\n")
 
     # Data README
     D = f"""# Lesson data
@@ -207,7 +194,7 @@ Cek 10 menit sebelum 16 Nov: dia membuka link Colab, menjalankan `print("hello")
 
 **What it is.** Transactions from a UK online gift shop. Prices are in pounds.
 
-**Slice rule.** Every row of the `Year 2010-2011` sheet with `InvoiceDate` from 2010-12-01 00:00 up to but not including 2011-03-01 00:00. Built by `_tools/build_slice.py`.
+**Slice rule.** Every row of the `Year 2010-2011` sheet with `InvoiceDate` from 2010-12-01 00:00 up to but not including 2011-03-01 00:00. Built by `tools/1_data/build_slice.py`.
 
 | Property | Value |
 |---|---|

@@ -6,7 +6,7 @@ from pathlib import Path
 
 import pandas as pd
 
-ROOT = Path(__file__).resolve().parent.parent
+ROOT = Path(__file__).resolve().parents[2]
 RAW = ROOT / "data" / "raw" / "online_retail_II.xlsx"
 WORK = ROOT / "data" / "work"
 WORK.mkdir(parents=True, exist_ok=True)

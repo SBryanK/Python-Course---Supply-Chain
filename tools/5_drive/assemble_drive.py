@@ -1,13 +1,13 @@
 """Assemble the learner-only Google Drive folder at drive_package/Python for Supply Chain/.
 
-Copies only what Michella may see (see PUSH_LIST.md). Never copies teacher_only/, _tools/ or raw data.
-Run:  _tools/venv/bin/python _tools/assemble_drive.py
-Then drag the folder into Google Drive, or upload the week folders by the dates in PUSH_LIST.md.
+Copies only what Michella may see (see PROGRESS.md). Never copies teacher_only/, tools/ or raw data.
+Run:  python tools/5_drive/assemble_drive.py
+Then drag the folder into Google Drive, or upload the week folders by the dates in PROGRESS.md.
 """
 import shutil
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parent.parent
+ROOT = Path(__file__).resolve().parents[2]
 OUT = ROOT / "drive_package" / "Python for Supply Chain"
 WEEK = {1: "week_1", 2: "week_1", 3: "week_2", 4: "week_2", 5: "week_3", 6: "week_3",
         7: "week_4", 8: "week_4", 9: "week_4", 10: "week_4"}

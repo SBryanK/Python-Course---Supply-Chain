@@ -6,7 +6,7 @@
 
 **What it is.** Transactions from a UK online gift shop. Prices are in pounds.
 
-**Slice rule.** Every row of the `Year 2010-2011` sheet with `InvoiceDate` from 2010-12-01 00:00 up to but not including 2011-03-01 00:00. Built by `_tools/build_slice.py`.
+**Slice rule.** Every row of the `Year 2010-2011` sheet with `InvoiceDate` from 2010-12-01 00:00 up to but not including 2011-03-01 00:00. Built by `tools/1_data/build_slice.py`.
 
 | Property | Value |
 |---|---|
