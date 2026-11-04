@@ -42,4 +42,6 @@ Each folder in `sessions/` has `student.ipynb`, `deck.pptx`, `deck.pdf`, `handou
 
 ## Checks last run (4 Nov 2026)
 
-Fact check 155/155. Notebooks 20/20 pass in a fresh environment. Decks 11/11 pass `check_decks.py`. Not yet opened in real Colab.
+All 10 sessions are in the lecture style: decks with one visual anchor per slide, lean notebooks with an exercise ladder and Expected values. Handouts, answer key and teacher cards now read their exercise lists from the notebooks (`tools/4_handouts_and_docs/exercises.py`), so they always match. Notebooks 10/10 pass `build.py`, decks 11/11 pass `check_decks.py` with 0 audit warnings, handouts are 1 or 2 pages, the Drive package is refreshed.
+
+Open: `fact_check.py` cannot run until `data/work/sheet_2009_2010.csv` is regenerated (`data/raw/README.md`). Recall questions and exit tickets are unchanged. Nothing is opened in real Colab yet.

@@ -18,7 +18,8 @@ from build_materials import FONT, para, heading, table, run_font  # noqa: E402
 from content_a import ALL_A  # noqa: E402
 from content_b import ALL_B  # noqa: E402
 
-ALL = ALL_A + ALL_B
+import exercises  # noqa: E402
+ALL = exercises.apply(ALL_A + ALL_B)
 CITE = ("Chen, D. (2012). Online Retail II [Dataset]. UCI Machine Learning Repository. "
         "https://doi.org/10.24432/C5CG6D. Licence: CC BY 4.0.")
 
@@ -137,7 +138,8 @@ def md_files():
          "| UK revenue by month (cold test) | Dec 705,166.72, Jan 468,651.61, Feb 417,876.17 |",
          "| Top 5 outside the UK | Netherlands 58,182.55, EIRE 43,426.19, Germany 37,365.63, France 32,392.39, Australia 24,678.48 |",
          "| Germany rows (clean) | (1514, 10) |", "| Merge check | 3,066 -> 3,107 -> 3,066 (41 extra rows, 40 codes with two names) |",
-         "| Best day | 2010-12-07, 81,454.99 |", "| Trading days | 68 |", "", "## Exercises by session", ""]
+         "| Best day | 2010-12-07, 81,454.99 |", "| Trading days | 68 |", "", "## Exercises by session", "",
+         "Read from the notebooks. For Predict and Fix it tasks, the answer is the output in `solution.ipynb`.", ""]
     for S in ALL:
         L.append(f"### Session {S['no']}: {S['title']}")
         for task, ans in S["exercises"]:

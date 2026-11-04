@@ -59,7 +59,7 @@ def errors(nb):
         for o in c.get("outputs", []):
             if o.output_type == "error":
                 tags = c.metadata.get("tags", [])
-                found.append((i, "error-on-purpose" in tags, o.ename))
+                found.append((i, "error-on-purpose" in tags or "exercise" in tags, o.ename))
     return found
 
 
@@ -109,15 +109,17 @@ def build_one(key):
     ran_sol = run(solution, key)
 
     report = [f"{key}: {n} cells"]
-    if n > 30:
-        report.append(f"  FAIL more than 30 cells ({n})")
+    if n > 50:
+        report.append(f"  FAIL more than 50 cells ({n})")
     for i, intended, ename in errors(ran_sol):
-        if not intended:
+        if not intended or ran_sol.cells[i].metadata.get("tags") == ["exercise"]:
             report.append(f"  FAIL solution error in cell {i}: {ename}")
     for i, intended, ename in errors(ran_stu):
         if not intended:
             report.append(f"  FAIL student error in cell {i}: {ename}")
     out = text_of(ran_sol)
+    if "Not yet" in out:
+        report.append(f"  FAIL a check() fails in the solution ({out.count('Not yet')}x)")
     for want in S.get("expect", []):
         if want not in out:
             report.append(f"  FAIL expected output missing: {want!r}")

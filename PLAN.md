@@ -153,8 +153,8 @@ Repo folders: `sessions/sNN_short_name/` for learner files, `teacher_only/sessio
 
 | File | For | Rules |
 |---|---|---|
-| `student.ipynb` | Her | Max 30 cells. A short text cell before every code cell. One idea per cell. Exercise cells start with `# TODO`, state the task in one comment line, and the text cell above shows the expected result |
-| `deck.pptx` + `deck.pdf` | Her (PDF), teacher (PPTX) | 6 to 10 slides, at most 10 minutes of class. Spec in section 7 |
+| `student.ipynb` | Her | The playground. Max 50 cells, lean text (one line per text cell). Exercises climb a ladder: Predict, Fill in (`____` blanks), Fix it, Write it, Case, then Extra for homework. Each task line ends with `Expected:` and the value. No `check()` helper |
+| `deck.pptx` + `deck.pdf` | Her (PDF), teacher (PPTX) | Lecture deck, 10 to 30 slides, the theory the teacher talks over. Spec in section 7 |
 | `handout.pdf` | Her | One page if possible, two at most, black and white. The concept table (daily life, Excel, limit), code patterns, 3 common errors with fixes, the exercise list with expected answers |
 | `recall.md` | Her | 3 short questions per day until the next session, one old topic and two new. Answers in a separate section at the end |
 | `solution.ipynb` | Teacher | Same notebook with answers, run top to bottom |
@@ -191,7 +191,8 @@ Teacher-only: `teacher_guide.md` (Bahasa Indonesia: hint ladder, feedback rules,
 Use the `ppt-maker` skill. Environment, patches and exact commands are in `tools/3_slides/RUNBOOK.txt`. Always make the PDF with the patched `render.py`, then run `audit.py` and look at every slide image.
 
 - Format `live`, theme `L:soft`, left aligned, regular tone. Same in every deck. No logo, no photos.
-- 6 to 10 slides. One idea per slide. A slide is a title that says the idea in plain words, one picture or analogy, the Excel bridge, 3 to 6 lines of code (monospace, Consolas or DejaVu Sans Mono), and the limit in one line. Body text stays in the theme font.
+- Lecture style (built with `deckkit.lecture_deck`), 10 to 30 slides. The teacher explains; the slide is only a reference. Each slide is a title, one visual anchor (tiles, chips, a flow, a code card, a native chart) and at most one short line. No section labels and no labelled callouts; a real bordered `box` only for the one warning that must not be missed. Layouts centred and varied. Code in DejaVu Sans Mono, body in the theme font.
+- Every deck: wavy route cover (today lit), Today, concept slides, a toolkit table, Now in Colab with the exercise ladder, and Thank you with the next session lit on the route. The copyright line sits beside the page number.
 - Slide text in English. **Speaker notes in Bahasa Indonesia** with English technical terms: what to say, the analogy in everyday words, the limit, and one question to ask her.
 - A "Now in Colab" slide where live coding starts, naming the notebook.
 - Every number comes from running the notebook. Never typed by hand.
@@ -568,7 +569,7 @@ Upload the day before each session: S1 by 15 Nov, S2 by 17 Nov, S3 by 22 Nov, S4
 1. Every notebook runs top to bottom in a fresh kernel with no error, and every output matches `ANSWER_KEY.md`.
 2. Every exercise uses only concepts taught so far. List any exception.
 3. She has something to do after every two concept cells.
-4. Caps: 30 cells, 2 pages per handout, 1 page per teacher card, 6 to 10 slides (10 minutes max).
+4. Caps: 50 cells, 2 pages per handout, 1 page per teacher card, 10 to 30 slides per lecture deck.
 5. Run `render.py` and `audit.py` and look at every slide.
 6. Read each learner file as a non-programmer who reads English as a second language. Shorten or replace any sentence that needs a second read.
 7. No em-dashes, emojis, exclamation marks, or the words delve, leverage, seamless, journey.

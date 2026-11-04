@@ -1,47 +1,37 @@
-from nbkit import md, code, exercise
+from nbkit import md, code, task
 
 cells = [
     md("""# Session 2: Shelves, cards and choices
 
-**Question for today:** which order lines are big?
+Which order lines are big? Our data records one line at a time, so "big" means one big line."""),
 
-Our data records one line at a time, so "a big order" here means one big line."""),
-
-    md("""## Warm-up (on paper)
-
-Before you run anything, write down what this prints:
-
-```python
-quantity = 12
-print(quantity)
-```"""),
-
-    md("""## Lists
-
-A **list** is a row of bins on one shelf. In Excel, it is one column of values.
-Python counts the bins from **0**, not 1. The first bin is number 0."""),
+    md("## Lists"),
     code('''quantities = [6, 6, 8, 6, 6, 2, 6]
 
 print(quantities[0])
-print(quantities[1])
 print(quantities[-1])'''),
+]
 
-    *exercise("Guess `quantities[2]` and `quantities[-1]` on paper. Then print both.",
-              "`8` and `6`",
-              "# TODO: print quantities[2] and quantities[-1]\n",
-              "print(quantities[2])\nprint(quantities[-1])"),
+cells += task("predict", "What is `quantities[2]`? And `quantities[5]`? Guess first.",
+              '''# My guess:
+print(quantities[2])
+print(quantities[5])''')
 
-    md("""## Count, total, smallest, largest
-
-Same ideas as `COUNT`, `SUM`, `MIN` and `MAX` in Excel. Only the spelling is new."""),
+cells += [
+    md("## Count, total, smallest, largest"),
     code('''print(len(quantities))
 print(sum(quantities))
 print(min(quantities), max(quantities))'''),
+]
 
-    md("""## Dictionaries
+cells += task("fill", "The average quantity is the total divided by the count. Expected: `5.71`",
+              '''average_quantity = round(____(quantities) / ____(quantities), 2)
+print(average_quantity)''',
+              '''average_quantity = round(sum(quantities) / len(quantities), 2)
+print(average_quantity)''')
 
-A **dictionary** is a product card: a field name and its value. In Excel, it is one row with headers.
-You look up a value by its **name**, not by its position."""),
+cells += [
+    md("## Dictionaries"),
     code('''order_line = {
     "stock_code": "85123A",
     "description": "WHITE HANGING HEART T-LIGHT HOLDER",
@@ -51,26 +41,24 @@ You look up a value by its **name**, not by its position."""),
 }
 
 print(order_line["quantity"])'''),
+]
 
-    *exercise("Print the price and the country from the card.",
-              "`2.55` and `United Kingdom`",
-              "# TODO: print the price and the country of order_line\n",
-              'print(order_line["price"])\nprint(order_line["country"])'),
+cells += task("fill", "The value of this line, from the card. Expected: `15.3`",
+              '''line_value = round(order_line[____] * order_line[____], 2)
+print(line_value)''',
+              '''line_value = round(order_line["quantity"] * order_line["price"], 2)
+print(line_value)''')
 
-    md("""## Comparisons
+cells += task("fix", "This asks for a position that does not exist. Fix it so it prints the last quantity, `6`.",
+              "print(quantities[7])",
+              "print(quantities[-1])")
 
-A comparison asks a question and answers `True` or `False`. In Excel: `=A2>10`.
-One `=` **stores** a value. Two `==` **ask** if two things are equal."""),
-    code('''print(6 > 10)
-print(6 == 6)
-print(order_line["country"] == "United Kingdom")'''),
+cells += task("fix", "This key is spelled wrong. Fix it so it prints `2.55`.",
+              'print(order_line["Price"])',
+              'print(order_line["price"])')
 
-    md("""## Decisions: if, elif, else
-
-An `if` rule is like a packing rule: check the first condition, then the next, else do the last thing.
-The indent (4 spaces) is part of the rule.
-
-The numbers 100 and 12 are **teaching numbers**, not business rules."""),
+cells += [
+    md("## Comparisons and if rules\n\nThe numbers 100 and 12 are teaching numbers, not business rules."),
     code('''quantity = order_line["quantity"]
 
 if quantity >= 100:
@@ -79,34 +67,91 @@ elif quantity >= 12:
     print("Medium order line")
 else:
     print("Small order line")'''),
-
-    *exercise("Set `quantity` to 12, then to 100. Guess each answer before you run it.",
-              "`Medium order line`, then `Big order line`",
-              "# TODO: copy the if rule, set quantity = 12, run it\n\n# TODO: now set quantity = 100 and run it again\n",
-              'quantity = 12\nif quantity >= 100:\n    print("Big order line")\nelif quantity >= 12:\n    print("Medium order line")\nelse:\n    print("Small order line")\n\nquantity = 100\nif quantity >= 100:\n    print("Big order line")\nelif quantity >= 12:\n    print("Medium order line")\nelse:\n    print("Small order line")'),
-
-    *exercise("Write a rule that prints `UK` if the country on the card is United Kingdom, and `Outside UK` if not. Then change the country to Germany and run it again.",
-              "`UK`, then `Outside UK`",
-              '# TODO: write the UK or Outside UK rule\n',
-              'if order_line["country"] == "United Kingdom":\n    print("UK")\nelse:\n    print("Outside UK")\n\norder_line["country"] = "Germany"\nif order_line["country"] == "United Kingdom":\n    print("UK")\nelse:\n    print("Outside UK")'),
-
-    md("""## Why does this happen? (optional)
-
-Python counts how many steps you are **from the start**. The first bin is 0 steps away, so it is number 0. The last bin is `-1` steps from the end.
-**For an analyst:** when someone says "the 3rd row", check if they count from 0 or from 1. This causes many off-by-one mistakes."""),
-
-    md("""## Recap
-
-You can now:
-1. Use a list and read items by position.
-2. Use a dictionary to look up a value by name.
-3. Write an if / elif / else rule.
-
-**Homework.** Add the quantities of rows 8 to 10 (from the Session 1 handout) to your list, and redo `len`, `sum`, `min`, `max`. Write one if rule about prices."""),
 ]
+
+cells += task("predict", "Set `quantity` to 12. Which line prints? Guess first.",
+              '''# My guess:
+quantity = 12
+
+if quantity >= 100:
+    print("Big order line")
+elif quantity >= 12:
+    print("Medium order line")
+else:
+    print("Small order line")''')
+
+cells += task("write", "Print `UK` if the card's country is United Kingdom, else `Outside UK`. Expected: `UK`",
+              "# Your rule here\n",
+              '''if order_line["country"] == "United Kingdom":
+    print("UK")
+else:
+    print("Outside UK")''')
+
+cells += task("write", "Add rows 8 to 10 to the list: 6, 6 and 6. Use `quantities + [...]`. Then print the new "
+              "length and total. Expected: `10` and `58`",
+              '''quantities = ____
+print(len(quantities))
+print(sum(quantities))''',
+              '''quantities = quantities + [6, 6, 6]
+print(len(quantities))
+print(sum(quantities))''')
+
+cells += task("write", "A price rule: print `Cheap` if the price is below 3, else `Not cheap`. Use the card. "
+              "Expected: `Cheap`",
+              "# Your price rule here\n",
+              '''if order_line["price"] < 3:
+    print("Cheap")
+else:
+    print("Not cheap")''')
+
+cells += task("case", "The warehouse packs a line in a big box when the quantity is 24 or more, else a small box. "
+              "Make a card for the line with code `22752` (SET 7 BABUSHKA NESTING BOXES, 2 units at 7.65), "
+              "and print which box it needs. Expected: `22752: small box`",
+              '''babushka = {
+    "stock_code": ____,
+    "quantity": ____,
+    "price": ____,
+}
+
+# Your box rule here
+
+# My sentence for the warehouse:''',
+              '''babushka = {
+    "stock_code": "22752",
+    "quantity": 2,
+    "price": 7.65,
+}
+
+if babushka["quantity"] >= 24:
+    print(f'{babushka["stock_code"]}: big box')
+else:
+    print(f'{babushka["stock_code"]}: small box')
+
+# My sentence for the warehouse: the babushka line has only 2 units, so a small box is enough.''')
+
+cells += [md("## Extra (homework)")]
+
+cells += task("extra", "Change the card's country to Germany, then run your UK rule again. Expected: `Outside UK`",
+              '''order_line["country"] = ____
+
+# Your UK rule again''',
+              '''order_line["country"] = "Germany"
+
+if order_line["country"] == "United Kingdom":
+    print("UK")
+else:
+    print("Outside UK")''')
+
+cells += task("extra", "How many different values are in the list? Use `set()`, which keeps each value once, "
+              "and `len`. Expected: `3`",
+              '''different = ____
+print(different)''',
+              '''different = len(set(quantities))
+print(different)''')
 
 SESSION = {
     "folder": "s02_shelves_cards_choices",
     "cells": cells,
-    "expect": ["7\n40\n2 8", "Small order line", "Medium order line", "Big order line", "UK", "Outside UK", "2.55", "United Kingdom"],
+    "expect": ["8\n2", "7\n40\n2 8", "5.71", "15.3", "2.55", "Small order line", "Medium order line", "UK", "10\n58",
+               "Cheap", "22752: small box", "Outside UK"],
 }

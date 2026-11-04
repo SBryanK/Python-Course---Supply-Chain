@@ -1,121 +1,128 @@
-from nbkit import md, code, exercise, zoo
+from nbkit import md, code, task
 
 cells = [
     md("""# Session 1: Hello, Python
 
-**Question for today:** what is one order line worth?
+What is one order line worth? An *order line* is one product on one receipt.
 
-An *order line* is one product on one receipt. We will use real lines from an online gift shop.
+Click a cell and press **Shift + Enter** to run it. Run the cells from the top."""),
 
-**How this notebook works.** Click a cell and press **Shift + Enter** to run it. Run the cells from the top, in order.
-If you see a `NameError`, run the cells above it again."""),
-
-    md("""## Print
-
-`print()` shows something on the screen. Python shows nothing unless you ask."""),
+    md("## Print"),
     code('''print("Hello, supply chain")
-print("My first line of Python")'''),
+print(6)'''),
 
-    md("""## Variables
-
-A **variable** is a label on a storage bin. You put a value in the bin and use the label to find it again.
-If you change the value, other cells do not update by themselves. Run them again."""),
+    md("## Variables"),
     code('''product_name = "WHITE HANGING HEART T-LIGHT HOLDER"
 quantity = 6
 unit_price = 2.55
 
 print(product_name)
+print(quantity)'''),
+]
+
+cells += task("predict", "What does this cell print? Guess first, then run it.",
+              '''# My guess:
+quantity = 7
 print(quantity)
-print(unit_price)'''),
+quantity = 6
+print(quantity)''')
 
-    *exercise("Change `quantity` to 7 and print it. Guess the result first. Then put it back to 6.",
-              "`7`, and then `quantity` is 6 again.",
-              "# TODO: set quantity to 7 and print it\n\n# TODO: set quantity back to 6\n",
-              "quantity = 7\nprint(quantity)\n\nquantity = 6"),
-
-    md("""## Multiply
-
-The value of a line is `quantity * unit_price`, like `=B2*C2` in Excel."""),
+cells += [
+    md("## Multiply and round"),
     code('''sales_value = quantity * unit_price
-print(sales_value)'''),
+print(sales_value)
+print(round(sales_value, 2))'''),
+]
 
-    md("""The long decimal is normal. A computer stores some decimals a little inexactly.
-So when you show money, **round it**: `round(value, 2)` keeps 2 decimals."""),
-    code("print(round(sales_value, 2))"),
+cells += task("fill", "The WHITE METAL LANTERN costs 3.39. Its line value, rounded to 2 decimals. Expected: `20.34`",
+              '''lantern_price = 3.39
+lantern_value = round(quantity * ____, ____)
+print(lantern_value)''',
+              '''lantern_price = 3.39
+lantern_value = round(quantity * lantern_price, 2)
+print(lantern_value)''')
 
-    *exercise("Change `unit_price` to 3.39. Guess the new value, then check it. Put the price back to 2.55 after.",
-              "`20.34`",
-              "# TODO: set unit_price to 3.39, then print the rounded sales value\n\n# TODO: put unit_price back to 2.55\n",
-              "unit_price = 3.39\nprint(round(quantity * unit_price, 2))\n\nunit_price = 2.55"),
-
-    md("""## Types
-
-Python keeps numbers and text apart.
-- `int`: a whole number, like boxes counted
-- `float`: a number with decimals, like a price
-- `str`: text, like a product name
-
-`"5"` in quotes is text. Python will not add text to a number."""),
+cells += [
+    md("## Types"),
     code('''print(type(quantity))
 print(type(unit_price))
-print(type(product_name))
-
-print(5 + 5)
-print("5" + "5")'''),
-
-    md("""## f-strings
-
-An **f-string** is a fill-in-the-blank label. Put an `f` before the quote and write the variable names inside `{ }`.
-It is easy to forget the `f`."""),
-    code('''print(f"We sold {quantity} units of {product_name} for {round(sales_value, 2)} pounds.")'''),
-
-    *exercise("Compute the value of two more real lines: WHITE METAL LANTERN (6 units at 3.39) and CREAM CUPID HEARTS COAT HANGER (8 units at 2.75).",
-              "`20.34` and `22.0`",
-              "# TODO: print the value of 6 units at 3.39\n\n# TODO: print the value of 8 units at 2.75\n",
-              "print(round(6 * 3.39, 2))\nprint(round(8 * 2.75, 2))"),
-
-    *exercise("Write one sentence about the first line with an f-string. Use the variables, not typed numbers.",
-              "Something like: `WHITE HANGING HEART T-LIGHT HOLDER: 6 units at 2.55 pounds each = 15.3 pounds`",
-              "# TODO: print one f-string sentence about the first order line\n",
-              'print(f"{product_name}: {quantity} units at {unit_price} pounds each = {round(sales_value, 2)} pounds")'),
-
-    md("""## Errors
-
-Errors are normal. Even analysts see them every day. **Read the last line first.** It names the error.
-
-| Error | What it means |
-|---|---|
-| `NameError` | Python does not know this name (often a typo) |
-| `SyntaxError` | A bracket or quote is missing |
-| `TypeError` | You mixed things that do not mix, like text and a number |
-
-Predict the error type, run each cell, and read the last line."""),
-    zoo('print(quantiy)', 'print(quantity)   # fixed: the name is quantity'),
-    zoo('print("hello"', 'print("hello")   # fixed: the bracket is closed'),
-    zoo('print("5" + 5)', 'print(int("5") + 5)   # fixed: turn the text into a number first'),
-
-    md("""**Your turn.** Fix the three cells above so each one runs without an error. Change the code in place, then run it again.
-
-*Expected:* the three cells print `6`, `hello` and `10`."""),
-
-    md("""## Why does this happen? (optional)
-
-A computer keeps numbers in binary. Some decimals, like 2.55, cannot be stored exactly, just as 1/3 cannot be written exactly in decimals.
-The error is tiny, but it shows up when you print. **For an analyst:** calculate with the full value and round only when you show the result."""),
-
-    md("""## Recap
-
-You can now:
-1. Print a value and keep it in a variable.
-2. Tell numbers from text, and multiply and round.
-3. Write a sentence with an f-string and read an error.
-
-**Homework.** Finish the Your turn cells. Make the three errors on purpose at home. Write one f-string about rows 8 to 10 on the handout.
-**Before the lesson:** use a Google account, Chrome or Edge, a charger and a headset. Check you can open the Drive folder."""),
+print(type(product_name))'''),
 ]
+
+cells += task("predict", "Numbers add up. What does text do? Guess both lines first.",
+              '''# My guess:
+print(5 + 5)
+print("5" + "5")''')
+
+cells += [
+    md("## f-strings"),
+    code('''print(f"We sold {quantity} units for {round(sales_value, 2)} pounds")'''),
+
+    md("## Errors\n\nRead the last line of an error first. It names the error."),
+]
+
+cells += task("fix", "A typo. Fix it so it prints `6`.",
+              "print(quantiy)",
+              "print(quantity)")
+
+cells += task("fix", "Something is missing. Fix it so it prints `hello`.",
+              'print("hello"',
+              'print("hello")')
+
+cells += task("fix", "Text plus a number. Fix it so it prints `10`.",
+              'print("5" + 5)',
+              'print(int("5") + 5)')
+
+cells += task("write", "CREAM CUPID HEARTS COAT HANGER: 8 units at 2.75. Save the line value in `hanger_value`. "
+              "Expected: `22.0`",
+              '''hanger_value = ____
+print(hanger_value)''',
+              '''hanger_value = round(8 * 2.75, 2)
+print(hanger_value)''')
+
+cells += task("write", "One sentence about the first line, with an f-string. Use the variables, not typed numbers. "
+              "Expected: `WHITE HANGING HEART T-LIGHT HOLDER: 6 units = 15.3 pounds`",
+              '''# Your f-string here
+''',
+              '''print(f"{product_name}: {quantity} units = {round(sales_value, 2)} pounds")''')
+
+cells += task("write", "The price goes up to 2.95. Change `unit_price`, then compute `sales_value` again. "
+              "Expected: `17.7`",
+              '''unit_price = ____
+sales_value = ____
+print(round(sales_value, 2))''',
+              '''unit_price = 2.95
+sales_value = quantity * unit_price
+print(round(sales_value, 2))''')
+
+cells += task("case", "Invoice 536365 starts with the three lines above: the T-light holder (6 at 2.55), the lantern "
+              "(6 at 3.39) and the coat hanger (8 at 2.75). What are these three lines worth together? "
+              "Print one sentence. Expected: `The first three lines are worth 57.64 pounds`",
+              '''invoice_value = ____
+print(f"The first three lines are worth {____} pounds")
+
+# My sentence for the manager:''',
+              '''invoice_value = 6 * 2.55 + 6 * 3.39 + 8 * 2.75
+print(f"The first three lines are worth {round(invoice_value, 2)} pounds")
+
+# My sentence for the manager: the first three lines of invoice 536365 bring about 58 pounds.''')
+
+cells += [md("## Extra (homework)")]
+
+cells += task("extra", "SET 7 BABUSHKA NESTING BOXES: 2 units at 7.65. Expected: `15.3`",
+              '''boxes_value = ____
+print(boxes_value)''',
+              '''boxes_value = round(2 * 7.65, 2)
+print(boxes_value)''')
+
+cells += task("extra", "Make all three errors on purpose in this cell, one at a time, and read the last line each time.",
+              "# Try a NameError, a SyntaxError and a TypeError here\n",
+              "# A NameError: print(quantiy)\n# A SyntaxError: print(\"hello\"\n# A TypeError: print(\"5\" + 5)")
 
 SESSION = {
     "folder": "s01_hello_python",
     "cells": cells,
-    "expect": ["15.299999999999999", "15.3", "20.34", "22.0", "<class 'int'>", "<class 'float'>", "<class 'str'>", "55", "10"],
+    "expect": ["Hello, supply chain", "15.299999999999999", "15.3", "20.34", "<class 'float'>", "55", "hello", "22.0",
+               "WHITE HANGING HEART T-LIGHT HOLDER: 6 units = 15.3 pounds", "17.7",
+               "The first three lines are worth 57.64 pounds"],
 }

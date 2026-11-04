@@ -20,7 +20,7 @@ from pptx.util import Emu
 
 FLOOR = {"video": 12, "live": 14, "read": 10}
 MAX_WORDS = {"video": 70, "live": 45, "read": 170}
-SKIP_NAMES = {"source", "page_no", "speaker_tag", "preview_label"}
+SKIP_NAMES = {"source", "page_no", "speaker_tag", "preview_label", "copyright"}
 FILLER = ["delve", "leverage", "seamless", "unlock", "game-changer", "cutting-edge", "tapestry", "journey",
           "in conclusion", "it is important to note", "let's dive", "dive into", "robust and", "empower",
           "holistic", "synergy", "in today's", "ever-evolving", "embark", "revolutionize"]

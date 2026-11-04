@@ -24,10 +24,11 @@ sys.path.insert(0, str(HERE))
 from content_a import ALL_A  # noqa: E402
 from content_b import ALL_B  # noqa: E402
 from scoring import SCORING  # noqa: E402
+import exercises  # noqa: E402
 
 FONT = "Arial"
 MONO = "Courier New"
-ALL = ALL_A + ALL_B
+ALL = exercises.apply(ALL_A + ALL_B)
 
 
 def set_cell_borders(cell):
@@ -200,7 +201,9 @@ def make_card(S, path):
     L += ["", f"**Tangga petunjuk untuk {c['tangga_untuk']}** (diam 10 detik sebelum tiap langkah)"]
     for i, x in enumerate(c["tangga"], 1):
         L.append(f"{i}. {x}")
-    L += ["", f"**Waktu:** {c['waktu']}"]
+    L += ["", f"**Waktu:** {c['waktu']}",
+          "", "**Notebook:** tangga latihan Predict, Fill in, Fix it, Write it, Case. Tugas Extra untuk PR. "
+          "Jawaban lengkap ada di solution.ipynb dan ANSWER_KEY.md."]
     path.write_text("\n".join(L) + "\n")
 
 

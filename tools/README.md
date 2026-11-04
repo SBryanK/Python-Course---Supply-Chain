@@ -27,5 +27,5 @@ Run every script from the repo root, for example `python tools/2_notebooks/build
 - **1_data.** The raw file must be restored first (`data/raw/README.md`). Run `convert_sheets.py`, then `build_slice.py`, then `fact_check.py`. It must end with `155/155 checks passed, 0 failed`. The CSV conversions in `data/work/` are temporary and can be deleted after.
 - **2_notebooks.** `sessions_sNN.py` holds the cells for one session. `build.py` writes the student and solution notebooks and runs both. `test_env.py` runs every saved notebook again in the current Python.
 - **3_slides.** Read `RUNBOOK.txt` before you build or render. `deckkit.py` has the shared slide types, and `deck_data.json` has the real numbers for the charts. `ppt_maker/` is a patched copy of the ppt-maker skill.
-- **4_handouts_and_docs.** The text lives in `content_a.py` (S1 to S5) and `content_b.py` (S6 to S10).
+- **4_handouts_and_docs.** The text lives in `content_a.py` (S1 to S5) and `content_b.py` (S6 to S10). The exercise tables in the handouts and `ANSWER_KEY.md` come from the notebooks through `exercises.py`.
 - **5_drive.** It copies only learner files and renames each notebook to the name on its slide.

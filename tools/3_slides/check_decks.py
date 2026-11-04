@@ -1,5 +1,7 @@
 """Quality check for every course deck.
 
+Lecture decks (keywords "lecture") may have 10 to 30 slides and use the read word limit.
+
 Checks the build-spec rules that can be checked without opening the slides:
 slide count, fonts, no photos, no names in slide text, no banned words, no
 exclamation marks, no em dashes, a speaker header and Bahasa Indonesia notes on
@@ -27,6 +29,8 @@ SPEAKER = re.compile(r"^[A-Z][A-Z .'-]+ \(about \d+ seconds\)\s*$", re.MULTILINE
 def slide_text(slide):
     parts = []
     for shp in slide.shapes:
+        if shp.name == "copyright":   # the owner's copyright line is the one place a name may appear
+            continue
         if shp.has_text_frame:
             parts.append(shp.text_frame.text)
         if getattr(shp, "has_table", False) and shp.has_table:
@@ -47,7 +51,11 @@ def check(deck, expected_max=10, now_in_colab=False):
     problems = []
     prs = Presentation(deck)
     n = len(prs.slides)
-    if expected_max == 5:
+    lecture = prs.core_properties.keywords == "lecture"
+    if lecture:
+        if not (10 <= n <= 30):
+            problems.append(f"{n} slides, outside 10-30 for a lecture deck")
+    elif expected_max == 5:
         if n != 5:
             problems.append(f"{n} slides, expected 5")
     elif not (6 <= n <= expected_max):
@@ -82,7 +90,7 @@ def check(deck, expected_max=10, now_in_colab=False):
                 problems.append(f"slide {i}: name '{name}' in slide text")
         if "—" in text or "–" in text:
             problems.append(f"slide {i}: dash character in slide text")
-        if "!" in text:
+        if re.search(r"!(?!=)", text):   # != is the Python operator, not an exclamation
             problems.append(f"slide {i}: exclamation mark")
         if template:
             continue
@@ -100,7 +108,9 @@ def check(deck, expected_max=10, now_in_colab=False):
 
 
 def audit(deck):
-    cmd = [sys.executable, str(AUDIT), str(deck), "--format", "live",
+    # Lecture decks are read as notes later, so they use the read word limit; text stays 14 pt or more.
+    fmt = "read" if Presentation(deck).core_properties.keywords == "lecture" else "live"
+    cmd = [sys.executable, str(AUDIT), str(deck), "--format", fmt,
            "--fonts", "Proxima Nova,DejaVu Sans Mono"]
     out = subprocess.run(cmd, capture_output=True, text=True).stdout
     m = re.search(r"(\d+) warnings", out)

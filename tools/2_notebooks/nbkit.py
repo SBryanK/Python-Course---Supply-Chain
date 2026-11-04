@@ -3,7 +3,7 @@
 A session file defines SESSION (dict) with:
   folder   session folder name under sessions/
   title    notebook title
-  cells    list made with md(), code(), exercise(), zoo()
+  cells    list made with md(), code(), task(), blank()
   expect   strings that must appear in the executed solution output
 
 Run:  python tools/2_notebooks/build.py [s01 s02 ...]
@@ -24,15 +24,20 @@ def code(text, tag=None):
     return {"kind": "code", "student": text.strip(), "solution": text.strip(), "tag": tag}
 
 
-def exercise(task, expected, student, solution, tag=None):
-    """A text cell with the task and the expected result, then a TODO code cell."""
-    text = f"**Your turn.** {task}\n\n*Expected:* {expected}"
-    return [md(text), {"kind": "code", "student": student.strip(), "solution": solution.strip(), "tag": tag}]
+LABELS = {"predict": "Predict", "fill": "Fill in", "fix": "Fix it", "write": "Write it", "case": "Case",
+          "extra": "Extra"}
 
 
-def zoo(student, solution):
-    """A cell that fails on purpose for her; the teacher notebook has it fixed."""
-    return {"kind": "code", "student": student.strip(), "solution": solution.strip(), "tag": "error-on-purpose"}
+def task(kind, text, student, solution=None):
+    """One rung of the exercise ladder: a labelled task, then its code cell.
+
+    predict: the same code for both, she guesses first. fix: fails on purpose for her.
+    fill, write, case, extra: her cell has blanks (____) and may fail until she fills them.
+    """
+    tag = {"predict": None, "fix": "error-on-purpose"}.get(kind, "exercise")
+    sol = student if solution is None else solution
+    return [md(f"**{LABELS[kind]}.** {text}"),
+            {"kind": "code", "student": student.strip(), "solution": sol.strip(), "tag": tag}]
 
 
 def flatten(cells):
