@@ -194,7 +194,7 @@ Cek 10 menit sebelum 16 Nov: dia membuka link Colab, menjalankan `print("hello")
     dates = {1: "15 Nov", 2: "17 Nov", 3: "22 Nov", 4: "25 Nov", 5: "29 Nov", 6: "2 Dec", 7: "6 Dec", 8: "9 Dec", 9: "13 Dec", 10: "16 Dec"}
     wk = {1: "week_1", 2: "week_1", 3: "week_2", 4: "week_2", 5: "week_3", 6: "week_3", 7: "week_4", 8: "week_4", 9: "week_4", 10: "week_4"}
     for S in ALL:
-        P.append(f"| {dates[S['no']]} | Session {S['no']}: `student.ipynb`, `deck.pdf`, `handout.pdf`, `recall.md` (from `sessions/{S['folder']}/`) | {wk[S['no']]} |")
+        P.append(f"| {dates[S['no']]} | Session {S['no']}: notebook (`student.ipynb`, saved in Drive as `s{S['no']}_...ipynb`, the name on the slide), `deck.pdf`, `handout.pdf`, `recall.md` (from `sessions/{S['folder']}/`) | {wk[S['no']]} |")
     P += ["", "Also by 7 Dec: `presentation_template.pptx`. Keep `deck.pptx` files, solutions, teacher cards and exit tickets in `teacher_only/` (not shared)."]
     (ROOT / "PUSH_LIST.md").write_text("\n".join(P) + "\n")
 

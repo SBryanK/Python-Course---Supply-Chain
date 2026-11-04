@@ -26,10 +26,15 @@ for name in ["course_outline.pdf", "course_home.docx", "glossary.md", "case_hunt
              "intro_powerbi.md", "github_guide.md", "presentation_template.pptx"]:
     shutil.copy(ROOT / "course_home" / name, home)
 
+# Notebook names exactly as the slides say them.
+NB = {1: "s1_hello_python", 2: "s2_shelves_cards", 3: "s3_let_loop_walk", 4: "s4_cleaning_day", 5: "s5_star_products",
+      6: "s6_numbers_talk", 7: "s7_new_tools", 8: "s8_detective_work", 9: "s9_polish_publish", 10: "s10_showtime"}
+
 for s in sorted((ROOT / "sessions").iterdir()):
     n = int(s.name[1:3])
     dst = OUT / WEEK[n] / s.name
     dst.mkdir(parents=True, exist_ok=True)
-    for f in ["student.ipynb", "deck.pdf", "handout.pdf", "recall.md"]:
+    shutil.copy(s / "student.ipynb", dst / f"{NB[n]}.ipynb")
+    for f in ["deck.pdf", "handout.pdf", "recall.md"]:
         shutil.copy(s / f, dst)
 print("Ready:", OUT)
